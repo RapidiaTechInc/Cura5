@@ -4452,7 +4452,7 @@
                     "default_value": "0",
                     "value": "int(defaultExtruderPosition())",
                     "enabled": "(support_enable or support_meshes_present) and extruders_enabled_count > 1",
-                    "settable_per_mesh": false,
+                    "settable_per_mesh": true,
                     "settable_per_extruder": false,
                     "children":
                     {
@@ -4464,7 +4464,7 @@
                             "default_value": "0",
                             "value": "support_extruder_nr",
                             "enabled": "(support_enable or support_meshes_present) and extruders_enabled_count > 1",
-                            "settable_per_mesh": false,
+                            "settable_per_mesh": true,
                             "settable_per_extruder": false
                         },
                         "support_extruder_nr_layer_0":
@@ -4475,7 +4475,7 @@
                             "default_value": "0",
                             "value": "support_extruder_nr",
                             "enabled": "(support_enable or support_meshes_present) and extruders_enabled_count > 1",
-                            "settable_per_mesh": false,
+                            "settable_per_mesh": true,
                             "settable_per_extruder": false
                         },
                         "support_interface_extruder_nr":

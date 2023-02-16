@@ -37,7 +37,7 @@ jobs:
                 env:
                     SLACK_USERNAME: ${{ github.repository }}
                     SLACK_COLOR: green
-                    SLACK_ICON: https://github.com/Ultimaker/Cura/blob/main/icons/cura-128.png?raw=true
+                    SLACK_ICON: https://github.com/RapidiaTechInc/Cura5/blob/main/icons/cura-128.png?raw=true
                     SLACK_TITLE: ${{ inputs.success_title }}
                     SLACK_MESSAGE: ${{ inputs.success_body }}
                     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
@@ -48,7 +48,7 @@ jobs:
                 env:
                     SLACK_USERNAME: ${{ github.repository }}
                     SLACK_COLOR: red
-                    SLACK_ICON: https://github.com/Ultimaker/Cura/blob/main/icons/cura-128.png?raw=true
+                    SLACK_ICON: https://github.com/RapidiaTechInc/Cura5/blob/main/icons/cura-128.png?raw=true
                     SLACK_TITLE: ${{ inputs.failure_title }}
                     SLACK_MESSAGE: ${{ inputs.failure_body }}
                     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}

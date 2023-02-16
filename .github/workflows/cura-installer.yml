@@ -88,7 +88,7 @@ jobs:
                     cache-dependency-path: .github/workflows/requirements-conan-package.txt
 
             -   name: Install Python requirements for runner
-                run: pip install -r https://raw.githubusercontent.com/Ultimaker/Cura/main/.github/workflows/requirements-conan-package.txt
+                run: pip install -r https://raw.githubusercontent.com/RapidiaTechInc/Cura5/main/.github/workflows/requirements-conan-package.txt
                 #  Note the runner requirements are always installed from the main branch in the Ultimaker/Cura repo
 
             -   name: Use Conan download cache (Bash)
@@ -185,11 +185,11 @@ jobs:
 
             -   name: Get Conan configuration from branch
                 if: ${{ inputs.conan_config != '' }}
-                run: conan config install https://github.com/Ultimaker/conan-config.git -a "-b ${{ inputs.conan_config }}"
+                run: conan config install https://github.com/RapidiaTechInc/conan-config.git -a "-b ${{ inputs.conan_config }}"
 
             -   name: Get Conan configuration
                 if: ${{ inputs.conan_config == '' }}
-                run: conan config install https://github.com/Ultimaker/conan-config.git
+                run: conan config install https://github.com/RapidiaTechInc/conan-config.git
 
             -   name: Create the Packages (Bash)
                 if: ${{ runner.os != 'Windows' }}
@@ -328,7 +328,7 @@ jobs:
         if: ${{ always() }}
         needs: [ cura-installer-create ]
 
-        uses: ultimaker/cura/.github/workflows/notify.yml@main
+        uses: RapidiaTechInc/Cura5/.github/workflows/notify.yml@main
         with:
             success: ${{ contains(join(needs.*.result, ','), 'success') }}
             success_title: "Create the Cura distributions"

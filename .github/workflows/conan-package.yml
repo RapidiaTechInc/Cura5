@@ -54,7 +54,7 @@ jobs:
         permissions:
           contents: read
 
-        uses: ultimaker/cura/.github/workflows/conan-recipe-version.yml@main
+        uses: RapidiaTechInc/Cura5/.github/workflows/conan-recipe-version.yml@main
         with:
             project_name: cura
 
@@ -63,7 +63,7 @@ jobs:
           contents: read
 
         needs: [ conan-recipe-version ]
-        uses: ultimaker/cura/.github/workflows/conan-recipe-export.yml@main
+        uses: RapidiaTechInc/Cura5/.github/workflows/conan-recipe-export.yml@main
         with:
             recipe_id_full: ${{ needs.conan-recipe-version.outputs.recipe_id_full }}
             recipe_id_latest: ${{ needs.conan-recipe-version.outputs.recipe_id_latest }}
@@ -79,7 +79,7 @@ jobs:
         if: ${{ (github.event_name == 'push' && (github.ref_name == 'main' || github.ref_name == 'master' || needs.conan-recipe-version.outputs.is_release_branch == 'true')) || (github.event_name == 'workflow_dispatch' && inputs.create_binaries_linux) }}
         needs: [ conan-recipe-version, conan-package-export ]
 
-        uses: ultimaker/cura/.github/workflows/conan-package-create.yml@main
+        uses: RapidiaTechInc/Cura5/.github/workflows/conan-package-create.yml@main
         with:
             project_name: ${{ needs.conan-recipe-version.outputs.project_name }}
             recipe_id_full: ${{ needs.conan-recipe-version.outputs.recipe_id_full }}
@@ -93,7 +93,7 @@ jobs:
         if: ${{ always() }}
         needs: [ conan-recipe-version, conan-package-export ]
 
-        uses: ultimaker/cura/.github/workflows/notify.yml@main
+        uses: RapidiaTechInc/Cura5/.github/workflows/notify.yml@main
         with:
             success: ${{ contains(join(needs.*.result, ','), 'success') }}
             success_title: "New Conan recipe exported in ${{ github.repository }}"
@@ -106,7 +106,7 @@ jobs:
         if: ${{ always() && ((github.event_name == 'push' && (github.ref_name == 'main' || github.ref_name == 'master' || needs.conan-recipe-version.outputs.is_release_branch == 'true')) || (github.event_name == 'workflow_dispatch' && inputs.create_binaries_linux)) }}
         needs: [ conan-recipe-version, conan-package-create-linux ]
 
-        uses: ultimaker/cura/.github/workflows/notify.yml@main
+        uses: RapidiaTechInc/Cura5/.github/workflows/notify.yml@main
         with:
             success: ${{ contains(join(needs.*.result, ','), 'success') }}
             success_title: "New binaries created in ${{ github.repository }}"

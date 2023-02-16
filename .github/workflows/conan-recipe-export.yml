@@ -62,7 +62,7 @@ jobs:
 
             -   name: Install Python requirements and Create default Conan profile
                 run: |
-                    pip install -r https://raw.githubusercontent.com/Ultimaker/Cura/main/.github/workflows/requirements-conan-package.txt
+                    pip install -r https://raw.githubusercontent.com/RapidiaTechInc/Cura5/main/.github/workflows/requirements-conan-package.txt
                     conan profile new default --detect
                 #  Note the runner requirements are always installed from the main branch in the Ultimaker/Cura repo
 
@@ -74,11 +74,11 @@ jobs:
 
             -   name: Get Conan configuration from branch
                 if: ${{ inputs.conan_config_branch != '' }}
-                run: conan config install https://github.com/Ultimaker/conan-config.git -a "-b ${{ inputs.conan_config_branch }}"
+                run: conan config install https://github.com/RapidiaTechInc/conan-config.git -a "-b ${{ inputs.conan_config_branch }}"
 
             -   name: Get Conan configuration
                 if: ${{ inputs.conan_config_branch == '' }}
-                run: conan config install https://github.com/Ultimaker/conan-config.git
+                run: conan config install https://github.com/RapidiaTechInc/conan-config.git
 
             -   name: Export the Package (binaries)
                 if: ${{ inputs.conan_export_binaries }}
@@ -92,7 +92,6 @@ jobs:
                 if: ${{ inputs.recipe_id_latest != '' && runner.os == 'Linux' }}
                 run: |
                     conan remove ${{ inputs.recipe_id_latest }} -r cura -f || true
-                    conan remove ${{ inputs.recipe_id_latest }} -r cura-ce -f || true
 
             -   name: Create the latest alias
                 if: ${{ inputs.recipe_id_latest != '' && always() }}
@@ -102,6 +101,3 @@ jobs:
                 if: always()
                 run: conan upload "*" -r cura --all -c
 
-            -   name: Upload the Package(s) community
-                if: ${{ always() && inputs.conan_upload_community == true }}
-                run: conan upload "*" -r cura-ce -c

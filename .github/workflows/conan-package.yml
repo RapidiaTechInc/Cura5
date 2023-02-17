@@ -57,6 +57,8 @@ jobs:
         uses: RapidiaTechInc/Cura5/.github/workflows/conan-recipe-version.yml@actions
         with:
             project_name: cura
+            actual_version: "5.4.0-alpha"
+            rapidia_version: "5.4.0-alpha"
 
     conan-package-export:
         permissions:

@@ -41,8 +41,8 @@ on:
                 description: "The conan projectname"
                 value: ${{ inputs.project_name }}
 env:
-    rapidia_version: "5.4.0-alpha"
-    actual_version: "5.4.0-alpha"
+    rapidia_version: ${{ inputs.rapidia_version }}
+    actual_version: ${{ inputs.actual_version }}
 
 jobs:
     get-semver:
@@ -85,7 +85,7 @@ jobs:
                     pip install gitpython
 
             -   id: get-conan-broadcast-data
-                name: Get Conan broadcast data
+                name: Get Conan broadcast data 
                 run: |
                     import subprocess
                     import os
@@ -93,6 +93,8 @@ jobs:
                     from conans.errors import ConanException
                     from git import Repo
                     
+                    rapidia_version = ${{ inputs.rapidia_version }}
+                    actual_version = ${{ inputs.actual_version }}
                     repo = Repo('.')
                     user = "${{ github.repository_owner }}".lower()
                     project_name = "${{ inputs.project_name }}"

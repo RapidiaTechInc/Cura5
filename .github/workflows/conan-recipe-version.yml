@@ -40,6 +40,8 @@ on:
             project_name:
                 description: "The conan projectname"
                 value: ${{ inputs.project_name }}
+env:
+    rapidia_version: "5.4.0-alpha"
 
 jobs:
     get-semver:
@@ -107,7 +109,7 @@ jobs:
                         is_release_branch = True
                         channel = "_"
                         user = "_"
-                        actual_version = f"{branch_version}"
+                        actual_version = f"{rapidia_version}"
                     else:
                         try:
                             branch_version = tools.Version(repo.active_branch.name)
@@ -151,7 +153,7 @@ jobs:
                                 # The prerealese did not contain a version number, default it to 1
                                 latest_branch_version_prerelease = f"{latest_branch_version.prerelease}.1"
                             if event_name == "pull_request":
-                                actual_version = f"{latest_branch_version.major}.{latest_branch_version.minor}.{latest_branch_version.patch}-{latest_branch_version_prerelease.lower()}+{buildmetadata}pr_{issue_number}_{no_commits}"
+                                actual_version = f"{rapidia_version}"
                                 channel_metadata = f"{channel}_{no_commits}"
                             else:
                                 if channel in ("stable", "_", ""):
@@ -160,15 +162,15 @@ jobs:
                                     channel_metadata = f"{channel}_{no_commits}"
                             if is_release_branch:
                                 if latest_branch_version.prerelease == "" and branch_version > latest_branch_version:
-                                    actual_version = f"{branch_version.major}.{branch_version.minor}.0-beta.1+{buildmetadata}{channel_metadata}"
+                                    actual_version = f"{rapidia_version}"
                                 elif latest_branch_version.prerelease == "":
                                     # An actual full release has been created, we are working on patch
                                     bump_up_patch = int(latest_branch_version.patch) + 1
-                                    actual_version = f"{latest_branch_version.major}.{latest_branch_version.minor}.{bump_up_patch}-beta.1+{buildmetadata}{channel_metadata}"
+                                    actual_version = f"{rapidia_version}"
                                 else:
                                     # An beta release has been created we are working toward a next beta or full release
                                     bump_up_release_tag = int(latest_branch_version.prerelease.split('.')[1]) + 1
-                                    actual_version = f"{latest_branch_version.major}.{latest_branch_version.minor}.{latest_branch_version.patch}-{latest_branch_version.prerelease.split('.')[0]}.{bump_up_release_tag}+{buildmetadata}{channel_metadata}"
+                                    actual_version = f"{rapidia_version}"
                             else:
                                 max_branches_version = tools.Version("0.0.0")
                                 branches_no_commits = no_commits
@@ -182,9 +184,9 @@ jobs:
                                     except:
                                         pass
                                 if max_branches_version > latest_branch_version:
-                                    actual_version = f"{max_branches_version.major}.{int(max_branches_version.minor) + 1}.0-alpha+{buildmetadata}{channel}_{branches_no_commits}"
+                                    actual_version = f"{rapidia_version}"
                                 else:
-                                    actual_version = f"{latest_branch_version.major}.{int(latest_branch_version.minor) + 1}.0-alpha+{buildmetadata}{channel_metadata}"
+                                    actual_version = f"{rapidia_version}"
 
                     # %% Set the environment output
                     output_env = os.environ["GITHUB_OUTPUT"]

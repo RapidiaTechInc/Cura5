@@ -97,8 +97,8 @@ jobs:
                     from conans.errors import ConanException
                     from git import Repo
                     
-                    rapidia_version = ${{ inputs.rapidia_version }}
-                    actual_version = ${{ inputs.actual_version }}
+                    rapidia_version = "${{ inputs.rapidia_version }}"
+                    actual_version = "${{ inputs.actual_version }}"
                     repo = Repo('.')
                     user = "${{ github.repository_owner }}".lower()
                     project_name = "${{ inputs.project_name }}"

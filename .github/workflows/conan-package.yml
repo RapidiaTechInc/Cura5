@@ -54,7 +54,7 @@ jobs:
         permissions:
           contents: read
 
-        uses: RapidiaTechInc/Cura5/.github/workflows/conan-recipe-version.yml
+        uses: RapidiaTechInc/Cura5/.github/workflows/conan-recipe-version.yml@actions
         with:
             project_name: cura
 
@@ -63,7 +63,7 @@ jobs:
           contents: read
 
         needs: [ conan-recipe-version ]
-        uses: RapidiaTechInc/Cura5/.github/workflows/conan-recipe-export.yml
+        uses: RapidiaTechInc/Cura5/.github/workflows/conan-recipe-export.yml@actions
         with:
             recipe_id_full: ${{ needs.conan-recipe-version.outputs.recipe_id_full }}
             recipe_id_latest: ${{ needs.conan-recipe-version.outputs.recipe_id_latest }}
@@ -79,7 +79,7 @@ jobs:
         if: ${{ (github.event_name == 'push' && (github.ref_name == 'main' || github.ref_name == 'master' || needs.conan-recipe-version.outputs.is_release_branch == 'true')) || (github.event_name == 'workflow_dispatch' && inputs.create_binaries_linux) }}
         needs: [ conan-recipe-version, conan-package-export ]
 
-        uses: RapidiaTechInc/Cura5/.github/workflows/conan-package-create.yml
+        uses: RapidiaTechInc/Cura5/.github/workflows/conan-package-create.yml@actions
         with:
             project_name: ${{ needs.conan-recipe-version.outputs.project_name }}
             recipe_id_full: ${{ needs.conan-recipe-version.outputs.recipe_id_full }}

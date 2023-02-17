@@ -64,7 +64,7 @@ permissions:
 
 jobs:
     conan-recipe-version:
-        uses: RapidiaTechInc/Cura5/.github/workflows/conan-recipe-version.yml
+        uses: RapidiaTechInc/Cura5/.github/workflows/conan-recipe-version.yml@actions
         with:
             project_name: cura
 

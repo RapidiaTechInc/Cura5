@@ -11,6 +11,10 @@ on:
                 required: false
                 default: ""
                 type: string
+            actual_version:
+                type: string
+            rapidia_version:
+                type: string
 
         outputs:
             recipe_id_full:

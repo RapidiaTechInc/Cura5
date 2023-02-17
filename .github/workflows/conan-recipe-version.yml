@@ -42,6 +42,7 @@ on:
                 value: ${{ inputs.project_name }}
 env:
     rapidia_version: "5.4.0-alpha"
+    actual_version: "5.4.0-alpha"
 
 jobs:
     get-semver:

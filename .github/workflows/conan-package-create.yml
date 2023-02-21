@@ -149,7 +149,7 @@ jobs:
 
             -   name: Create the Packages using lockfile
                 if: ${{ inputs.build_info }}
-                run: conan install ${{ inputs.recipe_id_full }} --build=missing --update --lockfile-out=conan.lock
+                run: conan install ${{ inputs.recipe_id_full }} --build=missing --update
 
             -   name: Create the Packages
                 if: ${{ ! inputs.build_info }}

@@ -141,11 +141,11 @@ jobs:
                 if: ${{ inputs.conan_config_branch == '' }}
                 run: conan config install https://github.com/RapidiaTechInc/conan-config.git
 
-            -   name: Create the lock file
-                if: ${{ inputs.build_info }}
-                run: |
-                    conan_build_info --v2 start ${{ inputs.project_name }} ${{ github.run_number }}000${{ inputs.build_id }}
-                    conan lock create --reference ${{ inputs.recipe_id_full }} --lockfile-out=conan.lock                    
+            # -   name: Create the lock file
+            #     if: ${{ inputs.build_info }}
+            #     run: |
+            #         conan_build_info --v2 start ${{ inputs.project_name }} ${{ github.run_number }}000${{ inputs.build_id }}
+            #         conan lock create --reference ${{ inputs.recipe_id_full }} --lockfile-out=conan.lock                    
 
             -   name: Create the Packages using lockfile
                 if: ${{ inputs.build_info }}

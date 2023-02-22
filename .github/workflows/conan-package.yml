@@ -84,7 +84,7 @@ jobs:
         uses: RapidiaTechInc/Cura5/.github/workflows/conan-package-create.yml@actions
         with:
             project_name: ${{ needs.conan-recipe-version.outputs.project_name }}
-            recipe_id_full: "cura/5.4.0-alpha@ultimaker/testing"
+            recipe_id_full: "cura/latest@ultimaker/stable"
             build_id: 1
             runs_on: 'ubuntu-22.04'
             python_version: '3.10.x'

@@ -154,13 +154,13 @@ jobs:
                 if: ${{ ! inputs.build_info }}
                 run: conan install ${{ inputs.recipe_id_full }} --build=missing --update
 
-            -   name: Create the build info
-                if: ${{ inputs.build_info }}
-                run: conan_build_info --v2 create buildinfo.json --lockfile conan.lock --user ${{ secrets.CONAN_USER }} --password ${{ secrets.CONAN_PASS }}
-
             -   name: Get our Conan configuration
                 if: ${{ inputs.conan_config_branch == '' }}
                 run: conan config install https://github.com/RapidiaTechInc/conan-config.git
+
+            -   name: Create the build info
+                if: ${{ inputs.build_info }}
+                run: conan_build_info --v2 create buildinfo.json --lockfile conan.lock --user ${{ secrets.CONAN_USER }} --password ${{ secrets.CONAN_PASS }}
 
             -   name: Upload the Package(s)
                 if: always()

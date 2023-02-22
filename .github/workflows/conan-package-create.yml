@@ -169,12 +169,8 @@ jobs:
             -   name: Upload the build info
                 if: ${{ inputs.build_info }}
                 run: |
-                    conan_build_info --v2 publish buildinfo.json --url https://ultimaker.jfrog.io/artifactory --user ${{ secrets.CONAN_USER }} --password ${{ secrets.CONAN_PASS }}
+                    conan_build_info --v2 publish buildinfo.json --url https://rapidia.jfrog.io/artifactory --user ${{ secrets.CONAN_USER }} --password ${{ secrets.CONAN_PASS }}
                     conan_build_info --v2 stop
-
-            -   name: Upload the Package(s) community
-                if: ${{ always() && inputs.conan_upload_community == true }}
-                run: conan upload "*" -r cura-ce -c
 
             -   name: Upload the log and build artifacts
                 if: always()

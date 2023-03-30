@@ -71,6 +71,7 @@ env:
     CURA_CONAN_VERSION: ${{ inputs.cura_conan_version }}
     ENTERPRISE: ${{ inputs.enterprise }}
     STAGING: ${{ inputs.staging }}
+    TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
 
 jobs:
     cura-installer-create:
@@ -79,6 +80,15 @@ jobs:
         steps:
             -   name: Checkout
                 uses: actions/checkout@v3
+                with:
+                    path: cura5
+
+            -   name: Checkout engine
+                uses: actions/checkout@v3
+                with:
+                    repository: RapidiaTechInc/CuraEngine5
+                    token: ${{ secrets.TOKEN_GITHUB }}
+                    path: curaEngine
 
             -   name: Setup Python and pip
                 uses: actions/setup-python@v4
@@ -173,18 +183,16 @@ jobs:
                  echo "conan install $CURA_CONAN_VERSION ${{ inputs.conan_args }} --build=missing --update -if cura_inst -g VirtualPythonEnv -o cura:enterprise=$ENTERPRISE -o cura:staging=$STAGING --json 'cura_inst/conan_install_info.json'"
                  conan install $CURA_CONAN_VERSION ${{ inputs.conan_args }} --build=missing --update -if cura_inst -g VirtualPythonEnv -o cura:enterprise=$ENTERPRISE -o cura:staging=$STAGING --json 'cura_inst/conan_install_info.json'
 
+            -   name: create conan Engine package (powershell)
+                if: ${{ runner.os == 'Windows' }}
+                working-directory: curaEngine
+                run: conan create . curaEngine5.4.0@rapidia/stable --build=missing --update
+
+
             -   name: create conan package (powershell)
                 if: ${{ runner.os == 'Windows' }}
                 run: conan create . $Env:CURA_CONAN_VERSION --build=missing --update
 
-
-            -   name: create conan package lockfile (powershell)
-                if: ${{ runner.os == 'Windows' }}
-                run: |
-                 echo "${Env:CURA_CONAN_VERSION}"
-                 conan_build_info --v2 start rapidia-cura 1
-                 conan lock create --reference $Env:CURA_CONAN_VERSION --lockfile-out=conan.lock
-            
             -   name: Create the Packages (Powershell)
                 if: ${{ runner.os == 'Windows' }}
                 run: conan install $Env:CURA_CONAN_VERSION ${{ inputs.conan_args }} --build=missing --update -if cura_inst -g VirtualPythonEnv -o cura:enterprise=$Env:ENTERPRISE -o cura:staging=$Env:STAGING --json "cura_inst/conan_install_info.json"
@@ -268,7 +276,7 @@ jobs:
             -   name: Create the Windows exe installer (Powershell)
                 if: ${{ inputs.installer && runner.os == 'Windows' && !inputs.msi_installer }}
                 run: |
-                    python ..\cura_inst\packaging\NSIS\create_windows_installer.py ../cura_inst . "${{ steps.filename.outputs.FULL_INSTALLER_FILENAME }}"
+                    python ..\cura_inst\packaging\NSIS\create_windows_installer.py ../cura_inst . "rapidia-cura.exe"
                 working-directory: dist
 
             -   name: Create the Windows msi installer (Powershell)
@@ -294,6 +302,6 @@ jobs:
                     path: |
                         dist/*.tar.gz
                         dist/*.zip
-                        dist/${{ steps.filename.outputs.FULL_INSTALLER_FILENAME }}
+                        dist/rapidia-cura.exe
                         dist/*.asc
                     retention-days: 5

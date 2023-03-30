@@ -13,7 +13,7 @@
 "5.4.0-alpha":
   requirements:
     - "pyarcus/5.2.2"
-    - "curaengine/(latest)@ultimaker/testing"
+    - "curaEngine5.4.0@rapidia/stable"
     - "pysavitar/5.2.2"
     - "pynest2d/5.2.2"
     - "uranium/(latest)@ultimaker/testing"
@@ -123,7 +123,7 @@
 "5.3.0":
   requirements:
     - "pyarcus/5.2.2"
-    - "curaengine/5.3.0"
+    - "curaEngine5.4.0@rapidia/stable"
     - "pysavitar/5.2.2"
     - "pynest2d/5.2.2"
     - "uranium/5.3.0"

@@ -175,6 +175,11 @@ jobs:
 
             -   name: create conan package (powershell)
                 if: ${{ runner.os == 'Windows' }}
+                run: conan create . $Env:CURA_CONAN_VERSION --build=missing --update
+
+
+            -   name: create conan package lockfile (powershell)
+                if: ${{ runner.os == 'Windows' }}
                 run: |
                  echo "${Env:CURA_CONAN_VERSION}"
                  conan_build_info --v2 start rapidia-cura 1

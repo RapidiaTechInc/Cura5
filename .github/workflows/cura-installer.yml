@@ -173,6 +173,13 @@ jobs:
                  echo "conan install $CURA_CONAN_VERSION ${{ inputs.conan_args }} --build=missing --update -if cura_inst -g VirtualPythonEnv -o cura:enterprise=$ENTERPRISE -o cura:staging=$STAGING --json 'cura_inst/conan_install_info.json'"
                  conan install $CURA_CONAN_VERSION ${{ inputs.conan_args }} --build=missing --update -if cura_inst -g VirtualPythonEnv -o cura:enterprise=$ENTERPRISE -o cura:staging=$STAGING --json 'cura_inst/conan_install_info.json'
 
+            -   name: create conan package (powershell)
+                if: ${{ runner.os == 'Windows' }}
+                run: |
+                 echo "${Env:CURA_CONAN_VERSION}"
+                 conan_build_info --v2 start rapidia-cura 1
+                 conan lock create --reference $Env:CURA_CONAN_VERSION --lockfile-out=conan.lock
+            
             -   name: Create the Packages (Powershell)
                 if: ${{ runner.os == 'Windows' }}
                 run: conan install $Env:CURA_CONAN_VERSION ${{ inputs.conan_args }} --build=missing --update -if cura_inst -g VirtualPythonEnv -o cura:enterprise=$Env:ENTERPRISE -o cura:staging=$Env:STAGING --json "cura_inst/conan_install_info.json"

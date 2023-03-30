@@ -81,7 +81,7 @@ jobs:
             -   name: Checkout
                 uses: actions/checkout@v3
                 with:
-                    path: cura5
+                    path: Cura5
 
             -   name: Checkout engine
                 uses: actions/checkout@v3

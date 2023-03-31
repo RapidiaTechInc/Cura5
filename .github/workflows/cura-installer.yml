@@ -275,12 +275,13 @@ jobs:
             -   name: Create the Windows exe installer (Powershell)
                 if: ${{ inputs.installer && runner.os == 'Windows' && !inputs.msi_installer }}
                 run: |
-                    python ..\cura_inst\packaging\NSIS\create_windows_installer.py ../cura_inst . "rapidia-cura.exe"
+                    python ..\cura_inst\packaging\NSIS\create_windows_installer.py ../cura_inst . "${{ steps.filename.outputs.FULL_INSTALLER_FILENAME }}"
                 working-directory: dist
 
             -   name: Create the Windows msi installer (Powershell)
                 if: ${{ inputs.installer && runner.os == 'Windows' && inputs.msi_installer }}
                 run: |
+                    echo "${{ steps.filename.outputs.FULL_INSTALLER_FILENAME }}"
                     python ..\cura_inst\packaging\msi\create_windows_msi.py ..\cura_inst .\UltiMaker-Cura "${{ steps.filename.outputs.FULL_INSTALLER_FILENAME }}" "$Env:CURA_APP_NAME"
                 working-directory: dist
 
@@ -301,6 +302,6 @@ jobs:
                     path: |
                         dist/*.tar.gz
                         dist/*.zip
-                        dist/rapidia-cura.exe
+                        dist/*.exe
                         dist/*.asc
                     retention-days: 5

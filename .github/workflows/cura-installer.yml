@@ -87,7 +87,7 @@ jobs:
                 with:
                     repository: RapidiaTechInc/CuraEngine5
                     token: ${{ secrets.TOKEN_GITHUB }}
-                    path: curaEngine
+                    path: \a\curaEngine
 
             -   name: Setup Python and pip
                 uses: actions/setup-python@v4
@@ -184,8 +184,8 @@ jobs:
 
             -   name: create conan Engine package (powershell)
                 if: ${{ runner.os == 'Windows' }}
-                working-directory: curaEngine
-                run: conan create . curaEngine5.4.0@rapidia/stable --build=missing --update
+                working-directory: \a\curaEngine
+                run: conan create . curaengine/5.4.0@rapidia/stable --build=missing --update
 
 
             -   name: create conan package (powershell)

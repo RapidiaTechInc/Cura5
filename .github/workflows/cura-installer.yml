@@ -209,11 +209,6 @@ jobs:
                     .\cura_inst\Scripts\activate_github_actions_env.ps1
                     .\cura_inst\Scripts\activate_github_actions_version_env.ps1
 
-            -   name: Unlock Macos keychain (Bash)
-                if: ${{ runner.os == 'Macos' }}
-                run: security unlock -p $TEMP_KEYCHAIN_PASSWORD signing_temp.keychain
-                env:
-                    TEMP_KEYCHAIN_PASSWORD: ${{  steps.macos-keychain-developer-cert.outputs.keychain-password }}
 
                 # FIXME: This is a workaround to ensure that we use and pack a shared library for OpenSSL 1.1.1l. We currently compile
                 #  OpenSSL statically for CPython, but our Python Dependenies (such as PyQt6) require a shared library.
@@ -274,6 +269,12 @@ jobs:
 
             -   name: Create the Windows exe installer (Powershell)
                 if: ${{ inputs.installer && runner.os == 'Windows' && !inputs.msi_installer }}
+                env:
+                    CURA_VERSION_MAJOR: 5
+                    CURA_VERSION_MINOR: 0
+                    CURA_VERSION_PATCH: 0
+                    CURA_VERSION_BUILD: 1
+                    CURA_VERSION_FULL: "rapidia-cura"
                 run: |
                     python ..\cura_inst\packaging\NSIS\create_windows_installer.py ../cura_inst . "${{ steps.filename.outputs.FULL_INSTALLER_FILENAME }}"
                 working-directory: dist

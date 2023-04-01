@@ -276,6 +276,11 @@ jobs:
                     CURA_VERSION_BUILD: 1
                     CURA_VERSION_FULL: "rapidia-cura"
                 run: |
+                    echo "CURA_VERSION_MAJOR=5" >> $GITHUB_ENV
+                    echo "CURA_VERSION_MINOR=0" >> $GITHUB_ENV
+                    echo "CURA_VERSION_PATCH=0" >> $GITHUB_ENV
+                    echo "CURA_VERSION_BUILD=1" >> $GITHUB_ENV
+                    echo "CURA_VERSION_FULL='rapidia-cura'" >> $GITHUB_ENV
                     python ..\cura_inst\packaging\NSIS\create_windows_installer.py ../cura_inst . "${{ steps.filename.outputs.FULL_INSTALLER_FILENAME }}"
                 working-directory: dist
 

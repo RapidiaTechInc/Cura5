@@ -83,9 +83,9 @@ jobs:
                 if: ${{ runner.os == 'Windows' }}
                 run: conan create . $Env:CURA_CONAN_VERSION --build=missing --update
 
-            -   name: Create the Packages (Powershell)
+            -   name: Install the Packages (Powershell)
                 if: ${{ runner.os == 'Windows' }}
-                run: conan install $Env:CURA_CONAN_VERSION ${{ inputs.conan_args }} --build=missing --update -if cura_inst -g VirtualPythonEnv -o cura:enterprise=$Env:ENTERPRISE -o cura:staging=$Env:STAGING --json "cura_inst/conan_install_info.json"
+                run: conan install $Env:CURA_CONAN_VERSION --build=missing --update -if cura_inst -g VirtualPythonEnv --json "cura_inst/conan_install_info.json"
 
             -   name: Set Environment variables for Cura (Powershell)
                 if: ${{ runner.os == 'Windows' }}
@@ -117,8 +117,7 @@ jobs:
                 shell: python
                 run: |
                     import os
-                    enterprise = "-Enterprise" if "${{ inputs.enterprise }}" == "true" else ""
-                    installer_filename = f"UltiMaker-Cura-{os.getenv('CURA_VERSION_FULL')}{enterprise}-${{ inputs.os_name }}"
+                    installer_filename = f"UltiMaker-Cura-{os.getenv('CURA_VERSION_FULL')}-${{ inputs.os_name }}"
                     if "${{ runner.os }}" == "Windows":
                         installer_ext = "msi" if "${{ inputs.msi_installer }}" == "true" else "exe"
                     elif "${{ runner.os }}" == "macOS":
@@ -144,11 +143,11 @@ jobs:
             -   name: Create the Windows exe installer (Powershell)
                 if: ${{ inputs.installer && runner.os == 'Windows' && !inputs.msi_installer }}
                 run: |
-                    echo "CURA_VERSION_MAJOR=5" >> $GITHUB_ENV
-                    echo "CURA_VERSION_MINOR=0" >> $GITHUB_ENV
-                    echo "CURA_VERSION_PATCH=0" >> $GITHUB_ENV
-                    echo "CURA_VERSION_BUILD=1" >> $GITHUB_ENV
-                    echo "CURA_VERSION_FULL='rapidia-cura'" >> $GITHUB_ENV
+                    # echo "CURA_VERSION_MAJOR=5" >> $GITHUB_ENV
+                    # echo "CURA_VERSION_MINOR=0" >> $GITHUB_ENV
+                    # echo "CURA_VERSION_PATCH=0" >> $GITHUB_ENV
+                    # echo "CURA_VERSION_BUILD=1" >> $GITHUB_ENV
+                    # echo "CURA_VERSION_FULL='rapidia-cura'" >> $GITHUB_ENV
                     python ..\cura_inst\packaging\NSIS\create_windows_installer.py ../cura_inst . "${{ steps.filename.outputs.FULL_INSTALLER_FILENAME }}"
                 working-directory: dist
 

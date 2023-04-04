@@ -61,20 +61,6 @@ jobs:
                 run: pip install -r https://raw.githubusercontent.com/RapidiaTechInc/Cura5/new-dawn/.github/workflows/requirements-conan-package.txt
                 #  Note the runner requirements are always installed from the main branch in the Ultimaker/Cura repo
 
-            -   name: Use Conan download cache (Powershell)
-                if: ${{ runner.os == 'Windows' }}
-                run: conan config set storage.download_cache="C:\Users\runneradmin\.conan\conan_download_cache"
-
-            -   name: Cache Conan local repository packages (Powershell)
-                uses: actions/cache@v3
-                if: ${{ runner.os == 'Windows' }}
-                with:
-                    path: |
-                        C:\Users\runneradmin\.conan\data
-                        C:\.conan
-                        C:\Users\runneradmin\.conan\conan_download_cache
-                    key: conan-${{ runner.os }}-${{ runner.arch }}-installer-cache
-
             -   name: Create the default Conan profile
                 run:  conan profile new default --detect
 

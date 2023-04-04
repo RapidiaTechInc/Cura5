@@ -10,14 +10,14 @@
 # requirements (use the <dep_name>/(latest)@ultimaker/testing)
 #
 # Subject to change in the future!
-"5.0.0":
+"5.0.1":
   requirements:
     - "pyarcus/5.2.2"
-    - "curaengine/5.0.0@rapidia/stable"
+    - "curaengine/5.0.1@rapidia/stable"
     - "pysavitar/5.2.2"
     - "pynest2d/5.2.2"
     - "uranium/(latest)@ultimaker/testing"
-    - "fdm_materials/5.0.0@rapidia/stable"
+    - "fdm_materials/5.0.1@rapidia/stable"
     - "cura_binary_data/(latest)@ultimaker/testing"
     - "cpython/3.10.4"
   internal_requirements:

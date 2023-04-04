@@ -58,7 +58,7 @@ jobs:
                     cache-dependency-path: .github/workflows/requirements-conan-package.txt
 
             -   name: Install Python requirements for runner
-                run: pip install -r https://raw.githubusercontent.com/RapidiaTechInc/Cura5/play/.github/workflows/requirements-conan-package.txt
+                run: pip install -r https://raw.githubusercontent.com/RapidiaTechInc/Cura5/main/.github/workflows/requirements-conan-package.txt
                 #  Note the runner requirements are always installed from the main branch in the Ultimaker/Cura repo
 
             -   name: Use Conan download cache (Powershell)
@@ -124,7 +124,7 @@ jobs:
                 shell: python
                 run: |
                     import os
-                    installer_filename = f"UltiMaker-Cura-{os.getenv('CURA_VERSION_FULL')}-${{ inputs.os_name }}"
+                    installer_filename = f"Rapidia-Cura-{os.getenv('CURA_VERSION_FULL')}-${{ inputs.os_name }}"
                     if "${{ runner.os }}" == "Windows":
                         installer_ext = "msi" if "${{ inputs.msi_installer }}" == "true" else "exe"
                     elif "${{ runner.os }}" == "macOS":

@@ -12,6 +12,7 @@
 # Subject to change in the future!
 "5.0.1":
   requirements:
+    - "gettext/0.21@#bc156aa5372a9310da48bfd1df9e37d7"
     - "pyarcus/5.2.2"
     - "curaengine/5.0.1@rapidia/stable"
     - "pysavitar/5.2.2"

@@ -58,7 +58,7 @@ jobs:
                     cache-dependency-path: .github/workflows/requirements-conan-package.txt
 
             -   name: Install Python requirements for runner
-                run: pip install -r https://raw.githubusercontent.com/RapidiaTechInc/Cura5/main/.github/workflows/requirements-conan-package.txt
+                run: pip install -r https://raw.githubusercontent.com/RapidiaTechInc/Cura5/new-dawn/.github/workflows/requirements-conan-package.txt
                 #  Note the runner requirements are always installed from the main branch in the Ultimaker/Cura repo
 
             -   name: Use Conan download cache (Powershell)

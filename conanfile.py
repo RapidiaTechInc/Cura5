@@ -6,7 +6,7 @@ from jinja2 import Template
 from conan import ConanFile
 from conan.tools.files import copy, rmdir, save, mkdir
 from conan.tools.microsoft import unix_path
-from conan.tools.env import VirtualRunEnv, Environment
+from conan.tools.env import VirtualRunEnv, Environment, VirtualBuildEnv
 from conan.tools.scm import Version
 from conan.errors import ConanInvalidConfiguration, ConanException
 
@@ -323,12 +323,16 @@ class CuraConan(ConanFile):
                                             icon_path = "'{}'".format(Path(self.source_folder, "packaging", self._um_data()["pyinstaller"]["icon"][str(self.settings.os)])).replace("\\", "\\\\"),
                                             entitlements_file = entitlements_file if self.settings.os == "Macos" else "None")
 
-            # Update the po files
-            if self.settings.os != "Windows" or self.conf.get("tools.microsoft.bash:path", check_type = str):
+            # Update the po and pot files
+            if self.settings.os != "Windows" or self.conf.get("tools.microsoft.bash:path", check_type=str):
+                vb = VirtualBuildEnv(self)
+                vb.generate()
+
                 # FIXME: once m4, autoconf, automake are Conan V2 ready use self.win_bash and add gettext as base tool_requirement
-                # Extract all the new strings and update the existing po files
-                extractTool = self.python_requires["translationextractor"].module.ExtractTranslations(self, self.source_path.joinpath("resources", "i18n"), "cura.pot")
-                extractTool.generate()
+                cpp_info = self.dependencies["gettext"].cpp_info
+                pot = self.python_requires["translationextractor"].module.ExtractTranslations(self, cpp_info.bindirs[0])
+                pot.generate()
+            
 
     def imports(self):
         self.copy("CuraEngine.exe", root_package = "curaengine", src = "@bindirs", dst = "", keep_path = False)

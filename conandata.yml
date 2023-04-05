@@ -17,9 +17,9 @@
     - "curaengine/5.0.1@rapidia/stable"
     - "pysavitar/5.2.2"
     - "pynest2d/5.2.2"
-    - "uranium/(latest)@ultimaker/testing"
+    - "uranium/5.2.2"
     - "fdm_materials/5.0.1@rapidia/stable"
-    - "cura_binary_data/(latest)@ultimaker/testing"
+    - "cura_binary_data/5.2.2"
     - "cpython/3.10.4"
   internal_requirements:
     - "fdm_materials_private/(latest)@ultimaker/testing"

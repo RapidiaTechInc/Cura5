@@ -43,13 +43,6 @@ jobs:
                     ref: no-test
                     path: curaEngine
 
-            -   name: Checkout materials
-                uses: actions/checkout@v3
-                with:
-                    repository: RapidiaTechInc/fdm_materials5
-                    token: ${{ secrets.TOKEN_GITHUB }}
-                    path: fdm_materials5
-
             -   name: Setup Python and pip
                 uses: actions/setup-python@v4
                 with:
@@ -71,10 +64,6 @@ jobs:
             -   name: create conan Engine package (powershell)
                 working-directory: curaEngine
                 run: conan create . curaengine/5.0.1@rapidia/stable --build=missing --update
-
-            -   name: create conan materials package (powershell)
-                working-directory: fdm_materials5
-                run: conan create . fdm_materials/5.0.1@rapidia/stable --build=missing --update
 
             -   name: create conan package (powershell)
                 run: conan create . $Env:CURA_CONAN_VERSION --build=missing --update

@@ -302,7 +302,7 @@ class CuraConan(ConanFile):
         self.requires("pysavitar/5.2.2")
         self.requires("pynest2d/5.2.2")
         self.requires("uranium/(latest)@ultimaker/stable")
-        self.requires("fdm_materials/5.0.1@ultimaker/stable")
+        self.requires("fdm_materials/5.0.1@rapidia/stable")
         self.requires("cura_binary_data/(latest)@ultimaker/stable")
         self.requires("cpython/3.10.4")
         if self.options.internal:

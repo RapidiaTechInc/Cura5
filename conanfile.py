@@ -174,24 +174,43 @@ class CuraConan(ConanFile):
     def _generate_pyinstaller_spec(self, location, entrypoint_location, icon_path, entitlements_file):
         pyinstaller_metadata = self.conan_data["pyinstaller"]
         datas = [(str(self._base_dir.joinpath("conan_install_info.json")), ".")]
+        print("now generating py installer spec...")
+        print(f"pyinstaller_metadata: {pyinstaller_metadata}")
+        print(f"datas: {datas}")
         for data in pyinstaller_metadata["datas"].values():
+            print(f"current data: {data}")
             if not self.options.internal and data.get("internal", False):
+                print("skipping at first hurdle")
                 continue
 
             if "package" in data:  # get the paths from conan package
+                print("contains package...")
                 if data["package"] == self.name:
+                    print("package same as name")
                     if self.in_local_cache:
+                        print("is in local cache")
                         src_path = os.path.join(self.package_folder, data["src"])
+                        print(f"src_path: {src_path}")
                     else:
+                        print("not in local cache")
                         src_path = os.path.join(self.source_folder, data["src"])
+                        print(f"src_path: {src_path}")
                 else:
+                    print("name not same as package")
                     src_path = os.path.join(self.deps_cpp_info[data["package"]].rootpath, data["src"])
+                    print(f"src_path: {src_path}")
             elif "root" in data:  # get the paths relative from the sourcefolder
+                print("root in data")
                 src_path = os.path.join(self.source_folder, data["root"], data["src"])
+                print(f"src_path: {src_path}")
             else:
+                print("no root or name same as package so skipping")
                 continue
             if Path(src_path).exists():
+                print("adding to datas")
                 datas.append((str(src_path), data["dst"]))
+            else:
+                print("src path doesn't exist")
 
         binaries = []
         for binary in pyinstaller_metadata["binaries"].values():

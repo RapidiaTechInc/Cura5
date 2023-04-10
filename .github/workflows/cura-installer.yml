@@ -40,7 +40,6 @@ jobs:
                 with:
                     repository: RapidiaTechInc/CuraEngine5
                     token: ${{ secrets.TOKEN_GITHUB }}
-                    ref: no-test
                     path: curaEngine
 
             -   name: Checkout materials

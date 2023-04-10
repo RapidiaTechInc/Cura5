@@ -40,7 +40,6 @@ jobs:
                 with:
                     repository: RapidiaTechInc/CuraEngine5
                     token: ${{ secrets.TOKEN_GITHUB }}
-                    ref: no-test
                     path: curaEngine
 
             -   name: Checkout materials
@@ -48,7 +47,6 @@ jobs:
                 with:
                     repository: RapidiaTechInc/fdm_materials5
                     token: ${{ secrets.TOKEN_GITHUB }}
-                    ref: change-file-structure
                     path: fdm_materials5
 
             -   name: Setup Python and pip

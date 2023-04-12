@@ -1,0 +1,39 @@
+[general]
+version = 4
+name = evap-support
+definition = rapidia_system
+
+[metadata]
+type = quality
+global_quality = True
+quality_type = fast
+setting_version = 20
+
+[values]
+acceleration_enabled = True
+acceleration_travel_enabled = False
+adhesion_extruder_nr = 0
+adhesion_type = raft
+layer_height = 0.25
+layer_height_0 = 0.25
+machine_acceleration = 1000
+machine_max_acceleration_e = 125
+machine_max_acceleration_x = 1000
+machine_max_acceleration_y = 1000
+machine_max_acceleration_z = 100
+machine_max_feedrate_e = 50
+machine_max_feedrate_x = 200
+machine_max_feedrate_y = 200
+machine_max_feedrate_z = 12
+machine_name = Rapidia M1
+material_bed_temperature = 40
+material_print_temp_wait = False
+prime_tower_position_x = 220
+prime_tower_position_y = 190
+prime_tower_size = 10
+raft_surface_extruder_nr = 1
+retraction_combing = off
+speed_slowdown_layers = 0
+support_enable = True
+support_extruder_nr = 1
+support_interface_extruder_nr = 1

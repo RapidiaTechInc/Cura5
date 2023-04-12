@@ -5,5 +5,9 @@
     "metadata": {
         "machine": "rapidia_system",
         "position": "0"
+    },
+    "overrides":
+    {
+        "material_diameter": { "default_value": 0.64 }
     }
 }

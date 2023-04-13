@@ -17,7 +17,8 @@
             "0": "rapidia_extruder_0",
             "1": "rapidia_extruder_1"
         },
-        "supports_usb_connection": false
+        "supports_usb_connection": false,
+        "quality_definition": "rapidia_system"
     },
     "overrides": {
         "machine_name": {

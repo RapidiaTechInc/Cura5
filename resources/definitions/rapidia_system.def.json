@@ -11,20 +11,18 @@
         "has_material": true,
         "has_machine_quality": true,
         "has_variant_buildplates": false,
-        "has_variants": true,
-        "preferred_variant_name": "0.4",
-        "preferred_quality_type": "normal",
+        "has_variants": false,
         "preferred_material": "Rapidia_316L",
-        "variants_name": "Nozzle Size",
         "machine_extruder_trains": {
             "0": "rapidia_extruder_0",
             "1": "rapidia_extruder_1"
         },
-        "supports_usb_connection": false
+        "supports_usb_connection": false,
+        "quality_definition": "rapidia_system"
     },
     "overrides": {
         "machine_name": {
-            "default_value": "Rapidia Printer"
+            "default_value": "Rapidia M1"
         },
         "machine_heated_bed": {
             "default_value": true
@@ -40,12 +38,6 @@
         },
         "machine_center_is_zero": {
             "default_value": false
-        },
-        "material_diameter": {
-            "default_value": 0.64
-        },
-        "retraction_amount": {
-            "default_value": 2
         },
         "gantry_height": {
             "value": 190
@@ -65,13 +57,6 @@
         },
         "optimize_wall_printing_order": {
             "default_value": true
-        },
-        "fill_perimeter_gaps": {
-            "default_value": "nowhere"
-        },
-        "infill_overlap": {
-            "default_value": 20,
-            "value": "20 if infill_sparse_density < 95 and infill_pattern != 'concentric' else 0"
         },
         "cool_fan_enabled":
         {

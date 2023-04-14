@@ -16,8 +16,8 @@ required_conan_version = "<=1.56.0"
 class CuraConan(ConanFile):
     name = "cura"
     license = "LGPL-3.0"
-    author = "UltiMaker"
-    url = "https://github.com/Ultimaker/cura"
+    author = "Rapidia"
+    url = "https://github.com/RapidiaTechInc/Cura5"
     description = "3D printer / slicing GUI built on top of the Uranium framework"
     topics = ("conan", "python", "pyqt6", "qt", "qml", "3d-printing", "slicer")
     build_policy = "missing"
@@ -80,9 +80,7 @@ class CuraConan(ConanFile):
 
     @property
     def _app_name(self):
-        if self._enterprise:
-            return str(self.options.display_name) + " Enterprise"
-        return str(self.options.display_name)
+        return "Rapidia Cura"
 
     @property
     def _cloud_api_root(self):

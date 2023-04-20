@@ -18,15 +18,15 @@ def generate_nsi(source_path: str, dist_path: str, filename: str):
     dist_loc = Path(os.getcwd(), dist_path)
     source_loc = Path(os.getcwd(), source_path)
     instdir = Path("$INSTDIR")
-    dist_paths = [p.relative_to(dist_loc.joinpath("Rapidia-Cura")) for p in sorted(dist_loc.joinpath("Rapidia-Cura").rglob("*")) if p.is_file()]
+    dist_paths = [p.relative_to(dist_loc.joinpath("UltiMaker-Cura")) for p in sorted(dist_loc.joinpath("UltiMaker-Cura").rglob("*")) if p.is_file()]
     mapped_out_paths = {}
     for dist_path in dist_paths:
         if "__pycache__" not in dist_path.parts:
             out_path = instdir.joinpath(dist_path).parent
             if out_path not in mapped_out_paths:
-                mapped_out_paths[out_path] = [(dist_loc.joinpath("Rapidia-Cura", dist_path), instdir.joinpath(dist_path))]
+                mapped_out_paths[out_path] = [(dist_loc.joinpath("UltiMaker-Cura", dist_path), instdir.joinpath(dist_path))]
             else:
-                mapped_out_paths[out_path].append((dist_loc.joinpath("Rapidia-Cura", dist_path), instdir.joinpath(dist_path)))
+                mapped_out_paths[out_path].append((dist_loc.joinpath("UltiMaker-Cura", dist_path), instdir.joinpath(dist_path)))
 
     rmdir_paths = set()
     for rmdir_f in mapped_out_paths.values():

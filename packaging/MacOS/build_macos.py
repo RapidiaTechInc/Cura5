@@ -132,8 +132,9 @@ def create_dmg(filename: str, dist_path: str, source_path: str, app_name: str) -
     build_dmg(source_path, dist_path, filename, app_name)
 
     notarize_dmg = bool(os.environ.get("NOTARIZE_DMG", "TRUE"))
-    if notarize_dmg:
-        notarize_file(dist_path, filename)
+    # TODO find out how to control this env variable once we start signing things 
+    # if notarize_dmg:
+    #     notarize_file(dist_path, filename)
 
 
 if __name__ == "__main__":

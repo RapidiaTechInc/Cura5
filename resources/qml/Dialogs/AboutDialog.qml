@@ -35,23 +35,6 @@ UM.Dialog
 
         color: UM.Theme.getColor("main_window_header_background")
 
-        Image
-        {
-            id: logo
-            width: (base.minimumWidth * 0.85) | 0
-            height: (width * (UM.Theme.getSize("logo").height / UM.Theme.getSize("logo").width)) | 0
-            source: UM.Theme.getImage("logo")
-            sourceSize.width: width
-            sourceSize.height: height
-            fillMode: Image.PreserveAspectFit
-
-            anchors.top: parent.top
-            anchors.topMargin: parent.topPadding
-            anchors.horizontalCenter: parent.horizontalCenter
-
-            UM.I18nCatalog{id: catalog; name: "cura"}
-        }
-
         UM.Label
         {
             id: version

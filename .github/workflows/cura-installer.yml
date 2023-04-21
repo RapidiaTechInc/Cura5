@@ -177,5 +177,6 @@ jobs:
                         dist/*.zip
                         dist/*.exe
                         dist/*.asc
+                        dist/*.dmg
                     retention-days: 5
 

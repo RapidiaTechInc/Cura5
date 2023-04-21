@@ -1,4 +1,4 @@
-# Copyright (c) 2022 UltiMaker
+# Copyright (c) 2022 Rapidia
 # Cura is released under the terms of the LGPLv3 or higher.
 
 
@@ -18,15 +18,15 @@ def generate_nsi(source_path: str, dist_path: str, filename: str):
     dist_loc = Path(os.getcwd(), dist_path)
     source_loc = Path(os.getcwd(), source_path)
     instdir = Path("$INSTDIR")
-    dist_paths = [p.relative_to(dist_loc.joinpath("UltiMaker-Cura")) for p in sorted(dist_loc.joinpath("UltiMaker-Cura").rglob("*")) if p.is_file()]
+    dist_paths = [p.relative_to(dist_loc.joinpath("Rapidia-Cura")) for p in sorted(dist_loc.joinpath("Rapidia-Cura").rglob("*")) if p.is_file()]
     mapped_out_paths = {}
     for dist_path in dist_paths:
         if "__pycache__" not in dist_path.parts:
             out_path = instdir.joinpath(dist_path).parent
             if out_path not in mapped_out_paths:
-                mapped_out_paths[out_path] = [(dist_loc.joinpath("UltiMaker-Cura", dist_path), instdir.joinpath(dist_path))]
+                mapped_out_paths[out_path] = [(dist_loc.joinpath("Rapidia-Cura", dist_path), instdir.joinpath(dist_path))]
             else:
-                mapped_out_paths[out_path].append((dist_loc.joinpath("UltiMaker-Cura", dist_path), instdir.joinpath(dist_path)))
+                mapped_out_paths[out_path].append((dist_loc.joinpath("Rapidia-Cura", dist_path), instdir.joinpath(dist_path)))
 
     rmdir_paths = set()
     for rmdir_f in mapped_out_paths.values():
@@ -36,7 +36,7 @@ def generate_nsi(source_path: str, dist_path: str, filename: str):
 
     rmdir_paths = sorted(list(rmdir_paths), reverse = True)[:-2]  # Removes the `.` and `..` from the list
 
-    jinja_template_path = Path(source_loc.joinpath("packaging", "NSIS", "Ultimaker-Cura.nsi.jinja"))
+    jinja_template_path = Path(source_loc.joinpath("packaging", "NSIS", "Rapidia-Cura.nsi.jinja"))
     with open(jinja_template_path, "r") as f:
         template = Template(f.read())
 
@@ -60,7 +60,7 @@ def generate_nsi(source_path: str, dist_path: str, filename: str):
         destination = filename
     )
 
-    with open(dist_loc.joinpath("UltiMaker-Cura.nsi"), "w") as f:
+    with open(dist_loc.joinpath("Rapidia-Cura.nsi"), "w") as f:
         f.write(nsis_content)
 
     shutil.copy(source_loc.joinpath("packaging", "NSIS", "fileassoc.nsh"), dist_loc.joinpath("fileassoc.nsh"))
@@ -68,7 +68,7 @@ def generate_nsi(source_path: str, dist_path: str, filename: str):
 
 def build(dist_path: str):
     dist_loc = Path(os.getcwd(), dist_path)
-    command = ["makensis", "/V2", "/P4", str(dist_loc.joinpath("UltiMaker-Cura.nsi"))]
+    command = ["makensis", "/V2", "/P4", str(dist_loc.joinpath("Rapidia-Cura.nsi"))]
     subprocess.run(command)
 
 
@@ -76,7 +76,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description = "Create Windows exe installer of Cura.")
     parser.add_argument("source_path", type=str, help="Path to Conan install Cura folder.")
     parser.add_argument("dist_path", type=str, help="Path to Pyinstaller dist folder")
-    parser.add_argument("filename", type = str, help = "Filename of the exe (e.g. 'UltiMaker-Cura-5.1.0-beta-Windows-X64.exe')")
+    parser.add_argument("filename", type = str, help = "Filename of the exe (e.g. 'Rapidia-Cura-5.1.0-beta-Windows-X64.exe')")
     args = parser.parse_args()
     generate_nsi(args.source_path, args.dist_path, args.filename)
     build(args.dist_path)

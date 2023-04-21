@@ -9,12 +9,32 @@ on:
                 default: 'cura/5.0.0@rapidia/testing'
                 required: true
                 type: string
+            Build_for_windows:
+                description: 'create a windows installer'
+                default: true
+                required: true
+                type: boolean
+            Build_for_mac:
+                description: 'create a mac installer'
+                default: false
+                required: true
+                type: boolean
 
 jobs:
     windows-installer-create-exe:
+        if: ${{ inputs.Build_for_windows }}
         uses: ./.github/workflows/cura-installer.yml
         with:
             platform: 'windows-2022'
             os_name: 'win64'
+            cura_conan_version: ${{ inputs.cura_conan_version }}
+        secrets: inherit
+    
+    mac-installer-create-exe:
+        if: ${{ inputs.Build_for_mac }}
+        uses: ./.github/workflows/cura-installer.yml
+        with:
+            platform: 'macos-11'
+            os_name: 'mac'
             cura_conan_version: ${{ inputs.cura_conan_version }}
         secrets: inherit

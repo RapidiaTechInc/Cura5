@@ -21,7 +21,7 @@ class CuraConan(ConanFile):
     description = "3D printer / slicing GUI built on top of the Uranium framework"
     topics = ("conan", "python", "pyqt6", "qt", "qml", "3d-printing", "slicer")
     build_policy = "missing"
-    exports = "LICENSE*", "UltiMaker-Cura.spec.jinja", "CuraVersion.py.jinja"
+    exports = "LICENSE*", "Rapidia-Cura.spec.jinja", "CuraVersion.py.jinja"
     settings = "os", "compiler", "build_type", "arch"
     no_copy_source = True  # We won't build so no need to copy sources to the build folder
 
@@ -43,7 +43,7 @@ class CuraConan(ConanFile):
         "staging": "False",
         "devtools": False,
         "cloud_api_version": "1",
-        "display_name": "UltiMaker Cura",
+        "display_name": "Rapidia Cura",
         "cura_debug_mode": False,  # Not yet implemented
         "internal": False,
     }
@@ -242,13 +242,13 @@ class CuraConan(ConanFile):
         # Collect all dll's from PyQt6 and place them in the root
         binaries.extend([(f"{p}", ".") for p in Path(self._site_packages, "PyQt6", "Qt6").glob("**/*.dll")])
 
-        with open(os.path.join(self.recipe_folder, "UltiMaker-Cura.spec.jinja"), "r") as f:
+        with open(os.path.join(self.recipe_folder, "Rapidia-Cura.spec.jinja"), "r") as f:
             pyinstaller = Template(f.read())
 
         version = self.conf_info.get("user.cura:version", default = self.version, check_type = str)
         cura_version = Version(version)
 
-        with open(os.path.join(location, "UltiMaker-Cura.spec"), "w") as f:
+        with open(os.path.join(location, "Rapidia-Cura.spec"), "w") as f:
             f.write(pyinstaller.render(
                 name = str(self.options.display_name).replace(" ", "-"),
                 display_name = self._app_name,
@@ -279,7 +279,7 @@ class CuraConan(ConanFile):
         copy(self, "requirements.txt", self.recipe_folder, self.export_sources_folder)
         copy(self, "requirements-dev.txt", self.recipe_folder, self.export_sources_folder)
         copy(self, "requirements-ultimaker.txt", self.recipe_folder, self.export_sources_folder)
-        copy(self, "UltiMaker-Cura.spec.jinja", self.recipe_folder, self.export_sources_folder)
+        copy(self, "Rapidia-Cura.spec.jinja", self.recipe_folder, self.export_sources_folder)
         copy(self, "CuraVersion.py.jinja", self.recipe_folder, self.export_sources_folder)
         copy(self, "cura_app.py", self.recipe_folder, self.export_sources_folder)
 

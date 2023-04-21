@@ -102,7 +102,7 @@ jobs:
                     cp openssl/lib/*.lib ./cura_inst/Lib/
 
             -   name: Create the Cura dist
-                run: pyinstaller ./cura_inst/UltiMaker-Cura.spec
+                run: pyinstaller ./cura_inst/Rapidia-Cura.spec
 
             -   name: Output the name file name and extension
                 id: filename

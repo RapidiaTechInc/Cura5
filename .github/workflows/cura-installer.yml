@@ -79,11 +79,21 @@ jobs:
                 working-directory: fdm_materials5
                 run: conan create . fdm_materials/5.0.1@rapidia/stable --build=missing --update
 
+            -   name: create conan package (bash)
+                if: ${{ runner.os != 'Windows' }}
+                run: conan create . $CURA_CONAN_VERSION --build=missing --update
+
             -   name: create conan package (powershell)
+                if: ${{ runner.os == 'Windows' }}
                 run: conan create . $Env:CURA_CONAN_VERSION --build=missing --update
 
             -   name: Install the Packages (Powershell)
+                if: ${{ runner.os == 'Windows' }}
                 run: conan install $Env:CURA_CONAN_VERSION --build=missing --update -if cura_inst -g VirtualPythonEnv --json "cura_inst/conan_install_info.json"
+
+            -   name: Create the Packages (Bash)
+                if: ${{ runner.os != 'Windows' }}
+                run: conan install $CURA_CONAN_VERSION --build=missing --update -if cura_inst -g VirtualPythonEnv --json "cura_inst/conan_install_info.json"
 
             -   name: Set Environment variables for Cura (bash)
                 if: ${{ runner.os != 'Windows' }}

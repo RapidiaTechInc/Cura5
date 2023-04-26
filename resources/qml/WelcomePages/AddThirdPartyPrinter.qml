@@ -27,7 +27,7 @@ Item
         anchors.topMargin: UM.Theme.getSize("wide_margin").height
 
         title: catalog.i18nc("@label", "Add a networked printer")
-        contentShown: true  // by default expand the network printer list
+        contentShown: false  // by default expand the network printer list
 
         onClicked:
         {
@@ -74,6 +74,8 @@ Item
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.topMargin: UM.Theme.getSize("default_margin").height
+        contentShown: true  // by default expand the network printer list
+
 
         title: catalog.i18nc("@label", "Add a non-networked printer")
 
@@ -99,7 +101,7 @@ Item
         id: backButton
         anchors.left: parent.left
         anchors.bottom: parent.bottom
-        text: catalog.i18nc("@button", "Add UltiMaker printer via Digital Factory")
+        text: catalog.i18nc("@button", "Back")
         onClicked: goToUltimakerPrinter()
     }
 

@@ -30,7 +30,7 @@ class FirmwareUpdateChecker(Extension):
 
         # Listen to a Signal that indicates a change in the list of printers, just if the user has enabled the
         # "check for updates" option
-        Application.getInstance().getPreferences().addPreference("info/automatic_update_check", True)
+        Application.getInstance().getPreferences().addPreference("info/automatic_update_check", False)
         if Application.getInstance().getPreferences().getValue("info/automatic_update_check"):
             ContainerRegistry.getInstance().containerAdded.connect(self._onContainerAdded)
 

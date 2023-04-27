@@ -24,7 +24,7 @@
             "default_value": true
         },
         "machine_extruder_start_code": {
-            "default_value": "G1 X-25 F5000; park to start\nG92 E0; Extrude a small amount to clear nozzle\nG1 E20 F4000\nG4 P2000\nG92 E0\n\n"
+            "default_value": "G1 X-23 F5000; park to start\nG92 E0; Extrude a small amount to clear nozzle\nG1 E20 F4000\nG4 P2000\nG92 E0\n\n"
         },
         "machine_extruder_end_code": {
             "default_value": "G1 X-43 F5000; park\n\n"

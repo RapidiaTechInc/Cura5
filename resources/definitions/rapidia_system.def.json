@@ -22,45 +22,71 @@
     },
     "overrides": {
         "machine_name": {
-            "default_value": "Rapidia M1"
+            "value": "Conflux 1"
         },
         "machine_heated_bed": {
-            "default_value": true
+            "value": true
         },
         "machine_width": {
-            "default_value": 202
+            "value": 202
         },
         "machine_height": {
-            "default_value": 150
+            "value": 150
         },
         "machine_depth": {
-            "default_value": 243
+            "value": 243
         },
         "machine_center_is_zero": {
-            "default_value": false
+            "value": false
         },
         "gantry_height": {
             "value": 190
         },
         "machine_extruder_count": {
-            "default_value": 2,
+            "value": 2,
             "maximum_value": "2"
         },
         "machine_gcode_flavor": {
-            "default_value": "RepRap (Marlin/Sprinter)"
+            "value": "RepRap (Marlin/Sprinter)"
         },
         "machine_start_gcode": {
-            "default_value": "M900 K0.020;\nG28 ; home all axes\nG1 Z5 F5000 ; lift nozzle\nG1 X-45 Y70 F2500; go to glycerin roller;"
+            "value": "M900 K0.020;\nG28 ; home all axes\nG1 Z5 F5000 ; lift nozzle\nG1 X-45 Y70 F2500; go to glycerin roller;"
         },
         "machine_end_gcode": {
-            "default_value": "M104 S0 ; turn off extruder\nG28 X0 ; home X axis\nM84 ; disable motors\nM42 P12 S255 ; turn on red LEDs\nM42 P11 S0 ; turn off green LEDs\nM42 P13 S0 ; turn off blue LEDs\nM140 S70 ; turn bed heat to 70C\nG4 S1800 ; pause for 30 minutes\nM140 S0 ; turn bed heat off\nM42 P11 S255 ; turn on green LEDs\nM42 P12 S0 ; turn off red LEDs"
+            "value": "M104 S0 ; turn off extruder\nG28 X0 ; home X axis\nM84 ; disable motors\nM42 P12 S255 ; turn on red LEDs\nM42 P11 S0 ; turn off green LEDs\nM42 P13 S0 ; turn off blue LEDs\nM140 S70 ; turn bed heat to 70C\nG4 S1800 ; pause for 30 minutes\nM140 S0 ; turn bed heat off\nM42 P11 S255 ; turn on green LEDs\nM42 P12 S0 ; turn off red LEDs"
         },
         "optimize_wall_printing_order": {
-            "default_value": true
+            "value": true
         },
-        "cool_fan_enabled":
-        {
-            "default_value": false
+        "cool_fan_enabled": {
+            "value": false
+        },
+        "inset_direction": {
+            "value": "inside_out"
+        },
+        "wall_extruder_nr": {
+            "value": 1
+        },
+        "infill_pattern": {
+            "value": "zigzag"
+        },
+        "support_pattern": {
+            "value": "zigzag"
+        },
+        "coasting_enable": {
+            "value": true
+        },
+        "support_offset": {
+            "value": 0
+        },
+        "support_interface_height": {
+            "value": "2 * layer_height"
+        },
+        "gradual_support_infill_steps": {
+            "value": 0
+        },
+        "support_infill_rate": {
+            "value": 50
         }
     }
 }

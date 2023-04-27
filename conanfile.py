@@ -14,7 +14,7 @@ required_conan_version = "<=1.56.0"
 
 
 class CuraConan(ConanFile):
-    name = "cura"
+    name = "rapidia_cura"
     license = "LGPL-3.0"
     author = "Rapidia"
     url = "https://github.com/RapidiaTechInc/Cura5"

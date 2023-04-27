@@ -25,8 +25,7 @@ except ImportError:
 
 try:
     from cura.CuraVersion import CuraAppName  # type: ignore
-    if CuraAppName == "":
-        CuraAppName = DEFAULT_CURA_APP_NAME
+    CuraAppName = DEFAULT_CURA_APP_NAME
 except ImportError:
     CuraAppName = DEFAULT_CURA_APP_NAME
 

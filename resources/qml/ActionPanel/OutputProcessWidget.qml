@@ -66,7 +66,7 @@ Column
                 id: estimatedCosts
                 width: parent.width
 
-                property var printMaterialLengths: PrintInformation.materialLengths
+                property var printmaterialVolumes: PrintInformation.materialVolumes
                 property var printMaterialWeights: PrintInformation.materialWeights
                 property var printMaterialCosts: PrintInformation.materialCosts
 
@@ -79,13 +79,13 @@ Column
                     var totalLengths = 0
                     var totalWeights = 0
                     var totalCosts = 0.0
-                    if (printMaterialLengths)
+                    if (printmaterialVolumes)
                     {
-                        for(var index = 0; index < printMaterialLengths.length; index++)
+                        for(var index = 0; index < printmaterialVolumes.length; index++)
                         {
-                            if(printMaterialLengths[index] > 0)
+                            if(printmaterialVolumes[index] > 0)
                             {
-                                totalLengths += printMaterialLengths[index]
+                                totalLengths += printmaterialVolumes[index]
                                 totalWeights += Math.round(printMaterialWeights[index])
                                 var cost = printMaterialCosts[index] == undefined ? 0.0 : printMaterialCosts[index]
                                 totalCosts += cost
@@ -95,9 +95,9 @@ Column
                     if(totalCosts > 0)
                     {
                         var costString = "%1 %2".arg(UM.Preferences.getValue("cura/currency")).arg(totalCosts.toFixed(2))
-                        return totalWeights + "g · " + totalLengths.toFixed(2) + "m · " + costString
+                        return totalWeights + "g · " + totalLengths.toFixed(2) + "cc · " + costString
                     }
-                    return totalWeights + "g · " + totalLengths.toFixed(2) + "m"
+                    return totalWeights + "g · " + totalLengths.toFixed(2) + "cc"
                 }
                 source: UM.Theme.getIcon("Spool")
                 font: UM.Theme.getFont("default")

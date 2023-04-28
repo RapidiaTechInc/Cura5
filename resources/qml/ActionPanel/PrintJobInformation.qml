@@ -113,7 +113,7 @@ Column
         {
             id: byMaterialType
 
-            property var printMaterialLengths: PrintInformation.materialLengths
+            property var printmaterialVolumes: PrintInformation.materialVolumes
             property var printMaterialWeights: PrintInformation.materialWeights
             property var printMaterialCosts: PrintInformation.materialCosts
             property var printMaterialNames: PrintInformation.materialNames
@@ -128,14 +128,14 @@ Column
                 var weights = []
                 var costs = []
                 var names = []
-                if(printMaterialLengths)
+                if(printmaterialVolumes)
                 {
-                    for(var index = 0; index < printMaterialLengths.length; index++)
+                    for(var index = 0; index < printmaterialVolumes.length; index++)
                     {
-                        if(printMaterialLengths[index] > 0)
+                        if(printmaterialVolumes[index] > 0)
                         {
                             names.push(printMaterialNames[index])
-                            lengths.push(printMaterialLengths[index].toFixed(2))
+                            lengths.push(printmaterialVolumes[index].toFixed(2))
                             weights.push(String(printMaterialWeights[index].toFixed(1)))
                             var cost = printMaterialCosts[index] == undefined ? 0 : printMaterialCosts[index].toFixed(2)
                             costs.push(cost)
@@ -153,7 +153,7 @@ Column
                 {
                     var row = []
                     row.push("%1".arg(names[index]))
-                    row.push(catalog.i18nc("@label m for meter", "%1m").arg(lengths[index]))
+                    row.push(catalog.i18nc("@label m for meter", "%1cc").arg(lengths[index]))
                     row.push(catalog.i18nc("@label g for grams", "%1g").arg(weights[index]))
                     row.push("%1 %2".arg(UM.Preferences.getValue("cura/currency")).arg(costs[index]))
                     result.push(row)

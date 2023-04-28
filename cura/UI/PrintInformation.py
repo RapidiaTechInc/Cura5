@@ -42,6 +42,7 @@ class PrintInformation(QObject):
 
         # Indexed by build plate number
         self._material_lengths = {}  # type: Dict[int, List[float]]
+        self._material_volumes = {}  # type: Dict[int, List[float]]
         self._material_weights = {}  # type: Dict[int, List[float]]
         self._material_costs = {}   # type: Dict[int, List[float]]
         self._material_names = {}  # type: Dict[int, List[str]]
@@ -111,6 +112,8 @@ class PrintInformation(QObject):
             self._initPrintTimesPerFeature(build_plate_number)
         if self._active_build_plate not in self._material_lengths:
             self._material_lengths[self._active_build_plate] = []
+        if self._active_build_plate not in self._material_volumes:
+            self._material_volumes[self._active_build_plate] = []
         if self._active_build_plate not in self._material_weights:
             self._material_weights[self._active_build_plate] = []
         if self._active_build_plate not in self._material_costs:
@@ -143,6 +146,12 @@ class PrintInformation(QObject):
     @pyqtProperty("QVariantList", notify = materialLengthsChanged)
     def materialLengths(self):
         return self._material_lengths[self._active_build_plate]
+
+    materialVolumesChanged = pyqtSignal()
+
+    @pyqtProperty("QVariantList", notify = materialVolumesChanged)
+    def materialVolumes(self):
+        return self._material_volumes[self._active_build_plate]
 
     materialWeightsChanged = pyqtSignal()
 
@@ -202,6 +211,7 @@ class PrintInformation(QObject):
             return
 
         self._material_lengths[build_plate_number] = []
+        self._material_volumes[build_plate_number] = []
         self._material_weights[build_plate_number] = []
         self._material_costs[build_plate_number] = []
         self._material_names[build_plate_number] = []
@@ -245,16 +255,23 @@ class PrintInformation(QObject):
 
             # Material amount is sent as an amount of mm^3, so calculate length from that
             if radius != 0:
+                volume = float(amount) / 1000
+            else:
+                volume = 0
+            
+            if radius != 0:
                 length = round((amount / (math.pi * radius ** 2)) / 1000, 2)
             else:
                 length = 0
 
             self._material_weights[build_plate_number].append(weight)
             self._material_lengths[build_plate_number].append(length)
+            self._material_volumes[build_plate_number].append(volume)
             self._material_costs[build_plate_number].append(cost)
             self._material_names[build_plate_number].append(material_name)
 
         self.materialLengthsChanged.emit()
+        self.materialVolumesChanged.emit()
         self.materialWeightsChanged.emit()
         self.materialCostsChanged.emit()
         self.materialNamesChanged.emit()
@@ -274,7 +291,7 @@ class PrintInformation(QObject):
 
             self._initVariablesByBuildPlate(self._active_build_plate)
 
-            self.materialLengthsChanged.emit()
+            self.materialVolumesChanged.emit()
             self.materialWeightsChanged.emit()
             self.materialCostsChanged.emit()
             self.materialNamesChanged.emit()

@@ -176,6 +176,16 @@
         "support_interface_enable": {"value": "True"},
         "support_interface_offset": {"value": 0},
         "support_interface_pattern": {"default_value": "zigzag"},
-        "support_interface_skip_height": {"value": 0.1}
+        "support_interface_skip_height": {"value": 0.1},
+        "material_shrinkage_percentage": {
+            "resolve": "extruderValues(\"material_shrinkage_percentage\")[0] if extruderValues(\"material_shrinkage_percentage\")[0] != 100 else extruderValues(\"material_shrinkage_percentage\")[1]"
+        },
+        "material_shrinkage_percentage_xy":{
+            "resolve": "extruderValues(\"material_shrinkage_percentage_xy\")[0] if extruderValues(\"material_shrinkage_percentage_xy\")[0] != 100 else extruderValues(\"material_shrinkage_percentage_xy\")[1]"
+        },
+        "material_shrinkage_percentage_z":{
+            "resolve": "extruderValues(\"material_shrinkage_percentage_z\")[0] if extruderValues(\"material_shrinkage_percentage_z\")[0] != 100 else extruderValues(\"material_shrinkage_percentage_z\")[1]"
+        }
+
     }
 }

@@ -62,7 +62,7 @@
             "default_value": "inside_out"
         },
         "wall_extruder_nr": {
-            "value": 0
+            "default_value": 0
         },
         
         "support_pattern": {

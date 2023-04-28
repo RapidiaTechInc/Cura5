@@ -25,6 +25,7 @@ from PyQt6.QtNetwork import QSslConfiguration, QSslSocket
 from UM.Platform import Platform
 from cura import ApplicationMetadata
 from cura.ApplicationMetadata import CuraAppName
+from cura.ApplicationMetadata import CuraVersion
 from cura.CrashHandler import CrashHandler
 
 try:
@@ -80,11 +81,11 @@ if not known_args["debug"]:
             appdata_path = os.getenv("APPDATA")
             if not appdata_path: #Defensive against the environment variable missing (should never happen).
                 appdata_path = "."
-            return os.path.join(appdata_path, CuraAppName)
+            return os.path.join(appdata_path, CuraAppName, CuraVersion)
         elif Platform.isLinux():
-            return os.path.expanduser("~/.local/share/" + CuraAppName)
+            return os.path.expanduser("~/.local/share/" + CuraAppName + "/" + CuraVersion)
         elif Platform.isOSX():
-            return os.path.expanduser("~/Library/Logs/" + CuraAppName)
+            return os.path.expanduser("~/Library/Logs/" + CuraAppName + "/" + CuraVersion)
 
     # Do not redirect stdout and stderr to files if we are running CLI.
     if hasattr(sys, "frozen") and "cli" not in os.path.basename(sys.argv[0]).lower():

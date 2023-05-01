@@ -1,4 +1,5 @@
 name: Add to server
+run-name: add all packages to server
 
 on:
     workflow_call:

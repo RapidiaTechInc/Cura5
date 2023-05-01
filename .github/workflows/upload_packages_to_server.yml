@@ -1,0 +1,89 @@
+name: Add to server
+
+on:
+    workflow_call:
+        inputs:
+            platform:
+                description: 'Selected Installer OS'
+                default: 'ubuntu-20.04'
+                required: true
+                type: string
+            os_name:
+                description: 'OS Friendly Name'
+                default: 'linux'
+                required: true
+                type: string
+
+
+
+env:
+    CONAN_SERVER_PASSWORD: ${{ secrets.CONAN_SERVER_PASSWORD }}
+    TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
+
+jobs:
+    upload_all_needed_packages_to_conan_server:
+        runs-on: ${{ inputs.platform }}
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v3
+
+
+            -   name: Checkout engine
+                uses: actions/checkout@v3
+                with:
+                    repository: RapidiaTechInc/CuraEngine5
+                    token: ${{ secrets.TOKEN_GITHUB }}
+                    path: curaEngine
+
+            -   name: Checkout materials
+                uses: actions/checkout@v3
+                with:
+                    repository: RapidiaTechInc/fdm_materials5
+                    token: ${{ secrets.TOKEN_GITHUB }}
+                    path: fdm_materials5
+
+            -   name: Setup Python and pip
+                uses: actions/setup-python@v4
+                with:
+                    python-version: '3.10.x'
+                    cache: 'pip'
+                    cache-dependency-path: .github/workflows/requirements-conan-package.txt
+
+            -   name: Install Python requirements for runner
+                run: pip install -r https://raw.githubusercontent.com/RapidiaTechInc/Cura5/new-dawn/.github/workflows/requirements-conan-package.txt
+                #  Note the runner requirements are always installed from the main branch in the Ultimaker/Cura repo
+
+            -   name: Install MacOS system requirements
+                if:  ${{ runner.os == 'Macos' }}
+                run: brew install autoconf automake ninja create-dmg # Delete create-dmg when deprecating dmg
+
+            -   name: Create the default Conan profile
+                run:  conan profile new default --detect
+
+            -   name: Get Conan configuration
+                if: ${{ inputs.conan_config == '' }}
+                run: conan config install https://github.com/RapidiaTechInc/conan-config.git
+
+            -   name: build troublesome packages (bash)
+                if:  ${{ runner.os != 'Windows' }}
+                run: bash build_troublesome_packages.sh
+
+            -   name: create conan Engine package (powershell)
+                working-directory: curaEngine
+                run: conan create . curaengine/5.0.1@rapidia/stable --build=missing --update
+
+            -   name: create conan materials package (powershell)
+                working-directory: fdm_materials5
+                run: conan create . fdm_materials/5.0.1@rapidia/stable --build=missing --update
+
+            -   name: Install the Packages (Powershell)
+                if: ${{ runner.os == 'Windows' }}
+                run: conan install . --build=missing --update -g VirtualPythonEnv
+
+            -   name: log in to server
+                run: conan user rapidia -p ${{ secrets.CONAN_SERVER_PASSWORD }}
+
+            -   name: upload to server
+                run: conan upload "*" --all --confirm -r rapidia-cura
+
+                

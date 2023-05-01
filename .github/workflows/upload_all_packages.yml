@@ -1,0 +1,45 @@
+name: Add all packages to server
+
+on:
+    workflow_dispatch:
+        inputs:
+            Build_for_windows:
+                description: 'upload all packages for a windows build'
+                default: true
+                required: true
+                type: boolean
+            Build_for_mac:
+                description: 'upload all packages for a mac build'
+                default: false
+                required: true
+                type: boolean
+            Build_for_linux:
+                description: 'upload all packages for a linux build'
+                default: false
+                required: true
+                type: boolean
+
+jobs:
+    windows-packages-upload:
+        if: ${{ inputs.Build_for_windows }}
+        uses: ./.github/workflows/upload_packages_to_server.yml
+        with:
+            platform: 'windows-2022'
+            os_name: 'win64'
+        secrets: inherit
+    
+    mac-packages-upload:
+        if: ${{ inputs.Build_for_mac }}
+        uses: ./.github/workflows/upload_packages_to_server.yml
+        with:
+            platform: 'macos-11'
+            os_name: 'mac'
+        secrets: inherit
+
+    linux-packages-upload:
+        if: ${{ inputs.Build_for_linux }}
+        uses: ./.github/workflows/upload_packages_to_server.yml
+        with:
+            platform: 'ubuntu-20.04'
+            os_name: 'linux'
+        secrets: inherit

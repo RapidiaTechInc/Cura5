@@ -67,8 +67,8 @@ jobs:
 
             -   name: add ultimaker and conan center remotes
                 run: |
-                conan remote add cura https://ultimaker.jfrog.io/artifactory/api/conan/cura-internal
-                conan remote add conan-center https://center.conan.io   
+                    conan remote add cura https://ultimaker.jfrog.io/artifactory/api/conan/cura-internal
+                    conan remote add conan-center https://center.conan.io   
 
             -   name: build troublesome packages (bash)
                 if:  ${{ runner.os != 'Windows' }}

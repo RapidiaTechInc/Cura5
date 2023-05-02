@@ -268,8 +268,7 @@ class WelcomePagesModel(ListModel):
                           ]
 
         pages_to_show = all_pages_list
-        if show_whats_new_only:
-            pages_to_show = list(filter(lambda x: x["id"] == "whats_new", all_pages_list))
+        
 
         self._pages = pages_to_show
         self.setItems(self._pages)

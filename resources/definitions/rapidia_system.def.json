@@ -113,7 +113,7 @@
         "acceleration_travel": {"value": 1000},
         "bottom_layers": {"value": 4},
         "expand_skins_expand_distance": {"value": 0.4},
-        "infill_before_walls": {"value": false},
+        "infill_before_walls": {"default_value": false},
         "infill_overlap": {"value": 10},
         "infill_sparse_density": {"default_value": 25},
         "infill_sparse_thickness": {"value": 0.25},
@@ -135,7 +135,7 @@
         "raft_smoothing": {"value": 0},
         "raft_speed": {"value": 40},
         "retract_at_layer_change": {"value": true},
-        "retraction_amount": {"value": 0.2},
+        "retraction_amount": {"value": 1},
         "retraction_combing_max_distance": {"value": 10.0},
         "retraction_count_max": {"value": 999},
         "retraction_extra_prime_amount": {"value": 0.05},
@@ -166,6 +166,7 @@
         "top_layers": {"value": 4},
         "wall_line_count": {"value": 3},
         "z_seam_type": {"default_value": "sharpest_corner"},
+        "z_seam_corner":{"default_value": "z_seam_corner_outer"},
         "zig_zaggify_infill": {"value": true},
         "acceleration_support": {"value": 500},
         "minimum_interface_area": {"value": 0},
@@ -185,6 +186,9 @@
         },
         "material_shrinkage_percentage_z":{
             "resolve": "extruderValues(\"material_shrinkage_percentage_z\")[0] if extruderValues(\"material_shrinkage_percentage_z\")[0] != 100 else extruderValues(\"material_shrinkage_percentage_z\")[1]"
+        },
+        "meshfix_maximum_extrusion_area_deviation":{
+            "default_value": 2000
         }
 
     }

@@ -65,9 +65,17 @@ jobs:
                 if: ${{ inputs.conan_config == '' }}
                 run: conan config install https://github.com/RapidiaTechInc/conan-config.git
 
+            -   name: add ultimaker and conan center remotes
+                run: |
+                conan remote add cura https://ultimaker.jfrog.io/artifactory/api/conan/cura-internal
+                conan remote add conan-center https://center.conan.io   
+
             -   name: build troublesome packages (bash)
                 if:  ${{ runner.os != 'Windows' }}
                 run: bash build_troublesome_packages.sh
+
+            -   name: Install OpenSSL shared
+                run: conan install openssl/1.1.1l@_/_ --build=missing --update -o openssl:shared=True -g deploy
 
             -   name: create conan Engine package (powershell)
                 working-directory: curaEngine

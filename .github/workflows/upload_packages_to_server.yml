@@ -76,7 +76,7 @@ jobs:
                     sudo apt install g++-12 gcc-12 -y
                     sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 12
                     sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-12 12
-                    
+
             -   name: Use GCC-10 on ubuntu-20.04
                 if: ${{ startsWith(inputs.platform, 'ubuntu-20.04') }}
                 run: |
@@ -102,16 +102,15 @@ jobs:
             -   name: Install OpenSSL shared
                 run: conan install openssl/1.1.1l@_/_ --build=missing --update -o openssl:shared=True -g deploy
 
-            -   name: create conan Engine package (powershell)
+            -   name: create conan Engine package
                 working-directory: curaEngine
                 run: conan create . curaengine/5.0.1@rapidia/stable --build=missing --update
 
-            -   name: create conan materials package (powershell)
+            -   name: create conan materials package
                 working-directory: fdm_materials5
                 run: conan create . fdm_materials/5.0.1@rapidia/stable --build=missing --update
 
-            -   name: Install the Packages (Powershell)
-                if: ${{ runner.os == 'Windows' }}
+            -   name: Install the Packages
                 run: conan install . --build=missing --update -g VirtualPythonEnv
 
             -   name: log in to server

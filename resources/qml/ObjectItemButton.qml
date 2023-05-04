@@ -117,6 +117,9 @@ Button
                         case "anti_overhang_mesh":
                             result += catalog.i18nc("@label", "Overlaps with this model are not supported.");
                             break;
+                        case "support_modifier_mesh":
+                            result += catalog.i18nc("@label", "Used to modify or remove support.");
+                            break;
                     }
                 }
                 if (perObjectSettingsCount != "")
@@ -168,6 +171,8 @@ Button
                             case "infill_mesh":
                                 return UM.Theme.getIcon("MeshTypeIntersect");
                             case "anti_overhang_mesh":
+                                return UM.Theme.getIcon("BlockSupportOverlaps");
+                            case "support_modifier_mesh":
                                 return UM.Theme.getIcon("BlockSupportOverlaps");
                         }
                         return "";

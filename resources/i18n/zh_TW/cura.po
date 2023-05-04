@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cura 5.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-06 10:22-0700\n"
+"POT-Creation-Date: 2023-05-04 11:59-0700\n"
 "PO-Revision-Date: 2022-01-02 19:59+0800\n"
 "Last-Translator: Valen Chang  <carf17771@gmail.com>\n"
 "Language-Team: Valen Chang <carf17771@gmail.com>\n"
@@ -668,14 +668,13 @@ msgctxt "@action:button"
 msgid "Add"
 msgstr "增加"
 
-#: cura/UI/AddPrinterPagesModel.py:26 cura/UI/WelcomePagesModel.py:290
+#: cura/UI/AddPrinterPagesModel.py:26
 msgctxt "@action:button"
 msgid "Finish"
 msgstr "完成"
 
 #: cura/UI/AddPrinterPagesModel.py:33 plugins/3MFReader/WorkspaceDialog.qml:386
 #: plugins/ImageReader/ConfigUI.qml:323
-#: plugins/SliceInfoPlugin/MoreInfoWindow.qml:147
 #: plugins/UM3NetworkPrinting/resources/qml/MonitorConfigOverrideDialog.qml:27
 #: plugins/UM3NetworkPrinting/resources/qml/PrintWindow.qml:43
 #: resources/qml/ColorDialog.qml:143
@@ -692,62 +691,62 @@ msgctxt "@label"
 msgid "Group #{group_nr}"
 msgstr "群組 #{group_nr}"
 
-#: cura/UI/PrintInformation.py:87
+#: cura/UI/PrintInformation.py:88
 msgctxt "@tooltip"
 msgid "Outer Wall"
 msgstr "外壁"
 
-#: cura/UI/PrintInformation.py:88
+#: cura/UI/PrintInformation.py:89
 msgctxt "@tooltip"
 msgid "Inner Walls"
 msgstr "內壁"
 
-#: cura/UI/PrintInformation.py:89
+#: cura/UI/PrintInformation.py:90
 msgctxt "@tooltip"
 msgid "Skin"
 msgstr "表層"
 
-#: cura/UI/PrintInformation.py:90
+#: cura/UI/PrintInformation.py:91
 msgctxt "@tooltip"
 msgid "Infill"
 msgstr "填充"
 
-#: cura/UI/PrintInformation.py:91
+#: cura/UI/PrintInformation.py:92
 msgctxt "@tooltip"
 msgid "Support Infill"
 msgstr "支撐填充"
 
-#: cura/UI/PrintInformation.py:92
+#: cura/UI/PrintInformation.py:93
 msgctxt "@tooltip"
 msgid "Support Interface"
 msgstr "支撐介面"
 
-#: cura/UI/PrintInformation.py:93
+#: cura/UI/PrintInformation.py:94
 msgctxt "@tooltip"
 msgid "Support"
 msgstr "支撐"
 
-#: cura/UI/PrintInformation.py:94
+#: cura/UI/PrintInformation.py:95
 msgctxt "@tooltip"
 msgid "Skirt"
 msgstr "裙邊"
 
-#: cura/UI/PrintInformation.py:95
+#: cura/UI/PrintInformation.py:96
 msgctxt "@tooltip"
 msgid "Prime Tower"
 msgstr "裝填塔"
 
-#: cura/UI/PrintInformation.py:96
+#: cura/UI/PrintInformation.py:97
 msgctxt "@tooltip"
 msgid "Travel"
 msgstr "移動"
 
-#: cura/UI/PrintInformation.py:97
+#: cura/UI/PrintInformation.py:98
 msgctxt "@tooltip"
 msgid "Retractions"
 msgstr "回抽"
 
-#: cura/UI/PrintInformation.py:98
+#: cura/UI/PrintInformation.py:99
 msgctxt "@tooltip"
 msgid "Other"
 msgstr "其它"
@@ -757,12 +756,12 @@ msgctxt "@text:window"
 msgid "The release notes could not be opened."
 msgstr "發佈通知無法開啟."
 
-#: cura/UI/WelcomePagesModel.py:57 cura/UI/WelcomePagesModel.py:277
+#: cura/UI/WelcomePagesModel.py:57
 msgctxt "@action:button"
 msgid "Next"
 msgstr "下一步"
 
-#: cura/UI/WelcomePagesModel.py:286 cura/UI/WhatsNewPagesModel.py:68
+#: cura/UI/WhatsNewPagesModel.py:68
 msgctxt "@action:button"
 msgid "Skip"
 msgstr "略過"
@@ -771,7 +770,7 @@ msgstr "略過"
 #: plugins/FirmwareUpdater/FirmwareUpdaterMachineAction.qml:175
 #: plugins/PerObjectSettingsTool/SettingPickDialog.qml:135
 #: plugins/PostProcessingPlugin/PostProcessingPlugin.qml:444
-#: resources/qml/Dialogs/AboutDialog.qml:188
+#: resources/qml/Dialogs/AboutDialog.qml:171
 msgctxt "@action:button"
 msgid "Close"
 msgstr "關閉"
@@ -1719,9 +1718,8 @@ msgctxt "@info:tooltip"
 msgid "The amount of smoothing to apply to the image."
 msgstr "影像平滑程度。"
 
-#: plugins/ImageReader/ConfigUI.qml:329
-#: plugins/SliceInfoPlugin/MoreInfoWindow.qml:136
-#: resources/qml/ColorDialog.qml:148 resources/qml/Dialogs/RenameDialog.qml:25
+#: plugins/ImageReader/ConfigUI.qml:329 resources/qml/ColorDialog.qml:148
+#: resources/qml/Dialogs/RenameDialog.qml:25
 msgctxt "@action:button"
 msgid "OK"
 msgstr "確定"
@@ -1977,7 +1975,7 @@ msgid "Decline"
 msgstr "拒絕"
 
 #: plugins/Marketplace/CloudSync/LicenseModel.py:13
-#: resources/qml/WelcomePages/UserAgreementContent.qml:53
+#: resources/qml/WelcomePages/UserAgreementContent.qml:54
 msgctxt "@button"
 msgid "Agree"
 msgstr "同意"
@@ -2851,41 +2849,6 @@ msgstr ""
 msgctxt "name"
 msgid "Simulation View"
 msgstr "模擬檢視"
-
-#: plugins/SliceInfoPlugin/MoreInfoWindow.qml:16
-msgctxt "@title:window"
-msgid "More information on anonymous data collection"
-msgstr "更多關於匿名資料收集的資訊"
-
-#: plugins/SliceInfoPlugin/MoreInfoWindow.qml:73
-msgctxt "@text:window"
-msgid "UltiMaker Cura collects anonymous data in order to improve the print quality and user experience. Below is an example of all the data that is shared:"
-msgstr "UltiMaker Cura 搜集匿名資料以提高列印品質和使用者體驗。以下是共享資料的範例："
-
-#: plugins/SliceInfoPlugin/MoreInfoWindow.qml:107
-msgctxt "@text:window"
-msgid "I don't want to send anonymous data"
-msgstr "我不想傳送匿名資料"
-
-#: plugins/SliceInfoPlugin/MoreInfoWindow.qml:116
-msgctxt "@text:window"
-msgid "Allow sending anonymous data"
-msgstr "允許傳送匿名資料"
-
-#: plugins/SliceInfoPlugin/SliceInfo.py:95
-msgctxt "@text"
-msgid "Unable to read example data file."
-msgstr "無法讀取範例資料檔案."
-
-#: plugins/SliceInfoPlugin/plugin.json
-msgctxt "name"
-msgid "Slice info"
-msgstr "切片資訊"
-
-#: plugins/SliceInfoPlugin/plugin.json
-msgctxt "description"
-msgid "Submits anonymous slice info. Can be disabled through preferences."
-msgstr "提交匿名切片資訊。這項功能可以在偏好設定中關閉。"
 
 #: plugins/SolidView/SolidView.py:71
 msgctxt "@info:status"
@@ -4181,9 +4144,10 @@ msgid "Material estimation"
 msgstr "線材估計"
 
 #: resources/qml/ActionPanel/PrintJobInformation.qml:156
+#, javascript-format
 msgctxt "@label m for meter"
-msgid "%1m"
-msgstr "%1m"
+msgid "%1cc"
+msgstr ""
 
 #: resources/qml/ActionPanel/PrintJobInformation.qml:157
 msgctxt "@label g for grams"
@@ -4627,192 +4591,188 @@ msgctxt "@title:window The argument is the application name."
 msgid "About %1"
 msgstr "關於 %1"
 
-#: resources/qml/Dialogs/AboutDialog.qml:59
+#: resources/qml/Dialogs/AboutDialog.qml:42
 msgctxt "@label"
 msgid "version: %1"
 msgstr "版本：%1"
 
-#: resources/qml/Dialogs/AboutDialog.qml:74
+#: resources/qml/Dialogs/AboutDialog.qml:57
 msgctxt "@label"
 msgid "End-to-end solution for fused filament 3D printing."
 msgstr "熔絲 3D 列印技術的的端對端解決方案。"
 
-#: resources/qml/Dialogs/AboutDialog.qml:87
+#: resources/qml/Dialogs/AboutDialog.qml:70
 msgctxt "@info:credit"
-msgid ""
-"Cura is developed by UltiMaker in cooperation with the community.\n"
-"Cura proudly uses the following open source projects:"
+msgid "Rapidia Cura is based on Ultimaker Cura and uses the following open source projects:"
 msgstr ""
-"Cura 由 Ultimaker B.V. 與社群合作開發。\n"
-"Cura 使用以下開源專案："
 
-#: resources/qml/Dialogs/AboutDialog.qml:138
+#: resources/qml/Dialogs/AboutDialog.qml:121
 msgctxt "@label Description for application component"
 msgid "Graphical user interface"
 msgstr "圖形用戶介面"
 
-#: resources/qml/Dialogs/AboutDialog.qml:139
+#: resources/qml/Dialogs/AboutDialog.qml:122
 msgctxt "@label Description for application component"
 msgid "Application framework"
 msgstr "應用框架"
 
-#: resources/qml/Dialogs/AboutDialog.qml:140
+#: resources/qml/Dialogs/AboutDialog.qml:123
 msgctxt "@label Description for application component"
 msgid "G-code generator"
 msgstr "G-code 產生器"
 
-#: resources/qml/Dialogs/AboutDialog.qml:141
+#: resources/qml/Dialogs/AboutDialog.qml:124
 msgctxt "@label Description for application component"
 msgid "Interprocess communication library"
 msgstr "進程間通訊交互使用庫"
 
-#: resources/qml/Dialogs/AboutDialog.qml:142
+#: resources/qml/Dialogs/AboutDialog.qml:125
 msgctxt "@label Description for application component"
 msgid "Python bindings for libnest2d"
 msgstr ""
 
-#: resources/qml/Dialogs/AboutDialog.qml:143
+#: resources/qml/Dialogs/AboutDialog.qml:126
 msgctxt "@label Description for application component"
 msgid "Polygon packing library, developed by Prusa Research"
 msgstr "多邊形包裝函式庫，由 Prusa Research 開發"
 
-#: resources/qml/Dialogs/AboutDialog.qml:144
+#: resources/qml/Dialogs/AboutDialog.qml:127
 msgctxt "@label Description for application component"
 msgid "Support library for handling 3MF files"
 msgstr "用於處理 3MF 檔案的函式庫"
 
-#: resources/qml/Dialogs/AboutDialog.qml:145
+#: resources/qml/Dialogs/AboutDialog.qml:128
 msgctxt "@label Description for application component"
 msgid "Support library for file metadata and streaming"
 msgstr "用於檔案 metadata 和串流的函式庫"
 
-#: resources/qml/Dialogs/AboutDialog.qml:148
+#: resources/qml/Dialogs/AboutDialog.qml:131
 msgctxt "@label Description for application dependency"
 msgid "Programming language"
 msgstr "編程語言"
 
-#: resources/qml/Dialogs/AboutDialog.qml:149
+#: resources/qml/Dialogs/AboutDialog.qml:132
 msgctxt "@label Description for application dependency"
 msgid "GUI framework"
 msgstr "GUI 框架"
 
-#: resources/qml/Dialogs/AboutDialog.qml:150
+#: resources/qml/Dialogs/AboutDialog.qml:133
 msgctxt "@label Description for application dependency"
 msgid "GUI framework bindings"
 msgstr "GUI 框架綁定"
 
-#: resources/qml/Dialogs/AboutDialog.qml:151
+#: resources/qml/Dialogs/AboutDialog.qml:134
 msgctxt "@label Description for application dependency"
 msgid "C/C++ Binding library"
 msgstr "C / C++ 綁定庫"
 
-#: resources/qml/Dialogs/AboutDialog.qml:152
+#: resources/qml/Dialogs/AboutDialog.qml:135
 msgctxt "@label Description for application dependency"
 msgid "Data interchange format"
 msgstr "資料交換格式"
 
-#: resources/qml/Dialogs/AboutDialog.qml:153
+#: resources/qml/Dialogs/AboutDialog.qml:136
 msgctxt "@label"
 msgid "Font"
 msgstr "字體"
 
-#: resources/qml/Dialogs/AboutDialog.qml:156
+#: resources/qml/Dialogs/AboutDialog.qml:139
 msgctxt "@label Description for application dependency"
 msgid "Polygon clipping library"
 msgstr "多邊形剪輯函式庫"
 
-#: resources/qml/Dialogs/AboutDialog.qml:157
+#: resources/qml/Dialogs/AboutDialog.qml:140
 msgctxt "@label Description for application dependency"
 msgid "JSON parser"
 msgstr ""
 
-#: resources/qml/Dialogs/AboutDialog.qml:158
+#: resources/qml/Dialogs/AboutDialog.qml:141
 msgctxt "@label Description for application dependency"
 msgid "Utility functions, including an image loader"
 msgstr ""
 
-#: resources/qml/Dialogs/AboutDialog.qml:159
+#: resources/qml/Dialogs/AboutDialog.qml:142
 msgctxt "@label Description for application dependency"
 msgid "Utility library, including Voronoi generation"
 msgstr ""
 
-#: resources/qml/Dialogs/AboutDialog.qml:162
-#: resources/qml/Dialogs/AboutDialog.qml:163
+#: resources/qml/Dialogs/AboutDialog.qml:145
+#: resources/qml/Dialogs/AboutDialog.qml:146
 msgctxt "@label Description for application dependency"
 msgid "Root Certificates for validating SSL trustworthiness"
 msgstr ""
 
-#: resources/qml/Dialogs/AboutDialog.qml:164
+#: resources/qml/Dialogs/AboutDialog.qml:147
 msgctxt "@label Description for application dependency"
 msgid "Compatibility between Python 2 and 3"
 msgstr ""
 
-#: resources/qml/Dialogs/AboutDialog.qml:165
+#: resources/qml/Dialogs/AboutDialog.qml:148
 msgctxt "@label Description for application dependency"
 msgid "Support library for system keyring access"
 msgstr "存取系統金鑰函式庫"
 
-#: resources/qml/Dialogs/AboutDialog.qml:166
+#: resources/qml/Dialogs/AboutDialog.qml:149
 msgctxt "@label Description for application dependency"
 msgid "Support library for faster math"
 msgstr "高速運算函式庫"
 
-#: resources/qml/Dialogs/AboutDialog.qml:167
+#: resources/qml/Dialogs/AboutDialog.qml:150
 msgctxt "@label Description for application dependency"
 msgid "Support library for handling STL files"
 msgstr "用於處理 STL 檔案的函式庫"
 
-#: resources/qml/Dialogs/AboutDialog.qml:168
+#: resources/qml/Dialogs/AboutDialog.qml:151
 msgctxt "@label Description for application dependency"
 msgid "Python bindings for Clipper"
 msgstr ""
 
-#: resources/qml/Dialogs/AboutDialog.qml:169
+#: resources/qml/Dialogs/AboutDialog.qml:152
 msgctxt "@label Description for application dependency"
 msgid "Serial communication library"
 msgstr "串口通訊函式庫"
 
-#: resources/qml/Dialogs/AboutDialog.qml:170
+#: resources/qml/Dialogs/AboutDialog.qml:153
 msgctxt "@label Description for application dependency"
 msgid "Support library for scientific computing"
 msgstr "科學計算函式庫"
 
-#: resources/qml/Dialogs/AboutDialog.qml:171
+#: resources/qml/Dialogs/AboutDialog.qml:154
 msgctxt "@Label Description for application dependency"
 msgid "Python Error tracking library"
 msgstr ""
 
-#: resources/qml/Dialogs/AboutDialog.qml:172
+#: resources/qml/Dialogs/AboutDialog.qml:155
 msgctxt "@label Description for application dependency"
 msgid "Support library for handling triangular meshes"
 msgstr "用於處理三角形網格的函式庫"
 
-#: resources/qml/Dialogs/AboutDialog.qml:173
+#: resources/qml/Dialogs/AboutDialog.qml:156
 msgctxt "@label Description for application dependency"
 msgid "ZeroConf discovery library"
 msgstr "ZeroConf 發現函式庫"
 
-#: resources/qml/Dialogs/AboutDialog.qml:176
+#: resources/qml/Dialogs/AboutDialog.qml:159
 msgctxt "@label Description for development tool"
 msgid "Universal build system configuration"
 msgstr ""
 
-#: resources/qml/Dialogs/AboutDialog.qml:177
+#: resources/qml/Dialogs/AboutDialog.qml:160
 msgctxt "@label Description for development tool"
 msgid "Dependency and package manager"
 msgstr ""
 
-#: resources/qml/Dialogs/AboutDialog.qml:178
+#: resources/qml/Dialogs/AboutDialog.qml:161
 msgctxt "@label Description for development tool"
 msgid "Packaging Python-applications"
 msgstr ""
 
-#: resources/qml/Dialogs/AboutDialog.qml:179
+#: resources/qml/Dialogs/AboutDialog.qml:162
 msgctxt "@label Description for development tool"
 msgid "Linux cross-distribution application deployment"
 msgstr "Linux cross-distribution 應用程式部署"
 
-#: resources/qml/Dialogs/AboutDialog.qml:180
+#: resources/qml/Dialogs/AboutDialog.qml:163
 msgctxt "@label Description for development tool"
 msgid "Generating Windows installers"
 msgstr ""
@@ -4983,11 +4943,6 @@ msgstr "新建專案"
 msgctxt "@info:question"
 msgid "Are you sure you want to start a new project? This will clear the build plate and any unsaved settings."
 msgstr "你確定要開始一個新專案嗎？這將清除列印平台及任何未儲存的設定。"
-
-#: resources/qml/MainWindow/MainWindowHeader.qml:135
-msgctxt "@action:button"
-msgid "Marketplace"
-msgstr "市集"
 
 #: resources/qml/Menus/ConfigurationMenu/AutoConfiguration.qml:18
 msgctxt "@header"
@@ -5282,11 +5237,12 @@ msgid "Infill overlapping with this model is modified."
 msgstr "與此模型重疊的填充已被更改。"
 
 #: resources/qml/ObjectItemButton.qml:118
+#: resources/qml/ObjectItemButton.qml:121
 msgctxt "@label"
 msgid "Overlaps with this model are not supported."
 msgstr "與此模型的重疊沒有支撐。"
 
-#: resources/qml/ObjectItemButton.qml:125
+#: resources/qml/ObjectItemButton.qml:128
 msgctxt "@label %1 is the number of settings it overrides."
 msgid "Overrides %1 setting."
 msgid_plural "Overrides %1 settings."
@@ -5910,6 +5866,7 @@ msgstr "如何載入新的線材設定檔至我的列印機"
 
 #: resources/qml/Preferences/Materials/MaterialsSyncDialog.qml:703
 #: resources/qml/WelcomePages/AddPrinterByIpContent.qml:299
+#: resources/qml/WelcomePages/AddThirdPartyPrinter.qml:104
 msgctxt "@button"
 msgid "Back"
 msgstr "返回"
@@ -6759,15 +6716,10 @@ msgctxt "@label"
 msgid "Add a networked printer"
 msgstr "新增網路印表機"
 
-#: resources/qml/WelcomePages/AddThirdPartyPrinter.qml:78
+#: resources/qml/WelcomePages/AddThirdPartyPrinter.qml:80
 msgctxt "@label"
 msgid "Add a non-networked printer"
 msgstr "新增非網路印表機"
-
-#: resources/qml/WelcomePages/AddThirdPartyPrinter.qml:102
-msgctxt "@button"
-msgid "Add UltiMaker printer via Digital Factory"
-msgstr ""
 
 #: resources/qml/WelcomePages/AddUltimakerOrThirdPartyPrinter.qml:29
 msgctxt "@label"
@@ -6884,7 +6836,7 @@ msgctxt "@label"
 msgid "User Agreement"
 msgstr "使用者授權"
 
-#: resources/qml/WelcomePages/UserAgreementContent.qml:67
+#: resources/qml/WelcomePages/UserAgreementContent.qml:68
 msgctxt "@button"
 msgid "Decline and close"
 msgstr "拒絕並關閉"
@@ -6922,6 +6874,10 @@ msgstr "沒有可選取的專案"
 #~ msgctxt "@label: arg 1 is group name"
 #~ msgid "%1 is not set up to host a group of connected UltiMaker 3 printers"
 #~ msgstr "%1 未設定成管理一組連線的 UltiMaker 3 印表機的主機"
+
+#~ msgctxt "@label m for meter"
+#~ msgid "%1m"
+#~ msgstr "%1m"
 
 #~ msgctxt "@label Print estimates: m for meters, g for grams"
 #~ msgid "%1m / ~ %2g"
@@ -7214,6 +7170,10 @@ msgstr "沒有可選取的專案"
 #~ msgctxt "@action:tooltip"
 #~ msgid "Allow Cura to send anonymized usage statistics to help prioritize future improvements to Cura. Some of your preferences and settings are sent, the Cura version and a hash of the models you're slicing."
 #~ msgstr "允許 Cura 以匿名方式傳送使用狀況統計資料，用來協助 Cura 的未來改善工作。你的部份偏好設定和參數，Cura 的版本及你切片模型的雜湊值會被傳送。"
+
+#~ msgctxt "@text:window"
+#~ msgid "Allow sending anonymous data"
+#~ msgstr "允許傳送匿名資料"
 
 #~ msgctxt "@text:window"
 #~ msgid "Allow sending these data to UltiMaker and help us improve Cura"
@@ -7666,6 +7626,14 @@ msgstr "沒有可選取的專案"
 #~ msgctxt "@info:status"
 #~ msgid "Cura does not accurately display layers when Wire Printing is enabled"
 #~ msgstr "當鐵絲網列印（Wire Printing）功能開啟時，Cura 將無法準確地顯示列印層（Layers）"
+
+#~ msgctxt "@info:credit"
+#~ msgid ""
+#~ "Cura is developed by UltiMaker in cooperation with the community.\n"
+#~ "Cura proudly uses the following open source projects:"
+#~ msgstr ""
+#~ "Cura 由 Ultimaker B.V. 與社群合作開發。\n"
+#~ "Cura 使用以下開源專案："
 
 #~ msgctxt "@text:window"
 #~ msgid "Cura sends anonymous data to UltiMaker in order to improve the print quality and user experience. Below is an example of all the data that is sent."
@@ -8210,6 +8178,10 @@ msgstr "沒有可選取的專案"
 #~ msgstr "如何安裝 Cura SolidWorks 巨集"
 
 #~ msgctxt "@text:window"
+#~ msgid "I don't want to send anonymous data"
+#~ msgstr "我不想傳送匿名資料"
+
+#~ msgctxt "@text:window"
 #~ msgid "I don't want to send these data"
 #~ msgstr "我不想傳送這些資料"
 
@@ -8359,6 +8331,10 @@ msgstr "沒有可選取的專案"
 #~ msgid "Manages network connections to UltiMaker 3 printers."
 #~ msgstr "管理與 UltiMaker 3 印表機的網絡連線。"
 
+#~ msgctxt "@action:button"
+#~ msgid "Marketplace"
+#~ msgstr "市集"
+
 #~ msgctxt "@title"
 #~ msgid "Marketplace"
 #~ msgstr "市集"
@@ -8417,6 +8393,10 @@ msgstr "沒有可選取的專案"
 #~ msgctxt "@text"
 #~ msgid "More information"
 #~ msgstr "更多資訊"
+
+#~ msgctxt "@title:window"
+#~ msgid "More information on anonymous data collection"
+#~ msgstr "更多關於匿名資料收集的資訊"
 
 #~ msgctxt "@action:inmenu menubar:edit"
 #~ msgid "Multiply Selected Model"
@@ -9223,6 +9203,10 @@ msgstr "沒有可選取的專案"
 #~ msgid "Slice current printjob"
 #~ msgstr "對目前列印工作進行切片"
 
+#~ msgctxt "name"
+#~ msgid "Slice info"
+#~ msgstr "切片資訊"
+
 #~ msgctxt "@label:PrintjobStatus"
 #~ msgid "Slicing unavailable"
 #~ msgstr "切片無法使用"
@@ -9320,6 +9304,10 @@ msgstr "沒有可選取的專案"
 #~ msgctxt "@info:status"
 #~ msgid "Storing data on Doodle3D Connect"
 #~ msgstr "正在儲存資料到 Doodle3D Connect"
+
+#~ msgctxt "description"
+#~ msgid "Submits anonymous slice info. Can be disabled through preferences."
+#~ msgstr "提交匿名切片資訊。這項功能可以在偏好設定中關閉。"
 
 #~ msgctxt "@info:status"
 #~ msgid "Successfully imported profile {0}"
@@ -9612,6 +9600,10 @@ msgstr "沒有可選取的專案"
 #~ msgid "UltiMaker Cura"
 #~ msgstr "UltiMaker Cura"
 
+#~ msgctxt "@text:window"
+#~ msgid "UltiMaker Cura collects anonymous data in order to improve the print quality and user experience. Below is an example of all the data that is shared:"
+#~ msgstr "UltiMaker Cura 搜集匿名資料以提高列印品質和使用者體驗。以下是共享資料的範例："
+
 #~ msgctxt "@text"
 #~ msgid "UltiMaker Cura collects anonymous data to improve print quality and user experience, including:"
 #~ msgstr "UltiMaker Cura 搜集匿名資料以提高列印品質和使用者體驗，包含："
@@ -9623,6 +9615,10 @@ msgstr "沒有可選取的專案"
 #~ msgctxt "@label:PrintjobStatus"
 #~ msgid "Unable to Slice"
 #~ msgstr "無法切片"
+
+#~ msgctxt "@text"
+#~ msgid "Unable to read example data file."
+#~ msgstr "無法讀取範例資料檔案."
 
 #~ msgctxt "@info:status"
 #~ msgid "Unable to send data to Doodle3D Connect. Is another job still active?"

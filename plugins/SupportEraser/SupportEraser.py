@@ -76,11 +76,11 @@ class SupportEraser(Tool):
 
             node_stack = picked_node.callDecoration("getStack")
             if node_stack:
-                if node_stack.getProperty("anti_overhang_mesh", "value"):
+                if node_stack.getProperty("anti_overhang_mesh", "value") or node_stack.getProperty("support_modifier_mesh", "value"):
                     self._removeEraserMesh(picked_node)
                     return
 
-                elif node_stack.getProperty("support_mesh", "value") or node_stack.getProperty("infill_mesh", "value") or node_stack.getProperty("cutting_mesh", "value"):
+                elif node_stack.getProperty("support_mesh", "value") or node_stack.getProperty("infill_mesh", "value") or node_stack.getProperty("cutting_mesh", "value") or node_stack.getProperty("support_modifier_mesh", "value"):
                     # Only "normal" meshes can have anti_overhang_meshes added to them
                     return
 
@@ -97,7 +97,7 @@ class SupportEraser(Tool):
     def _createEraserMesh(self, parent: CuraSceneNode, position: Vector):
         node = CuraSceneNode()
 
-        node.setName("Eraser")
+        node.setName("Support Modifier")
         node.setSelectable(True)
         node.setCalculateBoundingBox(True)
         mesh = self._createCube(10)
@@ -111,7 +111,7 @@ class SupportEraser(Tool):
         stack = node.callDecoration("getStack") # created by SettingOverrideDecorator that is automatically added to CuraSceneNode
         settings = stack.getTop()
 
-        definition = stack.getSettingDefinition("anti_overhang_mesh")
+        definition = stack.getSettingDefinition("support_modifier_mesh")
         new_instance = SettingInstance(definition, settings)
         new_instance.setProperty("value", True)
         new_instance.resetState()  # Ensure that the state is not seen as a user state.

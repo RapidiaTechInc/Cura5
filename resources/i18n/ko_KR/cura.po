@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-06 10:22-0700\n"
+"POT-Creation-Date: 2023-05-04 11:59-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -668,14 +668,13 @@ msgctxt "@action:button"
 msgid "Add"
 msgstr "추가"
 
-#: cura/UI/AddPrinterPagesModel.py:26 cura/UI/WelcomePagesModel.py:290
+#: cura/UI/AddPrinterPagesModel.py:26
 msgctxt "@action:button"
 msgid "Finish"
 msgstr "종료"
 
 #: cura/UI/AddPrinterPagesModel.py:33 plugins/3MFReader/WorkspaceDialog.qml:386
 #: plugins/ImageReader/ConfigUI.qml:323
-#: plugins/SliceInfoPlugin/MoreInfoWindow.qml:147
 #: plugins/UM3NetworkPrinting/resources/qml/MonitorConfigOverrideDialog.qml:27
 #: plugins/UM3NetworkPrinting/resources/qml/PrintWindow.qml:43
 #: resources/qml/ColorDialog.qml:143
@@ -692,62 +691,62 @@ msgctxt "@label"
 msgid "Group #{group_nr}"
 msgstr "그룹 #{group_nr}"
 
-#: cura/UI/PrintInformation.py:87
+#: cura/UI/PrintInformation.py:88
 msgctxt "@tooltip"
 msgid "Outer Wall"
 msgstr "외벽"
 
-#: cura/UI/PrintInformation.py:88
+#: cura/UI/PrintInformation.py:89
 msgctxt "@tooltip"
 msgid "Inner Walls"
 msgstr "내벽"
 
-#: cura/UI/PrintInformation.py:89
+#: cura/UI/PrintInformation.py:90
 msgctxt "@tooltip"
 msgid "Skin"
 msgstr "스킨"
 
-#: cura/UI/PrintInformation.py:90
+#: cura/UI/PrintInformation.py:91
 msgctxt "@tooltip"
 msgid "Infill"
 msgstr "내부채움"
 
-#: cura/UI/PrintInformation.py:91
+#: cura/UI/PrintInformation.py:92
 msgctxt "@tooltip"
 msgid "Support Infill"
 msgstr "내부채움 서포트"
 
-#: cura/UI/PrintInformation.py:92
+#: cura/UI/PrintInformation.py:93
 msgctxt "@tooltip"
 msgid "Support Interface"
 msgstr "지원하는 인터페이스"
 
-#: cura/UI/PrintInformation.py:93
+#: cura/UI/PrintInformation.py:94
 msgctxt "@tooltip"
 msgid "Support"
 msgstr "서포트"
 
-#: cura/UI/PrintInformation.py:94
+#: cura/UI/PrintInformation.py:95
 msgctxt "@tooltip"
 msgid "Skirt"
 msgstr "스커트"
 
-#: cura/UI/PrintInformation.py:95
+#: cura/UI/PrintInformation.py:96
 msgctxt "@tooltip"
 msgid "Prime Tower"
 msgstr "프라임 타워"
 
-#: cura/UI/PrintInformation.py:96
+#: cura/UI/PrintInformation.py:97
 msgctxt "@tooltip"
 msgid "Travel"
 msgstr "움직임 경로"
 
-#: cura/UI/PrintInformation.py:97
+#: cura/UI/PrintInformation.py:98
 msgctxt "@tooltip"
 msgid "Retractions"
 msgstr "리트랙션"
 
-#: cura/UI/PrintInformation.py:98
+#: cura/UI/PrintInformation.py:99
 msgctxt "@tooltip"
 msgid "Other"
 msgstr "다른"
@@ -757,12 +756,12 @@ msgctxt "@text:window"
 msgid "The release notes could not be opened."
 msgstr "릴리즈 노트를 열 수 없습니다."
 
-#: cura/UI/WelcomePagesModel.py:57 cura/UI/WelcomePagesModel.py:277
+#: cura/UI/WelcomePagesModel.py:57
 msgctxt "@action:button"
 msgid "Next"
 msgstr "다음"
 
-#: cura/UI/WelcomePagesModel.py:286 cura/UI/WhatsNewPagesModel.py:68
+#: cura/UI/WhatsNewPagesModel.py:68
 msgctxt "@action:button"
 msgid "Skip"
 msgstr "건너뛰기"
@@ -771,7 +770,7 @@ msgstr "건너뛰기"
 #: plugins/FirmwareUpdater/FirmwareUpdaterMachineAction.qml:175
 #: plugins/PerObjectSettingsTool/SettingPickDialog.qml:135
 #: plugins/PostProcessingPlugin/PostProcessingPlugin.qml:444
-#: resources/qml/Dialogs/AboutDialog.qml:188
+#: resources/qml/Dialogs/AboutDialog.qml:171
 msgctxt "@action:button"
 msgid "Close"
 msgstr "닫기"
@@ -1719,9 +1718,8 @@ msgctxt "@info:tooltip"
 msgid "The amount of smoothing to apply to the image."
 msgstr "이미지에 적용할 스무딩(smoothing)의 정도."
 
-#: plugins/ImageReader/ConfigUI.qml:329
-#: plugins/SliceInfoPlugin/MoreInfoWindow.qml:136
-#: resources/qml/ColorDialog.qml:148 resources/qml/Dialogs/RenameDialog.qml:25
+#: plugins/ImageReader/ConfigUI.qml:329 resources/qml/ColorDialog.qml:148
+#: resources/qml/Dialogs/RenameDialog.qml:25
 msgctxt "@action:button"
 msgid "OK"
 msgstr "확인"
@@ -1977,7 +1975,7 @@ msgid "Decline"
 msgstr "거절"
 
 #: plugins/Marketplace/CloudSync/LicenseModel.py:13
-#: resources/qml/WelcomePages/UserAgreementContent.qml:53
+#: resources/qml/WelcomePages/UserAgreementContent.qml:54
 msgctxt "@button"
 msgid "Agree"
 msgstr "동의"
@@ -2848,41 +2846,6 @@ msgstr "슬라이스된 레이어 데이터의 미리보기를 제공합니다."
 msgctxt "name"
 msgid "Simulation View"
 msgstr "시뮬레이션 뷰"
-
-#: plugins/SliceInfoPlugin/MoreInfoWindow.qml:16
-msgctxt "@title:window"
-msgid "More information on anonymous data collection"
-msgstr "익명 데이터 수집에 대한 추가 정보"
-
-#: plugins/SliceInfoPlugin/MoreInfoWindow.qml:73
-msgctxt "@text:window"
-msgid "UltiMaker Cura collects anonymous data in order to improve the print quality and user experience. Below is an example of all the data that is shared:"
-msgstr "UltiMaker Cura는 인쇄 품질과 사용자 경험을 개선하기 위해 익명 데이터를 수집합니다. 공유되는 모든 데이터의 예는 다음과 같습니다:"
-
-#: plugins/SliceInfoPlugin/MoreInfoWindow.qml:107
-msgctxt "@text:window"
-msgid "I don't want to send anonymous data"
-msgstr "익명 데이터 전송을 원하지 않습니다"
-
-#: plugins/SliceInfoPlugin/MoreInfoWindow.qml:116
-msgctxt "@text:window"
-msgid "Allow sending anonymous data"
-msgstr "익명 데이터 전송 허용"
-
-#: plugins/SliceInfoPlugin/SliceInfo.py:95
-msgctxt "@text"
-msgid "Unable to read example data file."
-msgstr "예시 데이터 파일을 읽을 수 없습니다."
-
-#: plugins/SliceInfoPlugin/plugin.json
-msgctxt "name"
-msgid "Slice info"
-msgstr "슬라이스 정보"
-
-#: plugins/SliceInfoPlugin/plugin.json
-msgctxt "description"
-msgid "Submits anonymous slice info. Can be disabled through preferences."
-msgstr "익명의 슬라이스 정보를 제출하십시오. 환경 설정을 통해 비활성화 할 수 있습니다."
 
 #: plugins/SolidView/SolidView.py:71
 msgctxt "@info:status"
@@ -4178,9 +4141,10 @@ msgid "Material estimation"
 msgstr "재료 추산"
 
 #: resources/qml/ActionPanel/PrintJobInformation.qml:156
+#, javascript-format
 msgctxt "@label m for meter"
-msgid "%1m"
-msgstr "%1m"
+msgid "%1cc"
+msgstr ""
 
 #: resources/qml/ActionPanel/PrintJobInformation.qml:157
 msgctxt "@label g for grams"
@@ -4624,192 +4588,188 @@ msgctxt "@title:window The argument is the application name."
 msgid "About %1"
 msgstr "%1 정보"
 
-#: resources/qml/Dialogs/AboutDialog.qml:59
+#: resources/qml/Dialogs/AboutDialog.qml:42
 msgctxt "@label"
 msgid "version: %1"
 msgstr "버전: %1"
 
-#: resources/qml/Dialogs/AboutDialog.qml:74
+#: resources/qml/Dialogs/AboutDialog.qml:57
 msgctxt "@label"
 msgid "End-to-end solution for fused filament 3D printing."
 msgstr "3D 프린팅을 위한 엔드 투 엔트 솔루션."
 
-#: resources/qml/Dialogs/AboutDialog.qml:87
+#: resources/qml/Dialogs/AboutDialog.qml:70
 msgctxt "@info:credit"
-msgid ""
-"Cura is developed by UltiMaker in cooperation with the community.\n"
-"Cura proudly uses the following open source projects:"
+msgid "Rapidia Cura is based on Ultimaker Cura and uses the following open source projects:"
 msgstr ""
-"Cura는 커뮤니티와 공동으로 UltiMaker 에 의해 개발되었습니다.\n"
-"Cura는 다음의 오픈 소스 프로젝트를 사용합니다:"
 
-#: resources/qml/Dialogs/AboutDialog.qml:138
+#: resources/qml/Dialogs/AboutDialog.qml:121
 msgctxt "@label Description for application component"
 msgid "Graphical user interface"
 msgstr "그래픽 사용자 인터페이스"
 
-#: resources/qml/Dialogs/AboutDialog.qml:139
+#: resources/qml/Dialogs/AboutDialog.qml:122
 msgctxt "@label Description for application component"
 msgid "Application framework"
 msgstr "애플리케이션 프레임 워크"
 
-#: resources/qml/Dialogs/AboutDialog.qml:140
+#: resources/qml/Dialogs/AboutDialog.qml:123
 msgctxt "@label Description for application component"
 msgid "G-code generator"
 msgstr "GCode 생성기"
 
-#: resources/qml/Dialogs/AboutDialog.qml:141
+#: resources/qml/Dialogs/AboutDialog.qml:124
 msgctxt "@label Description for application component"
 msgid "Interprocess communication library"
 msgstr "프로세스간 통신 라이브러리"
 
-#: resources/qml/Dialogs/AboutDialog.qml:142
+#: resources/qml/Dialogs/AboutDialog.qml:125
 msgctxt "@label Description for application component"
 msgid "Python bindings for libnest2d"
 msgstr "libnest2d용 Python 바인딩"
 
-#: resources/qml/Dialogs/AboutDialog.qml:143
+#: resources/qml/Dialogs/AboutDialog.qml:126
 msgctxt "@label Description for application component"
 msgid "Polygon packing library, developed by Prusa Research"
 msgstr "폴리곤 패킹 라이브러리, Prusa Research 개발"
 
-#: resources/qml/Dialogs/AboutDialog.qml:144
+#: resources/qml/Dialogs/AboutDialog.qml:127
 msgctxt "@label Description for application component"
 msgid "Support library for handling 3MF files"
 msgstr "3MF 파일 처리를 위한 라이브러리"
 
-#: resources/qml/Dialogs/AboutDialog.qml:145
+#: resources/qml/Dialogs/AboutDialog.qml:128
 msgctxt "@label Description for application component"
 msgid "Support library for file metadata and streaming"
 msgstr "파일 메타데이터 및 스트리밍을 위한 지원 라이브러리"
 
-#: resources/qml/Dialogs/AboutDialog.qml:148
+#: resources/qml/Dialogs/AboutDialog.qml:131
 msgctxt "@label Description for application dependency"
 msgid "Programming language"
 msgstr "프로그래밍 언어"
 
-#: resources/qml/Dialogs/AboutDialog.qml:149
+#: resources/qml/Dialogs/AboutDialog.qml:132
 msgctxt "@label Description for application dependency"
 msgid "GUI framework"
 msgstr "GUI 프레임 워크"
 
-#: resources/qml/Dialogs/AboutDialog.qml:150
+#: resources/qml/Dialogs/AboutDialog.qml:133
 msgctxt "@label Description for application dependency"
 msgid "GUI framework bindings"
 msgstr "GUI 프레임 워크 바인딩"
 
-#: resources/qml/Dialogs/AboutDialog.qml:151
+#: resources/qml/Dialogs/AboutDialog.qml:134
 msgctxt "@label Description for application dependency"
 msgid "C/C++ Binding library"
 msgstr "C/C ++ 바인딩 라이브러리"
 
-#: resources/qml/Dialogs/AboutDialog.qml:152
+#: resources/qml/Dialogs/AboutDialog.qml:135
 msgctxt "@label Description for application dependency"
 msgid "Data interchange format"
 msgstr "데이터 교환 형식"
 
-#: resources/qml/Dialogs/AboutDialog.qml:153
+#: resources/qml/Dialogs/AboutDialog.qml:136
 msgctxt "@label"
 msgid "Font"
 msgstr "폰트"
 
-#: resources/qml/Dialogs/AboutDialog.qml:156
+#: resources/qml/Dialogs/AboutDialog.qml:139
 msgctxt "@label Description for application dependency"
 msgid "Polygon clipping library"
 msgstr "다각형 클리핑 라이브러리"
 
-#: resources/qml/Dialogs/AboutDialog.qml:157
+#: resources/qml/Dialogs/AboutDialog.qml:140
 msgctxt "@label Description for application dependency"
 msgid "JSON parser"
 msgstr ""
 
-#: resources/qml/Dialogs/AboutDialog.qml:158
+#: resources/qml/Dialogs/AboutDialog.qml:141
 msgctxt "@label Description for application dependency"
 msgid "Utility functions, including an image loader"
 msgstr "이미지 로더를 포함한 유틸리티 기능"
 
-#: resources/qml/Dialogs/AboutDialog.qml:159
+#: resources/qml/Dialogs/AboutDialog.qml:142
 msgctxt "@label Description for application dependency"
 msgid "Utility library, including Voronoi generation"
 msgstr "Voronoi 세대를 포함한 유틸리티 라이브러리"
 
-#: resources/qml/Dialogs/AboutDialog.qml:162
-#: resources/qml/Dialogs/AboutDialog.qml:163
+#: resources/qml/Dialogs/AboutDialog.qml:145
+#: resources/qml/Dialogs/AboutDialog.qml:146
 msgctxt "@label Description for application dependency"
 msgid "Root Certificates for validating SSL trustworthiness"
 msgstr "SSL 신뢰성 검증용 루트 인증서"
 
-#: resources/qml/Dialogs/AboutDialog.qml:164
+#: resources/qml/Dialogs/AboutDialog.qml:147
 msgctxt "@label Description for application dependency"
 msgid "Compatibility between Python 2 and 3"
 msgstr "Python 2 및 3 간의 호환성"
 
-#: resources/qml/Dialogs/AboutDialog.qml:165
+#: resources/qml/Dialogs/AboutDialog.qml:148
 msgctxt "@label Description for application dependency"
 msgid "Support library for system keyring access"
 msgstr "시스템 키링 액세스를 위한 서포트 라이브러리"
 
-#: resources/qml/Dialogs/AboutDialog.qml:166
+#: resources/qml/Dialogs/AboutDialog.qml:149
 msgctxt "@label Description for application dependency"
 msgid "Support library for faster math"
 msgstr "더 빠른 수학연산을 위한 라이브러리"
 
-#: resources/qml/Dialogs/AboutDialog.qml:167
+#: resources/qml/Dialogs/AboutDialog.qml:150
 msgctxt "@label Description for application dependency"
 msgid "Support library for handling STL files"
 msgstr "STL 파일 처리를 위한 라이브러리"
 
-#: resources/qml/Dialogs/AboutDialog.qml:168
+#: resources/qml/Dialogs/AboutDialog.qml:151
 msgctxt "@label Description for application dependency"
 msgid "Python bindings for Clipper"
 msgstr "Clipper용 Python 바인딩"
 
-#: resources/qml/Dialogs/AboutDialog.qml:169
+#: resources/qml/Dialogs/AboutDialog.qml:152
 msgctxt "@label Description for application dependency"
 msgid "Serial communication library"
 msgstr "직렬 통신 라이브러리"
 
-#: resources/qml/Dialogs/AboutDialog.qml:170
+#: resources/qml/Dialogs/AboutDialog.qml:153
 msgctxt "@label Description for application dependency"
 msgid "Support library for scientific computing"
 msgstr "과학 컴퓨팅을 위한 라이브러리"
 
-#: resources/qml/Dialogs/AboutDialog.qml:171
+#: resources/qml/Dialogs/AboutDialog.qml:154
 msgctxt "@Label Description for application dependency"
 msgid "Python Error tracking library"
 msgstr "Python 오류 추적 라이브러리"
 
-#: resources/qml/Dialogs/AboutDialog.qml:172
+#: resources/qml/Dialogs/AboutDialog.qml:155
 msgctxt "@label Description for application dependency"
 msgid "Support library for handling triangular meshes"
 msgstr "삼각형 메쉬 처리를 위한 지원 라이브러리"
 
-#: resources/qml/Dialogs/AboutDialog.qml:173
+#: resources/qml/Dialogs/AboutDialog.qml:156
 msgctxt "@label Description for application dependency"
 msgid "ZeroConf discovery library"
 msgstr "ZeroConf discovery 라이브러리"
 
-#: resources/qml/Dialogs/AboutDialog.qml:176
+#: resources/qml/Dialogs/AboutDialog.qml:159
 msgctxt "@label Description for development tool"
 msgid "Universal build system configuration"
 msgstr "범용 빌드 시스템 설정"
 
-#: resources/qml/Dialogs/AboutDialog.qml:177
+#: resources/qml/Dialogs/AboutDialog.qml:160
 msgctxt "@label Description for development tool"
 msgid "Dependency and package manager"
 msgstr "의존성 및 패키지 관리자"
 
-#: resources/qml/Dialogs/AboutDialog.qml:178
+#: resources/qml/Dialogs/AboutDialog.qml:161
 msgctxt "@label Description for development tool"
 msgid "Packaging Python-applications"
 msgstr "Python 애플리케이션 패키지 생성 중"
 
-#: resources/qml/Dialogs/AboutDialog.qml:179
+#: resources/qml/Dialogs/AboutDialog.qml:162
 msgctxt "@label Description for development tool"
 msgid "Linux cross-distribution application deployment"
 msgstr "Linux 교차 배포 응용 프로그램 배포"
 
-#: resources/qml/Dialogs/AboutDialog.qml:180
+#: resources/qml/Dialogs/AboutDialog.qml:163
 msgctxt "@label Description for development tool"
 msgid "Generating Windows installers"
 msgstr "Windows 설치 관리자 생성 중"
@@ -4983,11 +4943,6 @@ msgstr "새 프로젝트"
 msgctxt "@info:question"
 msgid "Are you sure you want to start a new project? This will clear the build plate and any unsaved settings."
 msgstr "새 프로젝트를 시작 하시겠습니까? 빌드 플레이트 및 저장하지 않은 설정이 지워집니다."
-
-#: resources/qml/MainWindow/MainWindowHeader.qml:135
-msgctxt "@action:button"
-msgid "Marketplace"
-msgstr "시장"
 
 #: resources/qml/Menus/ConfigurationMenu/AutoConfiguration.qml:18
 msgctxt "@header"
@@ -5282,11 +5237,12 @@ msgid "Infill overlapping with this model is modified."
 msgstr "이 모델과 중복되는 내부채움은 수정됩니다."
 
 #: resources/qml/ObjectItemButton.qml:118
+#: resources/qml/ObjectItemButton.qml:121
 msgctxt "@label"
 msgid "Overlaps with this model are not supported."
 msgstr "이 모델과의 중복은 지원되지 않습니다."
 
-#: resources/qml/ObjectItemButton.qml:125
+#: resources/qml/ObjectItemButton.qml:128
 msgctxt "@label %1 is the number of settings it overrides."
 msgid "Overrides %1 setting."
 msgid_plural "Overrides %1 settings."
@@ -5910,6 +5866,7 @@ msgstr "새로운 재료 프로파일을 내 프린터로 로드하는 방법"
 
 #: resources/qml/Preferences/Materials/MaterialsSyncDialog.qml:703
 #: resources/qml/WelcomePages/AddPrinterByIpContent.qml:299
+#: resources/qml/WelcomePages/AddThirdPartyPrinter.qml:104
 msgctxt "@button"
 msgid "Back"
 msgstr "뒤로"
@@ -6766,15 +6723,10 @@ msgctxt "@label"
 msgid "Add a networked printer"
 msgstr "네트워크 프린터 추가"
 
-#: resources/qml/WelcomePages/AddThirdPartyPrinter.qml:78
+#: resources/qml/WelcomePages/AddThirdPartyPrinter.qml:80
 msgctxt "@label"
 msgid "Add a non-networked printer"
 msgstr "비 네트워크 프린터 추가"
-
-#: resources/qml/WelcomePages/AddThirdPartyPrinter.qml:102
-msgctxt "@button"
-msgid "Add UltiMaker printer via Digital Factory"
-msgstr ""
 
 #: resources/qml/WelcomePages/AddUltimakerOrThirdPartyPrinter.qml:29
 msgctxt "@label"
@@ -6891,7 +6843,7 @@ msgctxt "@label"
 msgid "User Agreement"
 msgstr "사용자 계약"
 
-#: resources/qml/WelcomePages/UserAgreementContent.qml:67
+#: resources/qml/WelcomePages/UserAgreementContent.qml:68
 msgctxt "@button"
 msgid "Decline and close"
 msgstr "거절 및 닫기"
@@ -6906,6 +6858,50 @@ msgctxt "@label"
 msgid "No items to select from"
 msgstr "선택할 항목 없음"
 
+#~ msgctxt "@label m for meter"
+#~ msgid "%1m"
+#~ msgstr "%1m"
+
+#~ msgctxt "@text:window"
+#~ msgid "Allow sending anonymous data"
+#~ msgstr "익명 데이터 전송 허용"
+
+#~ msgctxt "@info:credit"
+#~ msgid ""
+#~ "Cura is developed by UltiMaker in cooperation with the community.\n"
+#~ "Cura proudly uses the following open source projects:"
+#~ msgstr ""
+#~ "Cura는 커뮤니티와 공동으로 UltiMaker 에 의해 개발되었습니다.\n"
+#~ "Cura는 다음의 오픈 소스 프로젝트를 사용합니다:"
+
+#~ msgctxt "@text:window"
+#~ msgid "I don't want to send anonymous data"
+#~ msgstr "익명 데이터 전송을 원하지 않습니다"
+
+#~ msgctxt "@action:button"
+#~ msgid "Marketplace"
+#~ msgstr "시장"
+
+#~ msgctxt "@title:window"
+#~ msgid "More information on anonymous data collection"
+#~ msgstr "익명 데이터 수집에 대한 추가 정보"
+
 #~ msgctxt "@description"
 #~ msgid "Please sign in to get verified plugins and materials for Ultimaker Cura Enterprise"
 #~ msgstr "Ultimaker Cura Enterprise용으로 검증된 플러그인 및 재료를 받으려면 로그인하십시오."
+
+#~ msgctxt "name"
+#~ msgid "Slice info"
+#~ msgstr "슬라이스 정보"
+
+#~ msgctxt "description"
+#~ msgid "Submits anonymous slice info. Can be disabled through preferences."
+#~ msgstr "익명의 슬라이스 정보를 제출하십시오. 환경 설정을 통해 비활성화 할 수 있습니다."
+
+#~ msgctxt "@text:window"
+#~ msgid "UltiMaker Cura collects anonymous data in order to improve the print quality and user experience. Below is an example of all the data that is shared:"
+#~ msgstr "UltiMaker Cura는 인쇄 품질과 사용자 경험을 개선하기 위해 익명 데이터를 수집합니다. 공유되는 모든 데이터의 예는 다음과 같습니다:"
+
+#~ msgctxt "@text"
+#~ msgid "Unable to read example data file."
+#~ msgstr "예시 데이터 파일을 읽을 수 없습니다."

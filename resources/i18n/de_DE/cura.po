@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-06 10:22-0700\n"
+"POT-Creation-Date: 2023-05-04 11:59-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -668,14 +668,13 @@ msgctxt "@action:button"
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: cura/UI/AddPrinterPagesModel.py:26 cura/UI/WelcomePagesModel.py:290
+#: cura/UI/AddPrinterPagesModel.py:26
 msgctxt "@action:button"
 msgid "Finish"
 msgstr "Beenden"
 
 #: cura/UI/AddPrinterPagesModel.py:33 plugins/3MFReader/WorkspaceDialog.qml:386
 #: plugins/ImageReader/ConfigUI.qml:323
-#: plugins/SliceInfoPlugin/MoreInfoWindow.qml:147
 #: plugins/UM3NetworkPrinting/resources/qml/MonitorConfigOverrideDialog.qml:27
 #: plugins/UM3NetworkPrinting/resources/qml/PrintWindow.qml:43
 #: resources/qml/ColorDialog.qml:143
@@ -692,62 +691,62 @@ msgctxt "@label"
 msgid "Group #{group_nr}"
 msgstr "Gruppe #{group_nr}"
 
-#: cura/UI/PrintInformation.py:87
+#: cura/UI/PrintInformation.py:88
 msgctxt "@tooltip"
 msgid "Outer Wall"
 msgstr "Außenwand"
 
-#: cura/UI/PrintInformation.py:88
+#: cura/UI/PrintInformation.py:89
 msgctxt "@tooltip"
 msgid "Inner Walls"
 msgstr "Innenwände"
 
-#: cura/UI/PrintInformation.py:89
+#: cura/UI/PrintInformation.py:90
 msgctxt "@tooltip"
 msgid "Skin"
 msgstr "Außenhaut"
 
-#: cura/UI/PrintInformation.py:90
+#: cura/UI/PrintInformation.py:91
 msgctxt "@tooltip"
 msgid "Infill"
 msgstr "Füllung"
 
-#: cura/UI/PrintInformation.py:91
+#: cura/UI/PrintInformation.py:92
 msgctxt "@tooltip"
 msgid "Support Infill"
 msgstr "Stützstruktur-Füllung"
 
-#: cura/UI/PrintInformation.py:92
+#: cura/UI/PrintInformation.py:93
 msgctxt "@tooltip"
 msgid "Support Interface"
 msgstr "Stützstruktur-Schnittstelle"
 
-#: cura/UI/PrintInformation.py:93
+#: cura/UI/PrintInformation.py:94
 msgctxt "@tooltip"
 msgid "Support"
 msgstr "Stützstruktur"
 
-#: cura/UI/PrintInformation.py:94
+#: cura/UI/PrintInformation.py:95
 msgctxt "@tooltip"
 msgid "Skirt"
 msgstr "Skirt"
 
-#: cura/UI/PrintInformation.py:95
+#: cura/UI/PrintInformation.py:96
 msgctxt "@tooltip"
 msgid "Prime Tower"
 msgstr "Einzugsturm"
 
-#: cura/UI/PrintInformation.py:96
+#: cura/UI/PrintInformation.py:97
 msgctxt "@tooltip"
 msgid "Travel"
 msgstr "Bewegungen"
 
-#: cura/UI/PrintInformation.py:97
+#: cura/UI/PrintInformation.py:98
 msgctxt "@tooltip"
 msgid "Retractions"
 msgstr "Einzüge"
 
-#: cura/UI/PrintInformation.py:98
+#: cura/UI/PrintInformation.py:99
 msgctxt "@tooltip"
 msgid "Other"
 msgstr "Sonstige"
@@ -757,12 +756,12 @@ msgctxt "@text:window"
 msgid "The release notes could not be opened."
 msgstr "Die Versionshinweise konnten nicht geöffnet werden."
 
-#: cura/UI/WelcomePagesModel.py:57 cura/UI/WelcomePagesModel.py:277
+#: cura/UI/WelcomePagesModel.py:57
 msgctxt "@action:button"
 msgid "Next"
 msgstr "Weiter"
 
-#: cura/UI/WelcomePagesModel.py:286 cura/UI/WhatsNewPagesModel.py:68
+#: cura/UI/WhatsNewPagesModel.py:68
 msgctxt "@action:button"
 msgid "Skip"
 msgstr "Überspringen"
@@ -771,7 +770,7 @@ msgstr "Überspringen"
 #: plugins/FirmwareUpdater/FirmwareUpdaterMachineAction.qml:175
 #: plugins/PerObjectSettingsTool/SettingPickDialog.qml:135
 #: plugins/PostProcessingPlugin/PostProcessingPlugin.qml:444
-#: resources/qml/Dialogs/AboutDialog.qml:188
+#: resources/qml/Dialogs/AboutDialog.qml:171
 msgctxt "@action:button"
 msgid "Close"
 msgstr "Schließen"
@@ -1721,9 +1720,8 @@ msgctxt "@info:tooltip"
 msgid "The amount of smoothing to apply to the image."
 msgstr "Die Stärke der Glättung, die für das Bild angewendet wird."
 
-#: plugins/ImageReader/ConfigUI.qml:329
-#: plugins/SliceInfoPlugin/MoreInfoWindow.qml:136
-#: resources/qml/ColorDialog.qml:148 resources/qml/Dialogs/RenameDialog.qml:25
+#: plugins/ImageReader/ConfigUI.qml:329 resources/qml/ColorDialog.qml:148
+#: resources/qml/Dialogs/RenameDialog.qml:25
 msgctxt "@action:button"
 msgid "OK"
 msgstr "OK"
@@ -1979,7 +1977,7 @@ msgid "Decline"
 msgstr "Ablehnen"
 
 #: plugins/Marketplace/CloudSync/LicenseModel.py:13
-#: resources/qml/WelcomePages/UserAgreementContent.qml:53
+#: resources/qml/WelcomePages/UserAgreementContent.qml:54
 msgctxt "@button"
 msgid "Agree"
 msgstr "Stimme zu"
@@ -2852,41 +2850,6 @@ msgstr "Stellt eine Vorschau der Daten der Slice-Ebene bereit."
 msgctxt "name"
 msgid "Simulation View"
 msgstr "Simulationsansicht"
-
-#: plugins/SliceInfoPlugin/MoreInfoWindow.qml:16
-msgctxt "@title:window"
-msgid "More information on anonymous data collection"
-msgstr "Weitere Informationen zur anonymen Datenerfassung"
-
-#: plugins/SliceInfoPlugin/MoreInfoWindow.qml:73
-msgctxt "@text:window"
-msgid "UltiMaker Cura collects anonymous data in order to improve the print quality and user experience. Below is an example of all the data that is shared:"
-msgstr "UltiMaker Cura erfasst anonyme Daten, um die Druckqualität und Benutzererfahrung zu steigern. Nachfolgend ist ein Beispiel aller Daten, die geteilt werden:"
-
-#: plugins/SliceInfoPlugin/MoreInfoWindow.qml:107
-msgctxt "@text:window"
-msgid "I don't want to send anonymous data"
-msgstr "Ich möchte keine anonymen Daten senden"
-
-#: plugins/SliceInfoPlugin/MoreInfoWindow.qml:116
-msgctxt "@text:window"
-msgid "Allow sending anonymous data"
-msgstr "Senden von anonymen Daten erlauben"
-
-#: plugins/SliceInfoPlugin/SliceInfo.py:95
-msgctxt "@text"
-msgid "Unable to read example data file."
-msgstr "Die Datei mit den Beispieldaten kann nicht gelesen werden."
-
-#: plugins/SliceInfoPlugin/plugin.json
-msgctxt "name"
-msgid "Slice info"
-msgstr "Slice-Informationen"
-
-#: plugins/SliceInfoPlugin/plugin.json
-msgctxt "description"
-msgid "Submits anonymous slice info. Can be disabled through preferences."
-msgstr "Sendet anonymisierte Slice-Informationen. Kann in den Einstellungen deaktiviert werden."
 
 #: plugins/SolidView/SolidView.py:71
 msgctxt "@info:status"
@@ -4188,9 +4151,10 @@ msgid "Material estimation"
 msgstr "Materialschätzung"
 
 #: resources/qml/ActionPanel/PrintJobInformation.qml:156
+#, javascript-format
 msgctxt "@label m for meter"
-msgid "%1m"
-msgstr "%1 m"
+msgid "%1cc"
+msgstr ""
 
 #: resources/qml/ActionPanel/PrintJobInformation.qml:157
 msgctxt "@label g for grams"
@@ -4634,192 +4598,188 @@ msgctxt "@title:window The argument is the application name."
 msgid "About %1"
 msgstr "Über %1"
 
-#: resources/qml/Dialogs/AboutDialog.qml:59
+#: resources/qml/Dialogs/AboutDialog.qml:42
 msgctxt "@label"
 msgid "version: %1"
 msgstr "Version: %1"
 
-#: resources/qml/Dialogs/AboutDialog.qml:74
+#: resources/qml/Dialogs/AboutDialog.qml:57
 msgctxt "@label"
 msgid "End-to-end solution for fused filament 3D printing."
 msgstr "Komplettlösung für den 3D-Druck mit geschmolzenem Filament."
 
-#: resources/qml/Dialogs/AboutDialog.qml:87
+#: resources/qml/Dialogs/AboutDialog.qml:70
 msgctxt "@info:credit"
-msgid ""
-"Cura is developed by UltiMaker in cooperation with the community.\n"
-"Cura proudly uses the following open source projects:"
+msgid "Rapidia Cura is based on Ultimaker Cura and uses the following open source projects:"
 msgstr ""
-"Cura wurde von UltiMaker B.V. in Zusammenarbeit mit der Community entwickelt.\n"
-"Cura verwendet mit Stolz die folgenden Open Source-Projekte:"
 
-#: resources/qml/Dialogs/AboutDialog.qml:138
+#: resources/qml/Dialogs/AboutDialog.qml:121
 msgctxt "@label Description for application component"
 msgid "Graphical user interface"
 msgstr "Grafische Benutzerschnittstelle"
 
-#: resources/qml/Dialogs/AboutDialog.qml:139
+#: resources/qml/Dialogs/AboutDialog.qml:122
 msgctxt "@label Description for application component"
 msgid "Application framework"
 msgstr "Anwendungsrahmenwerk"
 
-#: resources/qml/Dialogs/AboutDialog.qml:140
+#: resources/qml/Dialogs/AboutDialog.qml:123
 msgctxt "@label Description for application component"
 msgid "G-code generator"
 msgstr "G-Code-Generator"
 
-#: resources/qml/Dialogs/AboutDialog.qml:141
+#: resources/qml/Dialogs/AboutDialog.qml:124
 msgctxt "@label Description for application component"
 msgid "Interprocess communication library"
 msgstr "Bibliothek Interprozess-Kommunikation"
 
-#: resources/qml/Dialogs/AboutDialog.qml:142
+#: resources/qml/Dialogs/AboutDialog.qml:125
 msgctxt "@label Description for application component"
 msgid "Python bindings for libnest2d"
 msgstr "Python-Bindungen für libnest2d"
 
-#: resources/qml/Dialogs/AboutDialog.qml:143
+#: resources/qml/Dialogs/AboutDialog.qml:126
 msgctxt "@label Description for application component"
 msgid "Polygon packing library, developed by Prusa Research"
 msgstr "Polygon-Packaging-Bibliothek, entwickelt von Prusa Research"
 
-#: resources/qml/Dialogs/AboutDialog.qml:144
+#: resources/qml/Dialogs/AboutDialog.qml:127
 msgctxt "@label Description for application component"
 msgid "Support library for handling 3MF files"
 msgstr "Support-Bibliothek für die Handhabung von 3MF-Dateien"
 
-#: resources/qml/Dialogs/AboutDialog.qml:145
+#: resources/qml/Dialogs/AboutDialog.qml:128
 msgctxt "@label Description for application component"
 msgid "Support library for file metadata and streaming"
 msgstr "Support-Bibliothek für Datei-Metadaten und Streaming"
 
-#: resources/qml/Dialogs/AboutDialog.qml:148
+#: resources/qml/Dialogs/AboutDialog.qml:131
 msgctxt "@label Description for application dependency"
 msgid "Programming language"
 msgstr "Programmiersprache"
 
-#: resources/qml/Dialogs/AboutDialog.qml:149
+#: resources/qml/Dialogs/AboutDialog.qml:132
 msgctxt "@label Description for application dependency"
 msgid "GUI framework"
 msgstr "GUI-Rahmenwerk"
 
-#: resources/qml/Dialogs/AboutDialog.qml:150
+#: resources/qml/Dialogs/AboutDialog.qml:133
 msgctxt "@label Description for application dependency"
 msgid "GUI framework bindings"
 msgstr "GUI-Rahmenwerk Einbindungen"
 
-#: resources/qml/Dialogs/AboutDialog.qml:151
+#: resources/qml/Dialogs/AboutDialog.qml:134
 msgctxt "@label Description for application dependency"
 msgid "C/C++ Binding library"
 msgstr "C/C++ Einbindungsbibliothek"
 
-#: resources/qml/Dialogs/AboutDialog.qml:152
+#: resources/qml/Dialogs/AboutDialog.qml:135
 msgctxt "@label Description for application dependency"
 msgid "Data interchange format"
 msgstr "Format Datenaustausch"
 
-#: resources/qml/Dialogs/AboutDialog.qml:153
+#: resources/qml/Dialogs/AboutDialog.qml:136
 msgctxt "@label"
 msgid "Font"
 msgstr "Schriftart"
 
-#: resources/qml/Dialogs/AboutDialog.qml:156
+#: resources/qml/Dialogs/AboutDialog.qml:139
 msgctxt "@label Description for application dependency"
 msgid "Polygon clipping library"
 msgstr "Bibliothek für Polygon-Beschneidung"
 
-#: resources/qml/Dialogs/AboutDialog.qml:157
+#: resources/qml/Dialogs/AboutDialog.qml:140
 msgctxt "@label Description for application dependency"
 msgid "JSON parser"
 msgstr "JSON-Parser"
 
-#: resources/qml/Dialogs/AboutDialog.qml:158
+#: resources/qml/Dialogs/AboutDialog.qml:141
 msgctxt "@label Description for application dependency"
 msgid "Utility functions, including an image loader"
 msgstr "Utility-Funktionen, einschließlich Bildlader"
 
-#: resources/qml/Dialogs/AboutDialog.qml:159
+#: resources/qml/Dialogs/AboutDialog.qml:142
 msgctxt "@label Description for application dependency"
 msgid "Utility library, including Voronoi generation"
 msgstr "Utility-Bibliothek, einschließlich Voronoi-Generierung"
 
-#: resources/qml/Dialogs/AboutDialog.qml:162
-#: resources/qml/Dialogs/AboutDialog.qml:163
+#: resources/qml/Dialogs/AboutDialog.qml:145
+#: resources/qml/Dialogs/AboutDialog.qml:146
 msgctxt "@label Description for application dependency"
 msgid "Root Certificates for validating SSL trustworthiness"
 msgstr "Root-Zertifikate zur Validierung der SSL-Vertrauenswürdigkeit"
 
-#: resources/qml/Dialogs/AboutDialog.qml:164
+#: resources/qml/Dialogs/AboutDialog.qml:147
 msgctxt "@label Description for application dependency"
 msgid "Compatibility between Python 2 and 3"
 msgstr "Kompatibilität zwischen Python 2 und 3"
 
-#: resources/qml/Dialogs/AboutDialog.qml:165
+#: resources/qml/Dialogs/AboutDialog.qml:148
 msgctxt "@label Description for application dependency"
 msgid "Support library for system keyring access"
 msgstr "Unterstützungsbibliothek für den Zugriff auf den Systemschlüsselbund"
 
-#: resources/qml/Dialogs/AboutDialog.qml:166
+#: resources/qml/Dialogs/AboutDialog.qml:149
 msgctxt "@label Description for application dependency"
 msgid "Support library for faster math"
 msgstr "Support-Bibliothek für schnelleres Rechnen"
 
-#: resources/qml/Dialogs/AboutDialog.qml:167
+#: resources/qml/Dialogs/AboutDialog.qml:150
 msgctxt "@label Description for application dependency"
 msgid "Support library for handling STL files"
 msgstr "Support-Bibliothek für die Handhabung von STL-Dateien"
 
-#: resources/qml/Dialogs/AboutDialog.qml:168
+#: resources/qml/Dialogs/AboutDialog.qml:151
 msgctxt "@label Description for application dependency"
 msgid "Python bindings for Clipper"
 msgstr "Python-Anbindungen für Clipper"
 
-#: resources/qml/Dialogs/AboutDialog.qml:169
+#: resources/qml/Dialogs/AboutDialog.qml:152
 msgctxt "@label Description for application dependency"
 msgid "Serial communication library"
 msgstr "Bibliothek für serielle Kommunikation"
 
-#: resources/qml/Dialogs/AboutDialog.qml:170
+#: resources/qml/Dialogs/AboutDialog.qml:153
 msgctxt "@label Description for application dependency"
 msgid "Support library for scientific computing"
 msgstr "Support-Bibliothek für wissenschaftliche Berechnung"
 
-#: resources/qml/Dialogs/AboutDialog.qml:171
+#: resources/qml/Dialogs/AboutDialog.qml:154
 msgctxt "@Label Description for application dependency"
 msgid "Python Error tracking library"
 msgstr "Python-Fehlerverfolgungs-Bibliothek"
 
-#: resources/qml/Dialogs/AboutDialog.qml:172
+#: resources/qml/Dialogs/AboutDialog.qml:155
 msgctxt "@label Description for application dependency"
 msgid "Support library for handling triangular meshes"
 msgstr "Support-Bibliothek für die Handhabung von dreieckigen Netzen"
 
-#: resources/qml/Dialogs/AboutDialog.qml:173
+#: resources/qml/Dialogs/AboutDialog.qml:156
 msgctxt "@label Description for application dependency"
 msgid "ZeroConf discovery library"
 msgstr "Bibliothek für ZeroConf-Erkennung"
 
-#: resources/qml/Dialogs/AboutDialog.qml:176
+#: resources/qml/Dialogs/AboutDialog.qml:159
 msgctxt "@label Description for development tool"
 msgid "Universal build system configuration"
 msgstr "Universelle Build-Systemkonfiguration"
 
-#: resources/qml/Dialogs/AboutDialog.qml:177
+#: resources/qml/Dialogs/AboutDialog.qml:160
 msgctxt "@label Description for development tool"
 msgid "Dependency and package manager"
 msgstr "Abhängigkeits- und Paketmanager"
 
-#: resources/qml/Dialogs/AboutDialog.qml:178
+#: resources/qml/Dialogs/AboutDialog.qml:161
 msgctxt "@label Description for development tool"
 msgid "Packaging Python-applications"
 msgstr "Verpacken von Python-Anwendungen"
 
-#: resources/qml/Dialogs/AboutDialog.qml:179
+#: resources/qml/Dialogs/AboutDialog.qml:162
 msgctxt "@label Description for development tool"
 msgid "Linux cross-distribution application deployment"
 msgstr "Distributionsunabhängiges Format für Linux-Anwendungen"
 
-#: resources/qml/Dialogs/AboutDialog.qml:180
+#: resources/qml/Dialogs/AboutDialog.qml:163
 msgctxt "@label Description for development tool"
 msgid "Generating Windows installers"
 msgstr "Generieren von Windows-Installern"
@@ -4993,11 +4953,6 @@ msgstr "Neues Projekt"
 msgctxt "@info:question"
 msgid "Are you sure you want to start a new project? This will clear the build plate and any unsaved settings."
 msgstr "Möchten Sie wirklich ein neues Projekt beginnen? Damit werden das Druckbett und alle nicht gespeicherten Einstellungen gelöscht."
-
-#: resources/qml/MainWindow/MainWindowHeader.qml:135
-msgctxt "@action:button"
-msgid "Marketplace"
-msgstr "Marktplatz"
 
 #: resources/qml/Menus/ConfigurationMenu/AutoConfiguration.qml:18
 msgctxt "@header"
@@ -5294,11 +5249,12 @@ msgid "Infill overlapping with this model is modified."
 msgstr "Überlappende Füllung wird bei diesem Modell angepasst."
 
 #: resources/qml/ObjectItemButton.qml:118
+#: resources/qml/ObjectItemButton.qml:121
 msgctxt "@label"
 msgid "Overlaps with this model are not supported."
 msgstr "Überlappungen mit diesem Modell werden nicht unterstützt."
 
-#: resources/qml/ObjectItemButton.qml:125
+#: resources/qml/ObjectItemButton.qml:128
 msgctxt "@label %1 is the number of settings it overrides."
 msgid "Overrides %1 setting."
 msgid_plural "Overrides %1 settings."
@@ -5923,6 +5879,7 @@ msgstr ""
 
 #: resources/qml/Preferences/Materials/MaterialsSyncDialog.qml:703
 #: resources/qml/WelcomePages/AddPrinterByIpContent.qml:299
+#: resources/qml/WelcomePages/AddThirdPartyPrinter.qml:104
 msgctxt "@button"
 msgid "Back"
 msgstr "Zurück"
@@ -6781,15 +6738,10 @@ msgctxt "@label"
 msgid "Add a networked printer"
 msgstr "Einen vernetzten Drucker hinzufügen"
 
-#: resources/qml/WelcomePages/AddThirdPartyPrinter.qml:78
+#: resources/qml/WelcomePages/AddThirdPartyPrinter.qml:80
 msgctxt "@label"
 msgid "Add a non-networked printer"
 msgstr "Einen unvernetzten Drucker hinzufügen"
-
-#: resources/qml/WelcomePages/AddThirdPartyPrinter.qml:102
-msgctxt "@button"
-msgid "Add UltiMaker printer via Digital Factory"
-msgstr "Drucker in der Digital Factory anzeigen"
 
 #: resources/qml/WelcomePages/AddUltimakerOrThirdPartyPrinter.qml:29
 msgctxt "@label"
@@ -6906,7 +6858,7 @@ msgctxt "@label"
 msgid "User Agreement"
 msgstr "Benutzervereinbarung"
 
-#: resources/qml/WelcomePages/UserAgreementContent.qml:67
+#: resources/qml/WelcomePages/UserAgreementContent.qml:68
 msgctxt "@button"
 msgid "Decline and close"
 msgstr "Ablehnen und schließen"
@@ -6921,6 +6873,54 @@ msgctxt "@label"
 msgid "No items to select from"
 msgstr "Keine auswählbaren Einträge"
 
+#~ msgctxt "@label m for meter"
+#~ msgid "%1m"
+#~ msgstr "%1 m"
+
+#~ msgctxt "@button"
+#~ msgid "Add UltiMaker printer via Digital Factory"
+#~ msgstr "Drucker in der Digital Factory anzeigen"
+
+#~ msgctxt "@text:window"
+#~ msgid "Allow sending anonymous data"
+#~ msgstr "Senden von anonymen Daten erlauben"
+
+#~ msgctxt "@info:credit"
+#~ msgid ""
+#~ "Cura is developed by UltiMaker in cooperation with the community.\n"
+#~ "Cura proudly uses the following open source projects:"
+#~ msgstr ""
+#~ "Cura wurde von UltiMaker B.V. in Zusammenarbeit mit der Community entwickelt.\n"
+#~ "Cura verwendet mit Stolz die folgenden Open Source-Projekte:"
+
+#~ msgctxt "@text:window"
+#~ msgid "I don't want to send anonymous data"
+#~ msgstr "Ich möchte keine anonymen Daten senden"
+
+#~ msgctxt "@action:button"
+#~ msgid "Marketplace"
+#~ msgstr "Marktplatz"
+
+#~ msgctxt "@title:window"
+#~ msgid "More information on anonymous data collection"
+#~ msgstr "Weitere Informationen zur anonymen Datenerfassung"
+
 #~ msgctxt "@description"
 #~ msgid "Please sign in to get verified plugins and materials for Ultimaker Cura Enterprise"
 #~ msgstr "Bitte melden Sie sich an, um verifizierte Plugins und Materialien für Ultimaker Cura Enterprise zu erhalten"
+
+#~ msgctxt "name"
+#~ msgid "Slice info"
+#~ msgstr "Slice-Informationen"
+
+#~ msgctxt "description"
+#~ msgid "Submits anonymous slice info. Can be disabled through preferences."
+#~ msgstr "Sendet anonymisierte Slice-Informationen. Kann in den Einstellungen deaktiviert werden."
+
+#~ msgctxt "@text:window"
+#~ msgid "UltiMaker Cura collects anonymous data in order to improve the print quality and user experience. Below is an example of all the data that is shared:"
+#~ msgstr "UltiMaker Cura erfasst anonyme Daten, um die Druckqualität und Benutzererfahrung zu steigern. Nachfolgend ist ein Beispiel aller Daten, die geteilt werden:"
+
+#~ msgctxt "@text"
+#~ msgid "Unable to read example data file."
+#~ msgstr "Die Datei mit den Beispieldaten kann nicht gelesen werden."

@@ -25,7 +25,7 @@ class SettingOverrideDecorator(SceneNodeDecorator):
     activeExtruderChanged = Signal()
     """Event indicating that the user selected a different extruder."""
 
-    _non_printing_mesh_settings = {"anti_overhang_mesh", "infill_mesh", "cutting_mesh"}
+    _non_printing_mesh_settings = {"anti_overhang_mesh","support_modifier_mesh", "infill_mesh", "cutting_mesh"}
     """Non-printing meshes
 
     If these settings are True for any mesh, the mesh does not need a convex hull,
@@ -33,7 +33,7 @@ class SettingOverrideDecorator(SceneNodeDecorator):
     Note that Support Mesh is not in here because it actually generates
     g-code in the volume of the mesh.
     """
-    _non_thumbnail_visible_settings = {"anti_overhang_mesh", "infill_mesh", "cutting_mesh", "support_mesh"}
+    _non_thumbnail_visible_settings = {"anti_overhang_mesh","support_modifier_mesh", "infill_mesh", "cutting_mesh", "support_mesh"}
 
     def __init__(self, *, force_update = True):
         super().__init__()
@@ -50,6 +50,7 @@ class SettingOverrideDecorator(SceneNodeDecorator):
         self._is_cutting_mesh = False
         self._is_infill_mesh = False
         self._is_anti_overhang_mesh = False
+        self._is_support_modifier_mesh = False
 
         self._stack.propertyChanged.connect(self._onSettingChanged)
 
@@ -126,8 +127,14 @@ class SettingOverrideDecorator(SceneNodeDecorator):
     def isAntiOverhangMesh(self):
         return self._is_anti_overhang_mesh
 
+    def isSupportModifierMesh(self):
+        return self._is_support_modifier_mesh
+
     def _evaluateAntiOverhangMesh(self):
         return bool(self._stack.userChanges.getProperty("anti_overhang_mesh", "value"))
+
+    def _evaluateIsSupportModifierMesh(self):
+        return bool(self._stack.userChanges.getProperty("support_modifier_mesh", "value"))
 
     def _evaluateIsCuttingMesh(self):
         return bool(self._stack.userChanges.getProperty("cutting_mesh", "value"))
@@ -159,6 +166,8 @@ class SettingOverrideDecorator(SceneNodeDecorator):
 
             if setting_key == "anti_overhang_mesh":
                 self._is_anti_overhang_mesh = self._evaluateAntiOverhangMesh()
+            elif setting_key == "support_modifier_mesh":
+                self._is_support_modifier_mesh = self._evaluateIsSupportModifierMesh()
             elif setting_key == "support_mesh":
                 self._is_support_mesh = self._evaluateIsSupportMesh()
             elif setting_key == "cutting_mesh":

@@ -30,7 +30,7 @@ from cura.OneAtATimeIterator import OneAtATimeIterator
 from cura.Settings.ExtruderManager import ExtruderManager
 
 
-NON_PRINTING_MESH_SETTINGS = ["anti_overhang_mesh", "infill_mesh", "cutting_mesh"]
+NON_PRINTING_MESH_SETTINGS = ["anti_overhang_mesh","support_modifier_mesh", "infill_mesh", "cutting_mesh"]
 
 
 class StartJobResult(IntEnum):

@@ -193,6 +193,9 @@ class ObjectsModel(ListModel):
                 if node.callDecoration("isAntiOverhangMesh"):
                     node_mesh_type = "anti_overhang_mesh"
                     per_object_settings_count -= 1  # do not count this mesh type setting
+                elif node.callDecoration("isSupportModifierMesh"):
+                    node_mesh_type = "support_modifier_mesh"
+                    per_object_settings_count -= 1  # do not count this mesh type setting
                 elif node.callDecoration("isSupportMesh"):
                     node_mesh_type = "support_mesh"
                     per_object_settings_count -= 1  # do not count this mesh type setting
@@ -210,7 +213,7 @@ class ObjectsModel(ListModel):
                         for key in per_object_stack.getTop().getAllKeys():
                             if per_object_stack.getTop().getInstance(key).definition.isAncestor("support"):
                                 per_object_settings_count += 1
-                    elif node_mesh_type == "anti_overhang_mesh":
+                    elif node_mesh_type == "anti_overhang_mesh" or node_mesh_type == "support_modifier_mesh":
                         # anti overhang meshes ignore per model settings
                         per_object_settings_count = 0
 

@@ -98,7 +98,7 @@ UM.Dialog
             expanded: [ "*" ]
             exclude:
             {
-                var excluded_settings = [ "machine_settings", "command_line_settings", "support_mesh", "anti_overhang_mesh", "cutting_mesh", "infill_mesh" ]
+                var excluded_settings = [ "machine_settings", "command_line_settings", "support_mesh", "anti_overhang_mesh","support_modifier_mesh", "cutting_mesh", "infill_mesh" ]
                 excluded_settings = excluded_settings.concat(settingPickDialog.additional_excluded_settings)
                 return excluded_settings
             }

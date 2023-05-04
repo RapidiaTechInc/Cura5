@@ -6755,6 +6755,17 @@
                     "settable_per_meshgroup": false,
                     "settable_globally": false
                 },
+                "support_modifier_mesh":
+                {
+                    "label": "Support Modifier Mesh",
+                    "description": "Use this mesh to modify the support that will be generated during slicing. If enable_support is unchecked then this mesh will block the generating of support. If it is enabled then this mesh can be used to change the support extruder.",
+                    "type": "bool",
+                    "default_value": false,
+                    "settable_per_mesh": true,
+                    "settable_per_extruder": false,
+                    "settable_per_meshgroup": false,
+                    "settable_globally": false
+                },
                 "magic_mesh_surface_mode":
                 {
                     "label": "Surface Mode",

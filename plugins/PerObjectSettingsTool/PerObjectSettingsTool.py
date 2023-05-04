@@ -91,7 +91,7 @@ class PerObjectSettingsTool(Tool):
 
         settings_visibility_changed = False
         settings = stack.getTop()
-        for property_key in ["infill_mesh", "cutting_mesh", "support_mesh", "anti_overhang_mesh"]:
+        for property_key in ["infill_mesh", "cutting_mesh", "support_mesh", "anti_overhang_mesh", "support_modifier_mesh"]:
             if property_key != mesh_type:
                 if settings.getInstance(property_key):
                     settings.removeInstance(property_key)
@@ -140,7 +140,7 @@ class PerObjectSettingsTool(Tool):
             return ""
 
         settings = stack.getTop()
-        for property_key in ["infill_mesh", "cutting_mesh", "support_mesh", "anti_overhang_mesh"]:
+        for property_key in ["infill_mesh", "cutting_mesh", "support_mesh", "anti_overhang_mesh", "support_modifier_mesh"]:
             if settings.getInstance(property_key) and settings.getProperty(property_key, "value"):
                 return property_key
 

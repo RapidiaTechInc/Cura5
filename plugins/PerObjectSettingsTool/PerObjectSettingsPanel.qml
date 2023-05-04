@@ -21,7 +21,7 @@ Item
     readonly property string supportMeshType: "support_mesh"
     readonly property string cuttingMeshType: "cutting_mesh"
     readonly property string infillMeshType: "infill_mesh"
-    readonly property string antiOverhangMeshType: "anti_overhang_mesh"
+    readonly property string supportModifierMeshType: "support_modifier_mesh"
 
     property var currentMeshType: UM.ActiveTool.properties.getValue("MeshType")
 
@@ -51,7 +51,7 @@ Item
         normalButton.checked = type === normalMeshType
         supportMeshButton.checked = type === supportMeshType
         overlapMeshButton.checked = type === infillMeshType || type === cuttingMeshType
-        antiOverhangMeshButton.checked = type === antiOverhangMeshType
+        supportModifierMeshButton.checked = type === supportModifierMeshType
     }
 
     function setMeshType(type)
@@ -122,8 +122,8 @@ Item
 
             UM.ToolbarButton
             {
-                id: antiOverhangMeshButton
-                text:  catalog.i18nc("@label", "Don't support overlaps")
+                id: supportModifierMeshButton
+                text:  catalog.i18nc("@label", "used to modify or remove support")
                 toolItem: UM.ColorImage
                 {
                     source: UM.Theme.getIcon("BlockSupportOverlaps")
@@ -131,7 +131,7 @@ Item
                 }
                 property bool needBorder: true
                 checkable: true
-                onClicked: setMeshType(antiOverhangMeshType)
+                onClicked: setMeshType(supportModifierMeshType)
                 z: 1
             }
 
@@ -189,7 +189,7 @@ Item
             id: currentSettings
             property int maximumHeight: 200 * screenScaleFactor
             height: Math.min(contents.count * (UM.Theme.getSize("section").height + UM.Theme.getSize("narrow_margin").height + UM.Theme.getSize("default_lining").height), maximumHeight)
-            visible: currentMeshType != "anti_overhang_mesh"
+            visible: true
 
             ListView
             {
@@ -216,9 +216,9 @@ Item
                     }
                     exclude:
                     {
-                        var excluded_settings = [ "support_mesh", "anti_overhang_mesh", "cutting_mesh", "infill_mesh" ]
+                        var excluded_settings = [ "support_mesh", "anti_overhang_mesh", "cutting_mesh", "infill_mesh", "support_modifier_mesh" ]
 
-                        if (currentMeshType == "support_mesh")
+                        if (currentMeshType == "support_mesh" || currentMeshType == "anti_overhang_mesh" || currentMeshType == "support_modifier_mesh")
                         {
                             excluded_settings = excluded_settings.concat(base.allCategoriesExceptSupport)
                         }

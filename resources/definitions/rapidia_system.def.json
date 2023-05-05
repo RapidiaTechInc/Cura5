@@ -189,6 +189,9 @@
         },
         "meshfix_maximum_extrusion_area_deviation":{
             "default_value": 2000
+        },
+        "support_use_towers": {
+            "default_value": "False"
         }
 
     }

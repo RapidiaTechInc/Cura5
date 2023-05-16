@@ -235,24 +235,6 @@ class PrintInformation(QObject):
             weight = float(amount) * float(density) / 1000
             cost = 0.
 
-            material_guid = material.getMetaDataEntry("GUID")
-            material_name = material.getName()
-
-            if material_guid in material_preference_values:
-                material_values = material_preference_values[material_guid]
-
-                if material_values and "spool_weight" in material_values:
-                    weight_per_spool = float(material_values["spool_weight"])
-                else:
-                    weight_per_spool = float(extruder_stack.getMetaDataEntry("properties", {}).get("weight", 0))
-
-                cost_per_spool = float(material_values["spool_cost"] if material_values and "spool_cost" in material_values else 0)
-
-                if weight_per_spool != 0:
-                    cost = cost_per_spool * weight / weight_per_spool
-                else:
-                    cost = 0
-
             # Material amount is sent as an amount of mm^3, so calculate length from that
             if radius != 0:
                 volume = float(amount) / 1000
@@ -263,6 +245,17 @@ class PrintInformation(QObject):
                 length = round((amount / (math.pi * radius ** 2)) / 1000, 2)
             else:
                 length = 0
+
+            material_name = material.getName()
+
+
+            cost_per_cartridge = float(extruder_stack.getMetaDataEntry("properties", {}).get("cartridge_cost", 0))
+            cartridge_volume = float(extruder_stack.getMetaDataEntry("properties", {}).get("cartridge_volume", 0))
+            cost_per_cc = cost_per_cartridge / cartridge_volume if cartridge_volume != 0 else 0
+
+            cost = cost_per_cc * volume
+
+            
 
             self._material_weights[build_plate_number].append(weight)
             self._material_lengths[build_plate_number].append(length)

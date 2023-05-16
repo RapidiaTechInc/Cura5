@@ -77,6 +77,7 @@ class BaseMaterialsModel(ListModel):
         self.addRoleName(Qt.ItemDataRole.UserRole + 14, "is_read_only")
         self.addRoleName(Qt.ItemDataRole.UserRole + 15, "container_node")
         self.addRoleName(Qt.ItemDataRole.UserRole + 16, "is_favorite")
+        self.addRoleName(Qt.ItemDataRole.UserRole + 17, "cartridge_cost")
 
     def _onChanged(self) -> None:
         self._update_timer.start()
@@ -204,6 +205,8 @@ class BaseMaterialsModel(ListModel):
             "color_code":           metadata.get("color_code", ""),
             "density":              metadata.get("properties", {}).get("density", ""),
             "diameter":             metadata.get("properties", {}).get("diameter", ""),
+            "cartridge_cost":   metadata.get("properties", {}).get("cartridge_cost", ""),
+            "cartridge_volume": metadata.get("properties", {}).get("cartridge_volume", ""), # in cc
             "approximate_diameter": metadata["approximate_diameter"],
             "adhesion_info":        metadata["adhesion_info"],
             "is_read_only":         self._container_registry.isReadOnly(metadata["id"]),

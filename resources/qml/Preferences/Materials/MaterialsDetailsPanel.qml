@@ -48,6 +48,8 @@ Item
         materialProperties.density = currentItem.density || 0.0
         materialProperties.diameter = currentItem.diameter || 0.0
         materialProperties.approximate_diameter = currentItem.approximate_diameter || "0"
+        materialProperties.cartridge_cost = currentItem.cartridge_cost || "0"
+        materialProperties.cartridge_volume = currentItem.cartridge_volume || "0"
     }
 
     // Material detailed information view below the title Label
@@ -82,10 +84,10 @@ Item
         property real diameter: 0.0;
         property string approximate_diameter: "0";
 
-        property real spool_cost: 0.0;
-        property real spool_weight: 0.0;
+        property real cartridge_cost: 0.0;
+        property real cartridge_volume: 0.0;
         property real spool_length: 0.0;
-        property real cost_per_meter: 0.0;
+        property real cost_per_cc: 0.0;
 
         property string description: "";
         property string adhesion_info: "";

@@ -23,7 +23,7 @@ Item
     property var materialManagementModel: CuraApplication.getMaterialManagementModel()
 
     property double spoolLength: calculateSpoolLength()
-    property real costPerMeter: calculateCostPerMeter()
+    property real costPerCC: calculateCostPerCC()
 
     signal resetSelectedMaterial()
 
@@ -304,7 +304,7 @@ Item
                             base.setMetaDataEntry("properties/density", properties.density, modified_text)
                         }
 
-                        onValueTextChanged: updateCostPerMeter()
+                        onValueTextChanged: updateCostPerCC()
                     }
                 }
 
@@ -354,7 +354,7 @@ Item
                             }
                         }
 
-                        onValueTextChanged: updateCostPerMeter()
+                        onValueTextChanged: updateCostPerCC()
                     }
                 }
 
@@ -366,13 +366,14 @@ Item
                     {
                         height: informationPage.rowHeight
                         width: informationPage.columnWidth
-                        text: catalog.i18nc("@label", "Filament Cost")
+                        text: catalog.i18nc("@label", "Cartridge Cost")
                     }
 
                     Cura.NumericTextFieldWithUnit
                     {
                         id: spoolCostTextField
-                        valueText: base.getMaterialPreferenceValue(properties.guid, "spool_cost")
+                        valueText: properties.cartridge_cost
+                        enabled: base.editingEnabled
                         controlWidth: informationPage.columnWidth
                         controlHeight: informationPage.rowHeight
                         spacing: 0
@@ -380,13 +381,8 @@ Item
                         decimals: 2
                         maximum: 100000000
 
-                        editingFinishedFunction: function()
-                        {
-                            var modified_text = valueText.replace(",", ".");
-                            base.setMaterialPreferenceValue(properties.guid, "spool_cost", modified_text);
-                        }
+                        
 
-                        onValueTextChanged: updateCostPerMeter()
                     }
                 }
 
@@ -398,17 +394,18 @@ Item
                     {
                         height: informationPage.rowHeight
                         width: informationPage.columnWidth
-                        text: catalog.i18nc("@label", "Filament weight")
+                        text: catalog.i18nc("@label", "Cartridge Volume")
                     }
 
                     Cura.NumericTextFieldWithUnit
                     {
                         id: spoolWeightTextField
-                        valueText: base.getMaterialPreferenceValue(properties.guid, "spool_weight", Cura.ContainerManager.getContainerMetaDataEntry(properties.container_id, "properties/weight"))
+                        valueText: properties.cartridge_volume
+                        enabled: base.editingEnabled
                         controlWidth: informationPage.columnWidth
                         controlHeight: informationPage.rowHeight
                         spacing: 0
-                        unitText: " g"
+                        unitText: " cc"
                         decimals: 0
                         maximum: 10000
 
@@ -417,8 +414,8 @@ Item
                             var modified_text = valueText.replace(",", ".")
                             base.setMaterialPreferenceValue(properties.guid, "spool_weight", modified_text)
                         }
-
-                        onValueTextChanged: updateCostPerMeter()
+                        
+                        onValueTextChanged: updateCostPerCC()
                     }
                 }
 
@@ -430,31 +427,13 @@ Item
                     {
                         height: informationPage.rowHeight
                         width: informationPage.columnWidth
-                        text: catalog.i18nc("@label", "Filament length")
-                    }
-                    UM.Label
-                    {
-                        width: informationPage.columnWidth
-                        text: "~ %1 m".arg(Math.round(base.spoolLength))
-                        height: informationPage.rowHeight
-                    }
-                }
-
-                Row
-                {
-                    height: parent.rowHeight
-                    spacing: UM.Theme.getSize("narrow_margin").width
-                    UM.Label
-                    {
-                        height: informationPage.rowHeight
-                        width: informationPage.columnWidth
-                        text: catalog.i18nc("@label", "Cost per Meter")
+                        text: catalog.i18nc("@label", "Cost per cc")
                     }
                     UM.Label
                     {
                         height: informationPage.rowHeight
                         width: informationPage.columnWidth
-                        text: "~ %1 %2/m".arg(base.costPerMeter.toFixed(2)).arg(base.currency)
+                        text: "~ %1 %2/cc".arg(base.costPerCC.toFixed(2)).arg(base.currency)
                     }
                 }
 
@@ -649,14 +628,14 @@ Item
         }
     }
 
-    function updateCostPerMeter()
+    function updateCostPerCC()
     {
         var modified_weight = spoolWeightTextField.valueText.replace(",", ".")
         var modified_cost = spoolCostTextField.valueText.replace(",", ".")
         var modified_diameter = diameterTextField.valueText.replace(",", ".")
         var modified_density = densityTextField.valueText.replace(",", ".")
         base.spoolLength = calculateSpoolLength(modified_diameter, modified_density, parseInt(modified_weight));
-        base.costPerMeter = calculateCostPerMeter(parseFloat(modified_cost));
+        base.costPerCC = calculateCostPerCC(parseFloat(modified_cost));
     }
 
     function calculateSpoolLength(diameter, density, spoolWeight)
@@ -683,18 +662,23 @@ Item
         return volume / area; // in m
     }
 
-    function calculateCostPerMeter(spoolCost)
+    function calculateCostPerCC(cartridge_cost, cartridge_volume)
     {
-        if(!spoolCost)
+        if(!cartridge_cost)
         {
-            spoolCost = base.getMaterialPreferenceValue(properties.guid, "spool_cost");
+            cartridge_cost = properties.cartridge_cost;
         }
 
-        if (spoolLength == 0)
+        if(!cartridge_volume || cartridge_volume == 0)
         {
-            return 0;
+            if(!properties.cartridge_volume || properties.cartridge_volume == 0)
+            {
+                return 0;
+            }
+            cartridge_volume = properties.cartridge_volume;
         }
-        return spoolCost / spoolLength;
+
+        return cartridge_cost / cartridge_volume;
     }
 
     // Tiny convenience function to check if a value really changed before trying to set it.

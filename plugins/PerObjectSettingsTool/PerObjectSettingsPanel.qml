@@ -392,6 +392,10 @@ Item
                 {
                     settingPickDialog.additional_excluded_settings = base.allCategoriesExceptSupport;
                 }
+                else if (currentMeshType == "support_modifier_mesh")
+                {
+                    settingPickDialog.additional_excluded_settings = base.allCategoriesExceptSupport;
+                }
                 else
                 {
                     settingPickDialog.additional_excluded_settings = []

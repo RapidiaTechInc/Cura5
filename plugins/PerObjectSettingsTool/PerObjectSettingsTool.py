@@ -17,18 +17,23 @@ class PerObjectSettingsTool(Tool):
 
     The settings per object are kept in a ContainerStack, which is linked to a node by decorator.
     """
+
     def __init__(self):
         super().__init__()
         self._model = None
 
-        self.setExposedProperties("SelectedObjectId", "ContainerID", "SelectedActiveExtruder", "MeshType")
+        self.setExposedProperties(
+            "SelectedObjectId", "ContainerID", "SelectedActiveExtruder", "MeshType"
+        )
 
         self._multi_extrusion = False
         self._single_model_selected = False
         self.visibility_handler = None
 
         Selection.selectionChanged.connect(self.propertyChanged)
-        Application.getInstance().globalContainerStackChanged.connect(self._onGlobalContainerChanged)
+        Application.getInstance().globalContainerStackChanged.connect(
+            self._onGlobalContainerChanged
+        )
         self._onGlobalContainerChanged()
         Selection.selectionChanged.connect(self._updateEnabled)
 
@@ -67,7 +72,9 @@ class PerObjectSettingsTool(Tool):
         """
 
         selected_object = Selection.getSelectedObject(0)
-        stack = selected_object.callDecoration("getStack") #Don't try to get the active extruder since it may be None anyway.
+        stack = selected_object.callDecoration(
+            "getStack"
+        )  # Don't try to get the active extruder since it may be None anyway.
         if not stack:
             selected_object.addDecorator(SettingOverrideDecorator())
         selected_object.callDecoration("setActiveExtruder", extruder_stack_id)
@@ -81,22 +88,36 @@ class PerObjectSettingsTool(Tool):
 
         selected_object = Selection.getSelectedObject(0)
         if selected_object is None:
-            Logger.log("w", "Tried setting the mesh type of the selected object, but no object was selected")
+            Logger.log(
+                "w",
+                "Tried setting the mesh type of the selected object, but no object was selected",
+            )
             return False
 
-        stack = selected_object.callDecoration("getStack") #Don't try to get the active extruder since it may be None anyway.
+        stack = selected_object.callDecoration(
+            "getStack"
+        )  # Don't try to get the active extruder since it may be None anyway.
         if not stack:
             selected_object.addDecorator(SettingOverrideDecorator())
             stack = selected_object.callDecoration("getStack")
 
         settings_visibility_changed = False
         settings = stack.getTop()
-        for property_key in ["infill_mesh", "cutting_mesh", "support_mesh", "anti_overhang_mesh", "support_modifier_mesh"]:
+        for property_key in [
+            "infill_mesh",
+            "cutting_mesh",
+            "support_mesh",
+            "anti_overhang_mesh",
+            "support_modifier_mesh",
+        ]:
             if property_key != mesh_type:
                 if settings.getInstance(property_key):
                     settings.removeInstance(property_key)
             else:
-                if not (settings.getInstance(property_key) and settings.getProperty(property_key, "value")):
+                if not (
+                    settings.getInstance(property_key)
+                    and settings.getProperty(property_key, "value")
+                ):
                     definition = stack.getSettingDefinition(property_key)
                     new_instance = SettingInstance(definition, settings)
                     new_instance.setProperty("value", True)
@@ -104,26 +125,53 @@ class PerObjectSettingsTool(Tool):
                     settings.addInstance(new_instance)
 
         # Override some settings to ensure that the infill mesh by default adds no skin or walls. Or remove them if not an infill mesh.
-        specialized_settings = {
+        infill_mesh_settings = {
             "top_bottom_thickness": 0,
             "top_thickness": "=top_bottom_thickness",
             "bottom_thickness": "=top_bottom_thickness",
             "top_layers": "=0 if infill_sparse_density == 100 else math.ceil(round(top_thickness / resolveOrValue('layer_height'), 4))",
             "bottom_layers": "=0 if infill_sparse_density == 100 else math.ceil(round(bottom_thickness / resolveOrValue('layer_height'), 4))",
             "wall_thickness": 0,
-            "wall_line_count": "=max(1, round((wall_thickness - wall_line_width_0) / wall_line_width_x) + 1) if wall_thickness != 0 else 0"
+            "wall_line_count": "=max(1, round((wall_thickness - wall_line_width_0) / wall_line_width_x) + 1) if wall_thickness != 0 else 0",
         }
-        for property_key in specialized_settings:
+
+        support_modifier_settings = {"support_enable": True, "support_extruder_nr": 0}
+        for property_key in infill_mesh_settings:
             if mesh_type == "infill_mesh":
                 if settings.getInstance(property_key) is None:
                     definition = stack.getSettingDefinition(property_key)
                     new_instance = SettingInstance(definition, settings)
-                    new_instance.setProperty("value", specialized_settings[property_key])
+                    new_instance.setProperty(
+                        "value", infill_mesh_settings[property_key]
+                    )
                     new_instance.resetState()  # Ensure that the state is not seen as a user state.
                     settings.addInstance(new_instance)
                     settings_visibility_changed = True
 
-            elif old_mesh_type == "infill_mesh" and settings.getInstance(property_key) and property_key in specialized_settings:
+            elif (
+                old_mesh_type == "infill_mesh"
+                and settings.getInstance(property_key)
+                and property_key in infill_mesh_settings
+            ):
+                settings.removeInstance(property_key)
+                settings_visibility_changed = True
+
+        for property_key in support_modifier_settings:
+            if mesh_type == "support_modifier_mesh":
+                if settings.getInstance(property_key) is None:
+                    definition = stack.getSettingDefinition(property_key)
+                    new_instance = SettingInstance(definition, settings)
+                    new_instance.setProperty(
+                        "value", support_modifier_settings[property_key]
+                    )
+                    new_instance.resetState()  # Ensure that the state is not seen as a user state.
+                    settings.addInstance(new_instance)
+                    settings_visibility_changed = True
+            elif (
+                old_mesh_type == "support_modifier_mesh"
+                and settings.getInstance(property_key)
+                and property_key in support_modifier_settings
+            ):
                 settings.removeInstance(property_key)
                 settings_visibility_changed = True
 
@@ -135,13 +183,23 @@ class PerObjectSettingsTool(Tool):
 
     def getMeshType(self):
         selected_object = Selection.getSelectedObject(0)
-        stack = selected_object.callDecoration("getStack") #Don't try to get the active extruder since it may be None anyway.
+        stack = selected_object.callDecoration(
+            "getStack"
+        )  # Don't try to get the active extruder since it may be None anyway.
         if not stack:
             return ""
 
         settings = stack.getTop()
-        for property_key in ["infill_mesh", "cutting_mesh", "support_mesh", "anti_overhang_mesh", "support_modifier_mesh"]:
-            if settings.getInstance(property_key) and settings.getProperty(property_key, "value"):
+        for property_key in [
+            "infill_mesh",
+            "cutting_mesh",
+            "support_mesh",
+            "anti_overhang_mesh",
+            "support_modifier_mesh",
+        ]:
+            if settings.getInstance(property_key) and settings.getProperty(
+                property_key, "value"
+            ):
                 return property_key
 
         return ""
@@ -149,21 +207,27 @@ class PerObjectSettingsTool(Tool):
     def _onGlobalContainerChanged(self):
         global_container_stack = Application.getInstance().getGlobalContainerStack()
         if global_container_stack:
-
             # used for enabling or disabling per extruder settings per object
-            self._multi_extrusion = global_container_stack.getProperty("machine_extruder_count", "value") > 1
+            self._multi_extrusion = (
+                global_container_stack.getProperty("machine_extruder_count", "value")
+                > 1
+            )
 
             extruder_stack = ExtruderManager.getInstance().getExtruderStack(0)
 
             if extruder_stack:
-                root_node = Application.getInstance().getController().getScene().getRoot()
+                root_node = (
+                    Application.getInstance().getController().getScene().getRoot()
+                )
                 for node in DepthFirstIterator(root_node):
                     new_stack_id = extruder_stack.getId()
                     # Get position of old extruder stack for this node
                     old_extruder_pos = node.callDecoration("getActiveExtruderPosition")
                     if old_extruder_pos is not None:
                         # Fetch current (new) extruder stack at position
-                        new_stack = ExtruderManager.getInstance().getExtruderStack(old_extruder_pos)
+                        new_stack = ExtruderManager.getInstance().getExtruderStack(
+                            old_extruder_pos
+                        )
                         if new_stack:
                             new_stack_id = new_stack.getId()
                     node.callDecoration("setActiveExtruder", new_stack_id)
@@ -172,10 +236,16 @@ class PerObjectSettingsTool(Tool):
 
     def _updateEnabled(self):
         selected_objects = Selection.getAllSelectedObjects()
-        if len(selected_objects)> 1:
+        if len(selected_objects) > 1:
             self._single_model_selected = False
-        elif len(selected_objects) == 1 and selected_objects[0].callDecoration("isGroup"):
-            self._single_model_selected = False # Group is selected, so tool needs to be disabled
+        elif len(selected_objects) == 1 and selected_objects[0].callDecoration(
+            "isGroup"
+        ):
+            self._single_model_selected = (
+                False  # Group is selected, so tool needs to be disabled
+            )
         else:
             self._single_model_selected = True
-        Application.getInstance().getController().toolEnabledChanged.emit(self._plugin_id, self._single_model_selected)
+        Application.getInstance().getController().toolEnabledChanged.emit(
+            self._plugin_id, self._single_model_selected
+        )

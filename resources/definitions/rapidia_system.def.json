@@ -78,7 +78,7 @@
             "value": "2 * layer_height"
         },
         "gradual_support_infill_steps": {
-            "value": 0
+            "value": 2
         },
         "support_infill_rate": {
             "value": 50
@@ -88,6 +88,21 @@
         },
         "acceleration_enabled":{
             "value": true
+        },
+        "infill_pattern":{
+            "value": "zigzag"
+        },
+        "infill_angles":{
+            "default_value": [45, 135]
+        },
+        "support_infill_angles":{
+            "default_value": [0, 90]
+        },
+        "support_join_distance":{
+            "default_value": 1.0
+        },
+        "support_roof_line_distance":{
+            "value": 0.375
         },
         "acceleration_travel_enabled": {"value": false},
         "adhesion_type": {"value": "raft"},
@@ -176,7 +191,7 @@
         "support_angle": {"value": 40},
         "support_interface_enable": {"value": "True"},
         "support_interface_offset": {"value": 0},
-        "support_interface_pattern": {"default_value": "zigzag"},
+        "support_interface_pattern": {"default_value": "concentric"},
         "support_interface_skip_height": {"value": 0.1},
         "material_shrinkage_percentage": {
             "resolve": "extruderValues(\"material_shrinkage_percentage\")[0] if extruderValues(\"material_shrinkage_percentage\")[0] != 100 else extruderValues(\"material_shrinkage_percentage\")[1]"

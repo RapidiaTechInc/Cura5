@@ -9,16 +9,26 @@
 # code (e.g. in the user's home directory where AppImages by default run from).
 # See issue CURA-7081.
 import sys
+
 if "" in sys.path:
     sys.path.remove("")
 
 import argparse
 import faulthandler
 import os
-if sys.platform != "linux":  # Turns out the Linux build _does_ use this, but we're not making an Enterprise release for that system anyway.
-    os.environ["QT_PLUGIN_PATH"] = ""  # Security workaround: Don't need it, and introduces an attack vector, so set to nul.
-    os.environ["QML2_IMPORT_PATH"] = ""  # Security workaround: Don't need it, and introduces an attack vector, so set to nul.
-    os.environ["QT_OPENGL_DLL"] = ""  # Security workaround: Don't need it, and introduces an attack vector, so set to nul.
+
+if (
+    sys.platform != "linux"
+):  # Turns out the Linux build _does_ use this, but we're not making an Enterprise release for that system anyway.
+    os.environ[
+        "QT_PLUGIN_PATH"
+    ] = ""  # Security workaround: Don't need it, and introduces an attack vector, so set to nul.
+    os.environ[
+        "QML2_IMPORT_PATH"
+    ] = ""  # Security workaround: Don't need it, and introduces an attack vector, so set to nul.
+    os.environ[
+        "QT_OPENGL_DLL"
+    ] = ""  # Security workaround: Don't need it, and introduces an attack vector, so set to nul.
 
 from PyQt6.QtNetwork import QSslConfiguration, QSslSocket
 
@@ -30,17 +40,18 @@ from cura.CrashHandler import CrashHandler
 
 try:
     import sentry_sdk
+
     with_sentry_sdk = True
 except ImportError:
     with_sentry_sdk = False
 
-parser = argparse.ArgumentParser(prog = "cura",
-                                 add_help = False)
-parser.add_argument("--debug",
-                    action = "store_true",
-                    default = False,
-                    help = "Turn on the debug mode by setting this option."
-                    )
+parser = argparse.ArgumentParser(prog="cura", add_help=False)
+parser.add_argument(
+    "--debug",
+    action="store_true",
+    default=False,
+    help="Turn on the debug mode by setting this option.",
+)
 
 known_args = vars(parser.parse_known_args()[0])
 
@@ -51,9 +62,15 @@ if with_sentry_sdk:
 
     if ApplicationMetadata.CuraVersion == "master":
         sentry_env = "development"  # Master is always a development version.
-    elif "beta" in ApplicationMetadata.CuraVersion or "BETA" in ApplicationMetadata.CuraVersion:
+    elif (
+        "beta" in ApplicationMetadata.CuraVersion
+        or "BETA" in ApplicationMetadata.CuraVersion
+    ):
         sentry_env = "beta"
-    elif "alpha" in ApplicationMetadata.CuraVersion or "ALPHA" in ApplicationMetadata.CuraVersion:
+    elif (
+        "alpha" in ApplicationMetadata.CuraVersion
+        or "ALPHA" in ApplicationMetadata.CuraVersion
+    ):
         sentry_env = "alpha"
     try:
         if ApplicationMetadata.CuraVersion.split(".")[2] == "99":
@@ -64,44 +81,56 @@ if with_sentry_sdk:
     # Errors to be ignored by Sentry
     ignore_errors = [KeyboardInterrupt, MemoryError]
     try:
-        sentry_sdk.init("https://5034bf0054fb4b889f82896326e79b13@sentry.io/1821564",
-                        before_send = CrashHandler.sentryBeforeSend,
-                        environment = sentry_env,
-                        release = "cura%s" % ApplicationMetadata.CuraVersion,
-                        default_integrations = False,
-                        max_breadcrumbs = 300,
-                        server_name = "cura",
-                        ignore_errors = ignore_errors)
+        sentry_sdk.init(
+            "https://5034bf0054fb4b889f82896326e79b13@sentry.io/1821564",
+            before_send=CrashHandler.sentryBeforeSend,
+            environment=sentry_env,
+            release="cura%s" % ApplicationMetadata.CuraVersion,
+            default_integrations=False,
+            max_breadcrumbs=300,
+            server_name="cura",
+            ignore_errors=ignore_errors,
+        )
     except Exception:
         with_sentry_sdk = False
 
 if not known_args["debug"]:
+
     def get_cura_dir_path():
         if Platform.isWindows():
             appdata_path = os.getenv("APPDATA")
-            if not appdata_path: #Defensive against the environment variable missing (should never happen).
+            if (
+                not appdata_path
+            ):  # Defensive against the environment variable missing (should never happen).
                 appdata_path = "."
-            return os.path.join(appdata_path, CuraAppName, CuraVersion)
+            return os.path.join(appdata_path, f"{CuraAppName}_5", CuraVersion)
         elif Platform.isLinux():
-            return os.path.expanduser("~/.local/share/" + CuraAppName + "/" + CuraVersion)
+            return os.path.expanduser(
+                "~/.local/share/" + CuraAppName + "/" + CuraVersion
+            )
         elif Platform.isOSX():
-            return os.path.expanduser("~/Library/Logs/" + CuraAppName + "/" + CuraVersion)
+            return os.path.expanduser(
+                "~/Library/Logs/" + CuraAppName + "/" + CuraVersion
+            )
 
     # Do not redirect stdout and stderr to files if we are running CLI.
     if hasattr(sys, "frozen") and "cli" not in os.path.basename(sys.argv[0]).lower():
         dirpath = get_cura_dir_path()
-        os.makedirs(dirpath, exist_ok = True)
-        sys.stdout = open(os.path.join(dirpath, "stdout.log"), "w", encoding = "utf-8")
-        sys.stderr = open(os.path.join(dirpath, "stderr.log"), "w", encoding = "utf-8")
+        os.makedirs(dirpath, exist_ok=True)
+        sys.stdout = open(os.path.join(dirpath, "stdout.log"), "w", encoding="utf-8")
+        sys.stderr = open(os.path.join(dirpath, "stderr.log"), "w", encoding="utf-8")
 
 
 # WORKAROUND: GITHUB-88 GITHUB-385 GITHUB-612
-if Platform.isLinux(): # Needed for platform.linux_distribution, which is not available on Windows and OSX
+if (
+    Platform.isLinux()
+):  # Needed for platform.linux_distribution, which is not available on Windows and OSX
     # For Ubuntu: https://bugs.launchpad.net/ubuntu/+source/python-qt4/+bug/941826
     # The workaround is only needed on Ubuntu+NVidia drivers. Other drivers are not affected, but fine with this fix.
     try:
         import ctypes
         from ctypes.util import find_library
+
         libGL = find_library("GL")
         ctypes.CDLL(libGL, ctypes.RTLD_GLOBAL)
     except:
@@ -130,19 +159,20 @@ if Platform.isLinux() and hasattr(sys, "frozen"):
 # This can cause issues such as having libsip loaded from
 # the system instead of the one provided with Cura, which causes
 # incompatibility issues with libArcus
-if "PYTHONPATH" in os.environ.keys():                       # If PYTHONPATH is used
-    PYTHONPATH = os.environ["PYTHONPATH"].split(os.pathsep) # Get the value, split it..
-    PYTHONPATH.reverse()                                    # and reverse it, because we always insert at 1
-    for PATH in PYTHONPATH:                                 # Now beginning with the last PATH
-        PATH_real = os.path.realpath(PATH)                  # Making the the path "real"
-        if PATH_real in sys.path:                           # This should always work, but keep it to be sure..
+if "PYTHONPATH" in os.environ.keys():  # If PYTHONPATH is used
+    PYTHONPATH = os.environ["PYTHONPATH"].split(os.pathsep)  # Get the value, split it..
+    PYTHONPATH.reverse()  # and reverse it, because we always insert at 1
+    for PATH in PYTHONPATH:  # Now beginning with the last PATH
+        PATH_real = os.path.realpath(PATH)  # Making the the path "real"
+        if PATH_real in sys.path:  # This should always work, but keep it to be sure..
             sys.path.remove(PATH_real)
-        sys.path.insert(1, PATH_real)                       # Insert it at 1 after os.curdir, which is 0.
+        sys.path.insert(1, PATH_real)  # Insert it at 1 after os.curdir, which is 0.
 
 
 def exceptHook(hook_type, value, traceback):
     from cura.CrashHandler import CrashHandler
     from cura.CuraApplication import CuraApplication
+
     has_started = False
     if CuraApplication.Created:
         has_started = CuraApplication.getInstance().started
@@ -162,6 +192,7 @@ def exceptHook(hook_type, value, traceback):
     # we run the old routine to show the Crash Dialog.
     #
     from PyQt6.QtWidgets import QApplication
+
     if CuraApplication.Created:
         _crash_handler = CrashHandler(hook_type, value, traceback, has_started)
         if CuraApplication.splash is not None:
@@ -187,9 +218,9 @@ def exceptHook(hook_type, value, traceback):
 sys.excepthook = exceptHook
 # Enable dumping traceback for all threads
 if sys.stderr and not sys.stderr.closed:
-    faulthandler.enable(file = sys.stderr, all_threads = True)
+    faulthandler.enable(file=sys.stderr, all_threads=True)
 elif sys.stdout and not sys.stdout.closed:
-    faulthandler.enable(file = sys.stdout, all_threads = True)
+    faulthandler.enable(file=sys.stdout, all_threads=True)
 
 from cura.CuraApplication import CuraApplication
 
@@ -208,6 +239,7 @@ if Platform.isOSX() and getattr(sys, "frozen", False):
         path_list.append(search_path)
     os.environ["DYLD_FALLBACK_LIBRARY_PATH"] = ":".join(path_list)
     import trimesh.exchange.load
+
     os.environ["DYLD_FALLBACK_LIBRARY_PATH"] = old_env
 
 # WORKAROUND: CURA-6739
@@ -223,6 +255,7 @@ if Platform.isLinux() and getattr(sys, "frozen", False):
         path_list.append(search_path)
     os.environ["LD_LIBRARY_PATH"] = ":".join(path_list)
     import trimesh.exchange.load
+
     os.environ["LD_LIBRARY_PATH"] = old_env
 
 # WORKAROUND: Cura#5488
@@ -230,7 +263,7 @@ if Platform.isLinux() and getattr(sys, "frozen", False):
 # even worse, it crashes when switching to the "Preview" pane.
 if Platform.isLinux():
     os.environ["QT_QUICK_CONTROLS_STYLE"] = "default"
-    
+
 if ApplicationMetadata.CuraDebugMode:
     ssl_conf = QSslConfiguration.defaultConfiguration()
     ssl_conf.setPeerVerifyMode(QSslSocket.PeerVerifyMode.VerifyNone)

@@ -164,6 +164,8 @@ Delete "$INSTDIR\${APP_NAME} website.url"
 !endif
 
 RmDir /r /REBOOTOK "$INSTDIR"
+RMDir /r /REBOOTOK "$APPDATA\${APP_NAME}
+RMDir /r /REBOOTOK "$LOCALAPPDATA\${APP_NAME}
 
 !ifdef REG_START_MENU
 !insertmacro MUI_STARTMENU_GETFOLDER "Application" $SM_Folder

@@ -45,6 +45,7 @@ InstallDir "$PROGRAMFILES64\${APP_NAME}"
 
 !include "MUI2.nsh"
 !include fileassoc.nsh
+!include LogicLib.nsh
 
 !define MUI_ABORTWARNING
 !define MUI_UNABORTWARNING
@@ -85,6 +86,22 @@ InstallDir "$PROGRAMFILES64\${APP_NAME}"
 !insertmacro MUI_UNPAGE_FINISH
 
 !insertmacro MUI_LANGUAGE "English"
+
+Function GetUsernameOfCurrentSessionFromWTS
+Push $0
+Push $1
+Push $2
+StrCpy $2 ""
+System::Call 'WTSAPI32::WTSQuerySessionInformation(p0,i-1,i5,*p0r1,*i)i.r0'
+${If} $0 <> 0
+    System::Call '*$1(&t${NSIS_MAX_STRLEN}.r2)'
+    System::Call 'WTSAPI32::WTSFreeMemory(p$1)'
+${EndIf}
+Exch 2
+Pop $1
+Pop $0
+Exch $2
+FunctionEnd
 
 ######################################################################
 
@@ -164,8 +181,11 @@ Delete "$INSTDIR\${APP_NAME} website.url"
 !endif
 
 RmDir /r /REBOOTOK "$INSTDIR"
-RMDir /r /REBOOTOK "$APPDATA\${APP_NAME}
-RMDir /r /REBOOTOK "$LOCALAPPDATA\${APP_NAME}
+
+Call GetUsernameOfCurrentSessionFromWTS
+Pop $0
+RMDir /R "$PROFILE\..\$0\AppData\Roaming\Rapidia_Cura"
+RMDir /R "$PROFILE\..\$0\AppData\Local\Rapidia_Cura"
 
 !ifdef REG_START_MENU
 !insertmacro MUI_STARTMENU_GETFOLDER "Application" $SM_Folder

@@ -4,7 +4,7 @@
 # ---------
 # General constants used in Cura
 # ---------
-DEFAULT_CURA_APP_NAME = "rapidia_cura"
+DEFAULT_CURA_APP_NAME = "Rapidia_Cura"
 DEFAULT_CURA_DISPLAY_NAME = "Rapidia Cura"
 DEFAULT_CURA_VERSION = "dev"
 DEFAULT_CURA_BUILD_TYPE = ""
@@ -18,6 +18,7 @@ CuraSDKVersion = "8.3.0"
 
 try:
     from cura.CuraVersion import CuraLatestURL
+
     if CuraLatestURL == "":
         CuraLatestURL = DEFAULT_CURA_LATEST_URL
 except ImportError:
@@ -25,12 +26,14 @@ except ImportError:
 
 try:
     from cura.CuraVersion import CuraAppName  # type: ignore
+
     CuraAppName = DEFAULT_CURA_APP_NAME
 except ImportError:
     CuraAppName = DEFAULT_CURA_APP_NAME
 
 try:
     from cura.CuraVersion import CuraVersion  # type: ignore
+
     if CuraVersion == "":
         CuraVersion = DEFAULT_CURA_VERSION
 except ImportError:
@@ -53,13 +56,17 @@ except ImportError:
 # Various convenience flags indicating what kind of Cura build it is.
 __ENTERPRISE_VERSION_TYPE = "enterprise"
 IsEnterpriseVersion = CuraBuildType.lower() == __ENTERPRISE_VERSION_TYPE
-IsAlternateVersion = CuraBuildType.lower() not in [DEFAULT_CURA_BUILD_TYPE, __ENTERPRISE_VERSION_TYPE]
+IsAlternateVersion = CuraBuildType.lower() not in [
+    DEFAULT_CURA_BUILD_TYPE,
+    __ENTERPRISE_VERSION_TYPE,
+]
 # NOTE: IsAlternateVersion is to make it possibile to have 'non-numbered' versions, at least as presented to the user.
 #       (Internally, it'll still have some sort of version-number, but the user is never meant to see it in the GUI).
 #       Warning: This will also change (some of) the icons/splash-screen to the 'work in progress' alternatives!
 
 try:
     from cura.CuraVersion import CuraAppDisplayName  # type: ignore
+
     if CuraAppDisplayName == "":
         CuraAppDisplayName = DEFAULT_CURA_DISPLAY_NAME
     if IsEnterpriseVersion:
@@ -71,9 +78,13 @@ except ImportError:
 DEPENDENCY_INFO = {}
 try:
     from pathlib import Path
-    conan_install_info = Path(__file__).parent.parent.joinpath("conan_install_info.json")
+
+    conan_install_info = Path(__file__).parent.parent.joinpath(
+        "conan_install_info.json"
+    )
     if conan_install_info.exists():
         import json
+
         with open(conan_install_info, "r") as f:
             DEPENDENCY_INFO = json.loads(f.read())
 except:

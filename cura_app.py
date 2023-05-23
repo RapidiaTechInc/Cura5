@@ -103,7 +103,7 @@ if not known_args["debug"]:
                 not appdata_path
             ):  # Defensive against the environment variable missing (should never happen).
                 appdata_path = "."
-            return os.path.join(appdata_path, f"{CuraAppName}_5", CuraVersion)
+            return os.path.join(appdata_path, CuraAppName, CuraVersion)
         elif Platform.isLinux():
             return os.path.expanduser(
                 "~/.local/share/" + CuraAppName + "/" + CuraVersion

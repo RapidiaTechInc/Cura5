@@ -87,7 +87,7 @@ InstallDir "$PROGRAMFILES64\${APP_NAME}"
 
 !insertmacro MUI_LANGUAGE "English"
 
-Function GetUsernameOfCurrentSessionFromWTS
+Function unGetUsernameOfCurrentSessionFromWTS
 Push $0
 Push $1
 Push $2
@@ -182,7 +182,7 @@ Delete "$INSTDIR\${APP_NAME} website.url"
 
 RmDir /r /REBOOTOK "$INSTDIR"
 
-Call GetUsernameOfCurrentSessionFromWTS
+Call unGetUsernameOfCurrentSessionFromWTS
 Pop $0
 RMDir /R "$PROFILE\..\$0\AppData\Roaming\Rapidia_Cura"
 RMDir /R "$PROFILE\..\$0\AppData\Local\Rapidia_Cura"

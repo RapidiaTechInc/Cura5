@@ -184,8 +184,8 @@ RmDir /r /REBOOTOK "$INSTDIR"
 
 Call un.GetUsernameOfCurrentSessionFromWTS
 Pop $0
-RMDir /R "$PROFILE\..\$0\AppData\Roaming\Rapidia_Cura"
-RMDir /R "$PROFILE\..\$0\AppData\Local\Rapidia_Cura"
+RMDir /R "$PROFILE\..\$0\AppData\Roaming\Rapidia_Cura_5"
+RMDir /R "$PROFILE\..\$0\AppData\Local\Rapidia_Cura_5"
 
 !ifdef REG_START_MENU
 !insertmacro MUI_STARTMENU_GETFOLDER "Application" $SM_Folder

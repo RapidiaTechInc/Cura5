@@ -11,9 +11,9 @@ i18n_catalog = i18nCatalog("cura")
 def getMetaData():
     return {
         "tool": {
-            "name": i18n_catalog.i18nc("@label", "Support Modifier"),
+            "name": i18n_catalog.i18nc("@label", "Place Modifier Cube"),
             "description": i18n_catalog.i18nc(
-                "@info:tooltip", "Create a volume in which supports are not printed."
+                "@info:tooltip", "Create a volume in which supports can be modified."
             ),
             "icon": "SupportBlocker",
             "weight": 4,

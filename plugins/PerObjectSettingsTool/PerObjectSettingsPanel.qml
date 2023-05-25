@@ -108,7 +108,7 @@ Item
             UM.ToolbarButton
             {
                 id: overlapMeshButton
-                text: catalog.i18nc("@label", "Modify settings for overlaps")
+                text: catalog.i18nc("@label", "Modify Print Settings")
                 toolItem: UM.ColorImage
                 {
                     source: UM.Theme.getIcon("MeshTypeIntersect")
@@ -123,7 +123,7 @@ Item
             UM.ToolbarButton
             {
                 id: supportModifierMeshButton
-                text:  catalog.i18nc("@label", "used to modify or remove support")
+                text:  catalog.i18nc("@label", "Modify Support Settings")
                 toolItem: UM.ColorImage
                 {
                     source: UM.Theme.getIcon("BlockSupportOverlaps")

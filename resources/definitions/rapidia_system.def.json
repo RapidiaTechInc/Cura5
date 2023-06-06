@@ -207,7 +207,13 @@
         },
         "support_use_towers": {
             "default_value": "False"
+        },
+        "support_upper_skin_height": {
+            "value":"2 * layer_height"
+        },
+        "support_lower_skin_height":
+        {
+            "value": 0
         }
-
     }
 }

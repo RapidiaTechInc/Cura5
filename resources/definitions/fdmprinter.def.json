@@ -5183,7 +5183,7 @@
                             "value": 0,
                             "enabled": "support_roof_enable and (support_enable or support_meshes_present)",
                             "settable_per_mesh": true
-                        },
+                        }
                     }
                 },
                 "support_interface_skip_height":

@@ -78,10 +78,10 @@
             "value": "2 * layer_height"
         },
         "gradual_support_infill_steps": {
-            "default_value": 1
+            "default_value": 0
         },
         "support_infill_rate": {
-            "value": 100
+            "value": 50
         },
         "layer_height":{
             "value": 0.25
@@ -209,7 +209,7 @@
             "default_value": "False"
         },
         "support_upper_skin_height": {
-            "value":"2 * layer_height"
+            "value":"3 * layer_height"
         },
         "support_lower_skin_height":
         {

@@ -135,7 +135,7 @@ class SupportEraser(Tool):
         )  # created by SettingOverrideDecorator that is automatically added to CuraSceneNode
         settings = stack.getTop()
 
-        definition = stack.getSettingDefinition("support_modifier_mesh")
+        definition = stack.getSettingDefinition("anti_overhang_mesh")
         new_instance = SettingInstance(definition, settings)
         new_instance.setProperty("value", True)
         new_instance.resetState()  # Ensure that the state is not seen as a user state.

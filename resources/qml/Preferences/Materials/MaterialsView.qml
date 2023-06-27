@@ -381,6 +381,13 @@ Item
                         decimals: 2
                         maximum: 100000000
 
+                        editingFinishedFunction: function()
+                        {
+                            var modified_text = valueText.replace(",", ".");
+                            base.setMaterialPreferenceValue(properties.guid, "spool_cost", modified_text);
+                        }
+
+                        onValueTextChanged: updateCostPerCC()
                         
 
                     }
@@ -635,7 +642,7 @@ Item
         var modified_diameter = diameterTextField.valueText.replace(",", ".")
         var modified_density = densityTextField.valueText.replace(",", ".")
         base.spoolLength = calculateSpoolLength(modified_diameter, modified_density, parseInt(modified_weight));
-        base.costPerCC = calculateCostPerCC(parseFloat(modified_cost));
+        base.costPerCC = calculateCostPerCC(parseFloat(modified_cost), parseFloat(modified_weight));
     }
 
     function calculateSpoolLength(diameter, density, spoolWeight)

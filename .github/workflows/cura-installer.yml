@@ -69,7 +69,7 @@ jobs:
 
             -   name: Get Conan configuration
                 if: ${{ inputs.conan_config == '' }}
-                run: conan config install https://github.com/RapidiaTechInc/conan-config.git
+                run: conan config install https://github.com/Ultimaker/conan-config.git
 
             -   name: create conan Engine package (powershell)
                 working-directory: curaEngine

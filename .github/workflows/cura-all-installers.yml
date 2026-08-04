@@ -19,6 +19,11 @@ on:
                 default: false
                 required: true
                 type: boolean
+            Build_for_linux:
+                description: 'create a linux installer'
+                default: false
+                required: true
+                type: boolean
 
 jobs:
     windows-installer-create-exe:
@@ -36,5 +41,14 @@ jobs:
         with:
             platform: 'macos-11'
             os_name: 'mac'
+            cura_conan_version: ${{ inputs.cura_conan_version }}
+        secrets: inherit
+
+    linux-installer-create-appimage:
+        if: ${{ inputs.Build_for_linux }}
+        uses: ./.github/workflows/cura-installer.yml
+        with:
+            platform: 'ubuntu-24.04'
+            os_name: 'linux'
             cura_conan_version: ${{ inputs.cura_conan_version }}
         secrets: inherit

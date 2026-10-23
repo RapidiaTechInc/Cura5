@@ -217,13 +217,13 @@ class ObjectsModel(ListModel):
                     per_object_settings_count -= 1  # do not count this mesh type setting
 
                 if per_object_settings_count > 0:
-                    if node_mesh_type == "support_mesh":
-                        # support meshes only allow support settings
+                    if node_mesh_type == "support_mesh" or node_mesh_type == "support_modifier_mesh":
+                        # support meshes and support modifier meshes only allow support settings
                         per_object_settings_count = 0
                         for key in per_object_stack.getTop().getAllKeys():
                             if per_object_stack.getTop().getInstance(key).definition.isAncestor("support"):
                                 per_object_settings_count += 1
-                    elif node_mesh_type == "anti_overhang_mesh" or node_mesh_type == "support_modifier_mesh":
+                    elif node_mesh_type == "anti_overhang_mesh":
                         # anti overhang meshes ignore per model settings
                         per_object_settings_count = 0
 

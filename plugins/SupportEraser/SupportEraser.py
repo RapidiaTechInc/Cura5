@@ -98,9 +98,8 @@ class SupportEraser(Tool):
                     node_stack.getProperty("support_mesh", "value")
                     or node_stack.getProperty("infill_mesh", "value")
                     or node_stack.getProperty("cutting_mesh", "value")
-                    or node_stack.getProperty("support_modifier_mesh", "value")
                 ):
-                    # Only "normal" meshes can have anti_overhang_meshes added to them
+                    # Only "normal" meshes can have modifier cubes added to them
                     return
 
             # Get the pass for picking a world-space location from the mouse location

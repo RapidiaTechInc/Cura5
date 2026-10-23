@@ -6467,14 +6467,14 @@
                         "support_lower_skin_height":
                         {
                             "label": "Bottom Support Skin Thickness",
-                            "description": "The thickness of a dense layer of support above the interface. Can improve print fidelity while avoiding the potential sintering problems increasing the interface thickness would cause",
+                            "description": "The thickness of a dense layer of support below the interface. Can improve print fidelity while avoiding the potential sintering problems increasing the interface thickness would cause",
                             "unit": "mm",
                             "type": "float",
                             "default_value": 0,
                             "minimum_value": "0",
                             "maximum_value_warning": "10",
                             "value": 0,
-                            "enabled": "support_roof_enable and (support_enable or support_meshes_present)",
+                            "enabled": "support_bottom_enable and (support_enable or support_meshes_present)",
                             "settable_per_mesh": true
                         }
                     }

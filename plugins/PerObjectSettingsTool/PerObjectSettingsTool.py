@@ -135,7 +135,9 @@ class PerObjectSettingsTool(Tool):
             "wall_line_count": "=max(1, round((wall_thickness - wall_line_width_0) / wall_line_width_x) + 1) if wall_thickness != 0 else 0",
         }
 
-        support_modifier_settings = {"support_enable": True, "support_extruder_nr": 0}
+        # A support modifier mesh enables support in its volume by default. The extruder is
+        # deliberately left to the global/machine value so the Rapidia support extruder is used.
+        support_modifier_settings = {"support_enable": True}
         for property_key in infill_mesh_settings:
             if mesh_type == "infill_mesh":
                 if settings.getInstance(property_key) is None:

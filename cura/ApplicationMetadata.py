@@ -24,12 +24,9 @@ try:
 except ImportError:
     CuraLatestURL = DEFAULT_CURA_LATEST_URL
 
-try:
-    from cura.CuraVersion import CuraAppName  # type: ignore
-
-    CuraAppName = DEFAULT_CURA_APP_NAME
-except ImportError:
-    CuraAppName = DEFAULT_CURA_APP_NAME
+# Rapidia: force the application name so the data folder is always "Rapidia_Cura_5",
+# independent of the name generated into CuraVersion.py by the build.
+CuraAppName = DEFAULT_CURA_APP_NAME
 
 try:
     from cura.CuraVersion import CuraVersion  # type: ignore

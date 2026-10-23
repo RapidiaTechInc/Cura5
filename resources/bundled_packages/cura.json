@@ -492,23 +492,6 @@
             }
         }
     },
-    "SliceInfoPlugin": {
-        "package_info": {
-            "package_id": "SliceInfoPlugin",
-            "package_type": "plugin",
-            "display_name": "Slice Info",
-            "description": "Submits anonymous slice info. Can be disabled through preferences.",
-            "package_version": "1.0.1",
-            "sdk_version": "8.13.0",
-            "website": "https://ultimaker.com",
-            "author": {
-                "author_id": "UltimakerPackages",
-                "display_name": "UltiMaker",
-                "email": "plugins@ultimaker.com",
-                "website": "https://ultimaker.com"
-            }
-        }
-    },
     "SolidView": {
         "package_info": {
             "package_id": "SolidView",

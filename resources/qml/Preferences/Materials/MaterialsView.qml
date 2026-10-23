@@ -22,7 +22,6 @@ Item
     property var materialPreferenceValues: UM.Preferences.getValue("cura/material_settings") ? JSON.parse(UM.Preferences.getValue("cura/material_settings")) : {}
     property var materialManagementModel: CuraApplication.getMaterialManagementModel()
 
-    property double spoolLength: calculateSpoolLength()
     property real costPerCC: calculateCostPerCC()
 
     signal resetSelectedMaterial()
@@ -384,7 +383,7 @@ Item
                         editingFinishedFunction: function()
                         {
                             var modified_text = valueText.replace(",", ".");
-                            base.setMaterialPreferenceValue(properties.guid, "spool_cost", modified_text);
+                            base.setMetaDataEntry("properties/cartridge_cost", properties.cartridge_cost, modified_text);
                         }
 
                         onValueTextChanged: updateCostPerCC()
@@ -419,7 +418,7 @@ Item
                         editingFinishedFunction: function()
                         {
                             var modified_text = valueText.replace(",", ".")
-                            base.setMaterialPreferenceValue(properties.guid, "spool_weight", modified_text)
+                            base.setMetaDataEntry("properties/cartridge_volume", properties.cartridge_volume, modified_text)
                         }
                         
                         onValueTextChanged: updateCostPerCC()
@@ -637,36 +636,9 @@ Item
 
     function updateCostPerCC()
     {
-        var modified_weight = spoolWeightTextField.valueText.replace(",", ".")
+        var modified_volume = spoolWeightTextField.valueText.replace(",", ".")
         var modified_cost = spoolCostTextField.valueText.replace(",", ".")
-        var modified_diameter = diameterTextField.valueText.replace(",", ".")
-        var modified_density = densityTextField.valueText.replace(",", ".")
-        base.spoolLength = calculateSpoolLength(modified_diameter, modified_density, parseInt(modified_weight));
-        base.costPerCC = calculateCostPerCC(parseFloat(modified_cost), parseFloat(modified_weight));
-    }
-
-    function calculateSpoolLength(diameter, density, spoolWeight)
-    {
-        if(!diameter)
-        {
-            diameter = properties.diameter;
-        }
-        if(!density)
-        {
-            density = properties.density;
-        }
-        if(!spoolWeight)
-        {
-            spoolWeight = base.getMaterialPreferenceValue(properties.guid, "spool_weight", Cura.ContainerManager.getContainerMetaDataEntry(properties.container_id, "properties/weight"));
-        }
-
-        if (diameter == 0 || density == 0 || spoolWeight == 0)
-        {
-            return 0;
-        }
-        var area = Math.PI * Math.pow(diameter / 2, 2); // in mm2
-        var volume = (spoolWeight / density); // in cm3
-        return volume / area; // in m
+        base.costPerCC = calculateCostPerCC(parseFloat(modified_cost), parseFloat(modified_volume));
     }
 
     function calculateCostPerCC(cartridge_cost, cartridge_volume)

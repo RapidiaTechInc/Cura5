@@ -188,6 +188,7 @@ class BuildVolume(SceneNode):
             node_stack := node.callDecoration("getStack") and (
                 node.callDecoration("getStack").getProperty("anti_overhang_mesh", "value") or
                 node.callDecoration("getStack").getProperty("support_mesh", "value") or
+                node.callDecoration("getStack").getProperty("support_modifier_mesh", "value") or
                 node.callDecoration("getStack").getProperty("cutting_mesh", "value") or
                 node.callDecoration("getStack").getProperty("infill_mesh", "value")
             ))
@@ -718,7 +719,7 @@ class BuildVolume(SceneNode):
         update_extra_z_clearance = True
 
         for setting_key in self._changed_settings_since_last_rebuild:
-            if setting_key in ["print_sequence", "support_mesh", "infill_mesh", "cutting_mesh", "anti_overhang_mesh"]:
+            if setting_key in ["print_sequence", "support_mesh", "support_modifier_mesh", "infill_mesh", "cutting_mesh", "anti_overhang_mesh"]:
                 self._updateRootPrintableObjectCount()
 
             if setting_key == "print_sequence":

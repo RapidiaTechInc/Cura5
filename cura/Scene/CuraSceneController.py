@@ -98,7 +98,7 @@ class CuraSceneController(QObject):
         for node in root.getAllChildren():
             if isinstance(node, CuraSceneNode):
                 per_mesh_stack = node.callDecoration("getStack")
-                if per_mesh_stack and per_mesh_stack.getProperty("support_mesh", "value"):
+                if per_mesh_stack and (per_mesh_stack.getProperty("support_mesh", "value") or per_mesh_stack.getProperty("support_modifier_mesh", "value")):
                     return True
         return False
 

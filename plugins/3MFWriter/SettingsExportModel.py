@@ -64,7 +64,8 @@ class SettingsExportModel(QObject):
     PER_MODEL_EXPORTABLE_SETTINGS_KEYS = {"anti_overhang_mesh",
                                           "infill_mesh",
                                           "cutting_mesh",
-                                          "support_mesh"}
+                                          "support_mesh",
+                                          "support_modifier_mesh"}
 
     def __init__(self, parent=None):
         super().__init__(parent)

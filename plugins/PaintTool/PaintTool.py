@@ -482,7 +482,7 @@ class PaintTool(Tool):
         Painting modifier meshes (e.g. support blockers) triggers UV-unwrapping and texture preparation
         that corrupts their mesh data and causes slicing to fail.
         """
-        modifier_mesh_decorations = ("isAntiOverhangMesh", "isSupportMesh", "isCuttingMesh", "isInfillMesh")
+        modifier_mesh_decorations = ("isAntiOverhangMesh", "isSupportMesh", "isCuttingMesh", "isInfillMesh", "isSupportModifierMesh")
 
         return any(node.callDecoration(d) for d in modifier_mesh_decorations)
 

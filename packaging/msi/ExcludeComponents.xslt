@@ -20,8 +20,8 @@
     ...but we can use this longer `substring` expression instead (see https://github.com/wixtoolset/issues/issues/5609 )
     -->
     <xsl:key
-            name="UltiMaker_Cura_exe_ToRemove"
-            match="wix:Component[ substring( wix:File/@Source, string-length( wix:File/@Source ) - 17 ) = 'UltiMaker-Cura.exe' ]"
+            name="Rapidia_Cura_exe_ToRemove"
+            match="wix:Component[ substring( wix:File/@Source, string-length( wix:File/@Source ) - 15 ) = 'Rapidia-Cura.exe' ]"
             use="@Id"
     />
     <xsl:key
@@ -37,7 +37,7 @@
         </xsl:copy>
     </xsl:template>
 
-    <!-- ...but if the element has the "UltiMaker_Cura_exe_ToRemove" or "CuraEngine_exe_ToRemove" key then don't render anything (i.e. removing it from the output) -->
-    <xsl:template match="*[ self::wix:Component or self::wix:ComponentRef ][ key( 'UltiMaker_Cura_exe_ToRemove', @Id ) ]"/>
+    <!-- ...but if the element has the "Rapidia_Cura_exe_ToRemove" or "CuraEngine_exe_ToRemove" key then don't render anything (i.e. removing it from the output) -->
+    <xsl:template match="*[ self::wix:Component or self::wix:ComponentRef ][ key( 'Rapidia_Cura_exe_ToRemove', @Id ) ]"/>
     <xsl:template match="*[ self::wix:Component or self::wix:ComponentRef ][ key( 'CuraEngine_exe_ToRemove', @Id ) ]"/>
 </xsl:stylesheet>

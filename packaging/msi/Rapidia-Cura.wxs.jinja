@@ -14,8 +14,8 @@
             Compressed="yes"
             InstallScope="perMachine"
             Manufacturer="{{ company }}"
-            Description="UltiMaker Cura the most popular 3D printing slicer"
-            Keywords="UltiMaker,Cura,3D,printing,slicer"
+            Description="Rapidia Cura, a slicer for metal paste deposition 3D printing"
+            Keywords="Rapidia,Cura,3D,printing,slicer"
             Comments="Copyright (c) {{ year }} {{ company }}" />
 
         <InstallExecuteSequence>
@@ -73,10 +73,10 @@
         <Property Id="ApplicationFolderName" Value="{{ app_name }} {{ version }}" />
         <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
 
-        <Component Id="CMP_UltiMaker_Cura_exe" Directory="APPLICATIONFOLDER" Guid="*">
-            <File Id="FILE_UltiMaker_Cura_exe" KeyPath="yes" Source="$(var.CuraDir)\{{ main_app }}" />
+        <Component Id="CMP_Rapidia_Cura_exe" Directory="APPLICATIONFOLDER" Guid="*">
+            <File Id="FILE_Rapidia_Cura_exe" KeyPath="yes" Source="$(var.CuraDir)\{{ main_app }}" />
 
-            <fw:FirewallException Id="FirewallExceptLocalFrontend" Name="Cura (Frontend) Connection (LocalHost)" File="FILE_UltiMaker_Cura_exe" IgnoreFailure="yes">
+            <fw:FirewallException Id="FirewallExceptLocalFrontend" Name="Cura (Frontend) Connection (LocalHost)" File="FILE_Rapidia_Cura_exe" IgnoreFailure="yes">
                 <fw:RemoteAddress>127.0.0.1</fw:RemoteAddress>
             </fw:FirewallException>
         </Component>
@@ -124,7 +124,7 @@
         <!--Capabilities / RegisteredApplications Component-->
         <Component Id="CMP_Capabilities" Guid="*" Directory="APPLICATIONFOLDER">
             <RegistryValue Root="HKLM" Key="SOFTWARE\{{ company }}\{{ app_name }}\Capabilities" Name="ApplicationName" Type="string" Value="{{ app_name }}" KeyPath="yes" />
-            <RegistryValue Root="HKLM" Key="SOFTWARE\{{ company }}\{{ app_name }}\Capabilities" Name="ApplicationDescription" Type="string" Value="UltiMaker Cura is the world's most trusted 3D printing slicer." />
+            <RegistryValue Root="HKLM" Key="SOFTWARE\{{ company }}\{{ app_name }}\Capabilities" Name="ApplicationDescription" Type="string" Value="Rapidia Cura is a slicer for metal paste deposition 3D printing." />
         {% for assoc in file_associations %}
             <RegistryValue Root="HKLM" Key="SOFTWARE\{{ company }}\{{ app_name }}\Capabilities\FileAssociations" Name=".{{ assoc.ext }}" Type="string" Value="{{ assoc.prog_id }}" />
             {% for extra in assoc.extra_exts %}
@@ -210,7 +210,7 @@
 
         <Feature Id="ProductFeature" Title="{{ app_name }}" Level="1" ConfigurableDirectory="APPLICATIONFOLDER"
                  AllowAdvertise="no" InstallDefault="local">
-            <ComponentRef Id="CMP_UltiMaker_Cura_exe" />
+            <ComponentRef Id="CMP_Rapidia_Cura_exe" />
             <ComponentRef Id="CMP_CuraEngine_exe" />
             <ComponentGroupRef Id="NewFilesGroup" />
             <ComponentRef Id="CMP_Shortcuts" />

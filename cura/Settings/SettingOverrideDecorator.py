@@ -110,6 +110,13 @@ class SettingOverrideDecorator(SceneNodeDecorator):
             if global_container_stack:
                 return str(global_container_stack.getProperty("support_extruder_nr", "value"))
 
+        # A support modifier may override the support extruder for its own volume, so use the
+        # per-object value when it is set.
+        if self._is_support_modifier_mesh:
+            support_extruder_nr = self._stack.getProperty("support_extruder_nr", "value")
+            if support_extruder_nr is not None:
+                return str(support_extruder_nr)
+
         containers = ContainerRegistry.getInstance().findContainers(id = self.getActiveExtruder())
         if containers:
             container_stack = containers[0]

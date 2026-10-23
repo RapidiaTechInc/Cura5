@@ -44,6 +44,7 @@ class CuraConan(ConanFile):
         "staging": [True, False],
         "cloud_api_version": ["ANY"],
         "display_name": ["ANY"],  # TODO: should this be an option??
+        "app_name": ["ANY"],  # Name of the per-user data/config folder
         "cura_debug_mode": [True, False],  # FIXME: Use profiles
         "internal": [True, False],
         "i18n_extract": [True, False],
@@ -54,6 +55,7 @@ class CuraConan(ConanFile):
         "staging": False,
         "cloud_api_version": "1",
         "display_name": "Rapidia Cura",
+        "app_name": "Rapidia_Cura_5",
         "cura_debug_mode": False,  # Not yet implemented
         "internal": False,
         "i18n_extract": False,
@@ -407,7 +409,7 @@ class CuraConan(ConanFile):
 
         with open(os.path.join(location, "CuraVersion.py"), "wb") as f:
             f.write(cura_version_py.render(
-                cura_app_name = self.name,
+                cura_app_name = self.options.app_name,
                 cura_app_display_name = self._app_name,
                 cura_version = str(cura_version),
                 cura_version_full = self.version,

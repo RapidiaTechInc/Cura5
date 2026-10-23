@@ -42,18 +42,18 @@ def generate_wxs(source_path: Path, dist_path: Path, filename: Path, app_name: s
         {"ext": "gcode", "prog_id": "Cura.gcode",       "type_description": "G-code files",                                "section_title": "*.GCODE files",    "feature_description": "Associate .GCODE and .G (G-code) files",                    "optional": True,   "extra_exts": ["g"]},
     ]
 
-    jinja_template_path = Path(source_loc.joinpath("packaging", "msi", "UltiMaker-Cura.wxs.jinja"))
+    jinja_template_path = Path(source_loc.joinpath("packaging", "msi", "Rapidia-Cura.wxs.jinja"))
     with open(jinja_template_path, "r") as f:
         template = Template(f.read())
 
     wxs_content = template.render(
         app_name=f"{app_name}",
-        main_app="UltiMaker-Cura.exe",
+        main_app="Rapidia-Cura.exe",
         version=version,
         version_major=str(parsed_version.major),
         version_minor=str(parsed_version.minor),
         version_patch=str(parsed_version.patch),
-        company="UltiMaker",
+        company="Rapidia",
         year=datetime.now().year,
         upgrade_code=str(uuid.uuid5(uuid.NAMESPACE_DNS, app_name)),
         cura_license_file=str(source_loc.joinpath("packaging", "msi", "cura_license.rtf")),
@@ -63,7 +63,7 @@ def generate_wxs(source_path: Path, dist_path: Path, filename: Path, app_name: s
         file_associations=file_associations,
     )
 
-    with open(work_loc.joinpath("UltiMaker-Cura.wxs"), "w") as f:
+    with open(work_loc.joinpath("Rapidia-Cura.wxs"), "w") as f:
         f.write(wxs_content)
 
     try:
@@ -85,7 +85,7 @@ def cleanup_artifacts(dist_path: Path):
 def build(dist_path: Path, filename: Path, arch: str = "x64"):
     dist_loc = Path(os.getcwd(), dist_path)
     work_loc = work_path(filename)
-    wxs_loc = work_loc.joinpath("UltiMaker-Cura.wxs")
+    wxs_loc = work_loc.joinpath("Rapidia-Cura.wxs")
     heat_loc = work_loc.joinpath("HeatFile.wxs")
     exclude_components_loc = work_loc.joinpath("ExcludeComponents.xslt")
     build_loc = work_loc.joinpath("build_msi")

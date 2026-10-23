@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING, Optional, List, Dict, Any
 
 from PyQt6.QtCore import QUrl, Qt, pyqtSlot, pyqtProperty, pyqtSignal
 
+from UM.Decorators import deprecated, deprecated_argument
 from UM.i18n import i18nCatalog
 from UM.Logger import Logger
 from UM.Qt.ListModel import ListModel
@@ -42,7 +43,8 @@ class WelcomePagesModel(ListModel):
     NextPageButtonTextRole = Qt.ItemDataRole.UserRole + 4  # The text for the next page button
     PreviousPageButtonTextRole = Qt.ItemDataRole.UserRole + 5  # The text for the previous page button
 
-    def __init__(self, application: "CuraApplication", parent: Optional["QObject"] = None) -> None:
+    @deprecated_argument(1, "application", "It is unused and will be removed", since="5.14.0")
+    def __init__(self, application: "CuraApplication" = None, parent: Optional["QObject"] = None) -> None:
         super().__init__(parent)
 
         self.addRoleName(self.IdRole, "id")
@@ -51,7 +53,8 @@ class WelcomePagesModel(ListModel):
         self.addRoleName(self.NextPageButtonTextRole, "next_page_button_text")
         self.addRoleName(self.PreviousPageButtonTextRole, "previous_page_button_text")
 
-        self._application = application
+        from cura.CuraApplication import CuraApplication
+        self._application: "CuraApplication" = CuraApplication.getInstance()
         self._catalog = i18nCatalog("cura")
 
         self._default_next_button_text = self._catalog.i18nc("@action:button", "Next")
@@ -65,6 +68,8 @@ class WelcomePagesModel(ListModel):
         # If the welcome flow should be shown. It can show the complete flow or just the changelog depending on the
         # specific case. See initialize() for how this variable is set.
         self._should_show_welcome_flow = False
+
+        self.initialize()
 
     allFinished = pyqtSignal()  # emitted when all steps have been finished
     currentPageIndexChanged = pyqtSignal()
@@ -102,7 +107,6 @@ class WelcomePagesModel(ListModel):
         Ends the Welcome-Pages. Put as a separate function for cases like the 'decline' in the User-Agreement.
         """
         self.allFinished.emit()
-        self.resetState()
 
     @pyqtSlot()
     def goToNextPage(self, from_index: Optional[int] = None) -> None:
@@ -186,6 +190,7 @@ class WelcomePagesModel(ListModel):
         should_show_function = next_page_item.get("should_show_function", lambda: True)
         return should_show_function()
 
+    @deprecated("This shouldn't be called anymore, you should create a new model for each view instead", since = "5.14.0")
     @pyqtSlot()
     def resetState(self) -> None:
         """
@@ -217,8 +222,8 @@ class WelcomePagesModel(ListModel):
     def _getBuiltinWelcomePagePath(page_filename: str) -> QUrl:
         """Convenience function to get QUrl path to pages that's located in "resources/qml/WelcomePages"."""
         from cura.CuraApplication import CuraApplication
-        return QUrl.fromLocalFile(Resources.getPath(CuraApplication.ResourceTypes.QmlFiles,
-                                                    os.path.join("WelcomePages", page_filename)))
+        return QUrl.fromLocalFile(
+            Resources.getPath(CuraApplication.ResourceTypes.QmlFiles, "WelcomePages", page_filename))
 
     # FIXME: HACKs for optimization that we don't update the model every time the active machine gets changed.
     def _onActiveMachineChanged(self) -> None:
@@ -230,14 +235,12 @@ class WelcomePagesModel(ListModel):
         self._initialize()
 
     def _initialize(self, update_should_show_flag: bool = True) -> None:
-        show_whats_new_only = False
         if update_should_show_flag:
             has_active_machine = self._application.getMachineManager().activeMachine is not None
-            has_app_just_upgraded = self._application.hasJustUpdatedFromOldVersion()
 
-            # Only show the what's new dialog if there's no machine and we have just upgraded
+            # Rapidia Cura does not ship the upstream "What's New" / changelog pages, so an
+            # upgrade must not trigger the welcome flow. Only a completely fresh start does.
             show_complete_flow = not has_active_machine
-            show_whats_new_only = has_active_machine and has_app_just_upgraded
 
             # FIXME: This is a hack. Because of the circular dependency between MachineManager, ExtruderManager, and
             # possibly some others, setting the initial active machine is not done when the MachineManager gets
@@ -245,7 +248,7 @@ class WelcomePagesModel(ListModel):
             # the active machine files are corrupted so we cannot rely on Preferences either. This makes sure that once
             # the active machine gets changed, this model updates the flags, so it can decide whether to show the
             # welcome flow or not.
-            should_show_welcome_flow = show_complete_flow or show_whats_new_only
+            should_show_welcome_flow = show_complete_flow
             if should_show_welcome_flow != self._should_show_welcome_flow:
                 self._should_show_welcome_flow = should_show_welcome_flow
                 self.shouldShowWelcomeFlowChanged.emit()
@@ -267,10 +270,7 @@ class WelcomePagesModel(ListModel):
                            },
                           ]
 
-        pages_to_show = all_pages_list
-        
-
-        self._pages = pages_to_show
+        self._pages = all_pages_list
         self.setItems(self._pages)
 
     def setItems(self, items: List[Dict[str, Any]]) -> None:

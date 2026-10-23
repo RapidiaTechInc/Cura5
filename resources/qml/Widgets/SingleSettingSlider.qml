@@ -34,21 +34,15 @@ UM.Slider
     {
         id: propertyProvider
         containerStackId: updateAllExtruders ? Cura.ExtruderManager.extruderIds[defaultExtruderIndex] : Cura.MachineManager.activeMachine.id
-        watchedProperties: ["value"]
+        watchedProperties: ["value", "validationState",  "resolve"]
+        removeUnusedValue: false
         storeIndex: 0
     }
 
     // set initial value from stack
     value: parseInt(propertyProvider.properties.value)
 
-    // When the slider is released trigger an update immediately. This forces the slider to snap to the rounded value.
-    onPressedChanged: function(pressed)
-    {
-        if(!pressed)
-        {
-            updateSetting(settingSlider.value);
-        }
-    }
+    onMoved: updateSetting(settingSlider.value)
 
     Connections
     {

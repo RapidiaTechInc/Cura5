@@ -14,7 +14,9 @@ Item
 {
     id: menu
     width: parent.width
-    height: applicationMenu.height
+    // On macOS Qt 6.8+ the MenuBar is rendered natively at the OS level,
+    // so the QML item must contribute zero height to avoid a blank gap.
+    height: Qt.platform.os == "osx" ? 0 : applicationMenu.height
 
     MenuBar
     {
@@ -72,13 +74,6 @@ Item
     // ###############################################################################################
     // Definition of other components that are linked to the menus
     // ###############################################################################################
-
-    WorkspaceSummaryDialog
-    {
-        id: saveWorkspaceDialog
-        property var args
-        onAccepted: UM.OutputDeviceManager.requestWriteToDevice("local_file", PrintInformation.jobName, args)
-    }
 
     Cura.MessageDialog
     {

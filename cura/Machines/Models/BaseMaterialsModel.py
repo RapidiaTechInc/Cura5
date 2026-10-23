@@ -78,6 +78,7 @@ class BaseMaterialsModel(ListModel):
         self.addRoleName(Qt.ItemDataRole.UserRole + 15, "container_node")
         self.addRoleName(Qt.ItemDataRole.UserRole + 16, "is_favorite")
         self.addRoleName(Qt.ItemDataRole.UserRole + 17, "cartridge_cost")
+        self.addRoleName(Qt.ItemDataRole.UserRole + 18, "cartridge_volume")
 
     def _onChanged(self) -> None:
         self._update_timer.start()

@@ -17,18 +17,13 @@ import argparse
 import faulthandler
 import os
 
-if (
-    sys.platform != "linux"
-):  # Turns out the Linux build _does_ use this, but we're not making an Enterprise release for that system anyway.
-    os.environ[
-        "QT_PLUGIN_PATH"
-    ] = ""  # Security workaround: Don't need it, and introduces an attack vector, so set to nul.
-    os.environ[
-        "QML2_IMPORT_PATH"
-    ] = ""  # Security workaround: Don't need it, and introduces an attack vector, so set to nul.
-    os.environ[
-        "QT_OPENGL_DLL"
-    ] = ""  # Security workaround: Don't need it, and introduces an attack vector, so set to nul.
+# set the environment variable QT_QUICK_FLICKABLE_WHEEL_DECELERATION to 5000 as mentioned in qt6.6 update log to overcome scroll related issues
+os.environ["QT_QUICK_FLICKABLE_WHEEL_DECELERATION"] = str(int(os.environ.get("QT_QUICK_FLICKABLE_WHEEL_DECELERATION", "5000")))
+
+if sys.platform != "linux":  # Turns out the Linux build _does_ use this, but we're not making an Enterprise release for that system anyway.
+    os.environ["QT_PLUGIN_PATH"] = ""  # Security workaround: Don't need it, and introduces an attack vector, so set to nul.
+    os.environ["QML2_IMPORT_PATH"] = ""  # Security workaround: Don't need it, and introduces an attack vector, so set to nul.
+    os.environ["QT_OPENGL_DLL"] = ""  # Security workaround: Don't need it, and introduces an attack vector, so set to nul.
 
 from PyQt6.QtNetwork import QSslConfiguration, QSslSocket
 

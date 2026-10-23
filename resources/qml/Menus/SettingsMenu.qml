@@ -55,6 +55,7 @@ Cura.Menu
                 text: catalog.i18nc("@action:inmenu", "Enable Extruder")
                 onTriggered: Cura.MachineManager.setExtruderEnabled(model.index, true)
                 visible: (extruder === null || extruder === undefined) ? false : !extruder.isEnabled
+                enabled: (extruder === null || extruder === undefined) ? false : !extruder.isEnabled
                 height: visible ? implicitHeight: 0
             }
 
@@ -63,12 +64,15 @@ Cura.Menu
                 text: catalog.i18nc("@action:inmenu", "Disable Extruder")
                 onTriggered: Cura.MachineManager.setExtruderEnabled(index, false)
                 visible: (extruder === null || extruder === undefined) ? false : extruder.isEnabled
-                enabled: Cura.MachineManager.numberExtrudersEnabled > 1
+                enabled: Cura.MachineManager.numberExtrudersEnabled > 1 && extruder.isEnabled
                 height: visible ? implicitHeight: 0
             }
         }
-        onObjectAdded: function(index, object) {  base.insertMenu(index, object) }
-        onObjectRemoved: function(index, object) {  base.removeMenu(object);}
+        onObjectAdded: function(index, object) {
+            base.insertMenu(index, object);
+            if (Qt.platform.os == "osx") object.title += " ";
+        }
+        onObjectRemoved: function(index, object) { base.removeMenu(object); }
     }
 
     Cura.MenuSeparator { }

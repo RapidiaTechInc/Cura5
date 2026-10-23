@@ -12,30 +12,23 @@ import "../Dialogs"
 Cura.Menu
 {
     id: openFilesMenu
-    title: catalog.i18nc("@title:menu menubar:file", "Open File(s)...")
 
-    Instantiator
+    Cura.MenuItem
+    {
+        action: Cura.Actions.open
+    }
+
+    Repeater
     {
         id: fileProviders
-        model: CuraApplication.getFileProviderModel()
+        model: Cura.Actions.extraOpenFileActions
         Cura.MenuItem
         {
-            text: model.displayText
-            onTriggered:
-            {
-                if (model.index == 0)  // The 0th element is the "From Disk" option, which should activate the open local file dialog
-                {
-                    Cura.Actions.open.trigger()
-                }
-                else
-                {
-                    CuraApplication.getFileProviderModel().trigger(model.name);
-                }
-            }
-            shortcut: model.shortcut
-        }
-        onObjectAdded: function(index, object) { openFilesMenu.insertItem(index, object)}
+            required property var modelData
 
-        onObjectRemoved: function(index, object) { openFilesMenu.removeItem(object) }
+            action: modelData
+            visible: action.enabled
+            enabled: visible
+        }
     }
 }

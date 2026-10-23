@@ -185,7 +185,7 @@ Item
             id: currentSettings
             property int maximumHeight: 200 * screenScaleFactor
             height: Math.min(contents.count * (UM.Theme.getSize("section").height + UM.Theme.getSize("narrow_margin").height + UM.Theme.getSize("default_lining").height), maximumHeight)
-            visible: true
+            visible: currentMeshType != "anti_overhang_mesh"
 
             ListView
             {

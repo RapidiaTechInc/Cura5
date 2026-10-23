@@ -192,7 +192,6 @@
         "support_interface_enable": {"value": "True"},
         "support_interface_offset": {"value": 0},
         "support_interface_pattern": {"default_value": "concentric"},
-        "support_interface_skip_height": {"value": "layer_height / 25"},
         "material_shrinkage_percentage": {
             "resolve": "extruderValues(\"material_shrinkage_percentage\")[0] if extruderValues(\"material_shrinkage_percentage\")[0] != 100 else extruderValues(\"material_shrinkage_percentage\")[1]"
         },

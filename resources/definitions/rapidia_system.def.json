@@ -93,7 +93,7 @@
             "value": "zigzag"
         },
         "infill_angles":{
-            "default_value": [45, 135]
+            "value": [45, 135]
         },
         "support_infill_angles":{
             "default_value": [0, 90]
